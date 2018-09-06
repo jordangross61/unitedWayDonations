@@ -90,7 +90,6 @@ import edu.gatech.oad.antlab.pkg2.*;
      public static void main(String[] args) {
 
         new AntLabMain().printOutMessage();
-<<<<<<< HEAD
 
      }
 
@@ -98,12 +97,3 @@ import edu.gatech.oad.antlab.pkg2.*;
 
 
  }
-=======
-        
-     } 
-    
-    
-    
-    
- } 
->>>>>>> Kate
