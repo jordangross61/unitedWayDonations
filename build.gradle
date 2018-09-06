@@ -48,7 +48,7 @@ jar  {
      attributes  'Implementation-Title' : 'Gradle Quickstart' ,
                  'Implementation-Version' : version,
                  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
-                 'Class-Path' : '../../M2.lib'
+                 'Class-Path' : '../../M2.lib.resources'
     }
 
       //destinationDir = file('.')
