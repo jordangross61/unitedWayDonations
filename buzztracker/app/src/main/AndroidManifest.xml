@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.gatech.cs2340.buzzTracker">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".controllers.WelcomeActivity"
+            android:label="United Way Donations"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".controllers.LoginActivity"
+            android:label="United Way Donations Login"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".controllers.DashboardActivity"
+            android:label="United Way Donations"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.RegistrationActivity"
+            android:label="United Way Donations Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>
