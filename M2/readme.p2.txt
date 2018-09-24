@@ -1,2 +1,0 @@
-Virginia Fishburn
-virginiafishburn@gmail.com
