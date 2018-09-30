@@ -11,7 +11,7 @@
 
         <activity
             android:name=".controllers.WelcomeActivity"
-            android:label="United Way Donations"
+            android:label="Buzz Tracker"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,15 +20,15 @@
         </activity>
         <activity
             android:name=".controllers.LoginActivity"
-            android:label="United Way Donations Login"
+            android:label="Buzz Tracker Login"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".controllers.DashboardActivity"
-            android:label="United Way Donations"
+            android:label="Buzz Tracker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controllers.RegistrationActivity"
-            android:label="United Way Donations Registration"
+            android:label="Buzz Tracker Registration"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

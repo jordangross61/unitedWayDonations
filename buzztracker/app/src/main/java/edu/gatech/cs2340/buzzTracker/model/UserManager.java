@@ -15,40 +15,39 @@ import java.util.Map;
 
 public class UserManager {
     /** the map of current users  Key = username  Value = User object */
-    private Map<String, User> _users;
+    public Map<String, User> _users;
 
     /**
      * Adds a user to the map of known users
      * Username must be unique, so if you try to add the same username, add will fail
      *
-     * @param username  the user id of the new user
      * @param password  the password of the new user
      * @param name  the name of the new user
      * @return  true if add was successful, false otherwise
      */
 
-    public boolean addUser(String username, String password, String name) {
+    public boolean addUser(String name, String email, String password) {
 
-        User user = new User(username, password, name, UserRights.USER);
+        User user = new User(name, email, password, UserRights.USER);
 
         //check that username is not already in collection
-        if (_users.containsKey(username)) return false;
+        if (_users.containsKey(email)) return false;
 
-        _users.put(username, user);
+        _users.put(email, user);
         return true;
     }
 
     /**
      * Check for a successful login by looking up the user and checking their password.
      *
-     * @param username  the login user id
+     * @param email  the login user id
      * @param password  the login password
      * @return User object if successful, null otherwise
      */
-    public User checkLogin(String username, String password) {
+    public User checkLogin(String email, String password) {
         User user = null;
-        if (_users.containsKey(username)) {
-            user = _users.get(username);
+        if (_users.containsKey(email)) {
+            user = _users.get(email);
             if (user.checkPassword(password)) {
                 return user;
             }
@@ -65,11 +64,5 @@ public class UserManager {
      */
     public UserManager() {
         _users = new HashMap<>();
-        addUser("user", "pass", "Krishna Patel");
-        addUser("user2", "pass2", "Virginia Fishburn");
-        addUser("user3", "pass3", "Kate Schaffer");
-        addUser("user4", "pass4", "Maddie Brickel");
-        addUser("user5", "pass5", "Jordan Gross");
-        addUser("user6", "pass6", "Shilpa Patel");
     }
 }

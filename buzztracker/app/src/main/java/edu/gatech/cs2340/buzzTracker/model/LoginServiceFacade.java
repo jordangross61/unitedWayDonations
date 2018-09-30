@@ -22,6 +22,8 @@ public class LoginServiceFacade {
         _userManager = new UserManager();
     }
 
+    public UserManager getUserManager() {return _userManager;}
+
     /**
      * Call this method to get the currently logged in user, will return
      * a null if there is no one logged in

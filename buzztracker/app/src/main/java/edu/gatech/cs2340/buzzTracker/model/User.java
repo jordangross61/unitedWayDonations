@@ -6,21 +6,20 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public class User {
-    private String _username;
     private String _password;
     private String _name;
+    private String _email;
     private UserRights _rights;
 
     /**
      * Make a new User
-     * @param uid  the user id for login
      * @param pwd  the password for login
      * @param name the actual name of the user
      */
-    public User (String uid, String pwd, String name, UserRights rights) {
-        _username = uid;
-        _password = pwd;
+    public User (String name, String email, String pwd, UserRights rights) {
         _name = name;
+        _email = email;
+        _password = pwd;
         _rights = rights;
     }
 
@@ -51,31 +50,31 @@ public class User {
      * Check whether user can add a new user or not
      * @return true if able to add user
      */
-    public boolean canAddUser() {
-        return _rights.canAddNewUser();
-    }
+//    public boolean canAddUser() {
+//        return _rights.canAddNewUser();
+//    }
 
     /**
      * Check whether the user can add or edit existing shelter information
      * @return true if able to add shelter
      */
-    public boolean canEditShelter() {
-        return _rights.canAddShelter();
-    }
+//    public boolean canEditShelter() {
+//        return _rights.canAddShelter();
+//    }
 
     /**
      * Check whether user can add an administrator type
      * @return true if able to add admin
      */
-    public boolean canAddAdmin() {
-        return _rights.canAddAdmin();
-    }
+//    public boolean canAddAdmin() {
+//        return _rights.canAddAdmin();
+//    }
 
     /**
      * Check whether user can delete a user from system
      * @return true if able to delete the user
      */
-    public boolean canDeleteUser() {
-        return _rights.canDeleteUser();
-    }
+//    public boolean canDeleteUser() {
+//        return _rights.canDeleteUser();
+//    }
 }

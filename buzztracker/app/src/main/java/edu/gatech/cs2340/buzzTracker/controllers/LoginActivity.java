@@ -27,8 +27,9 @@ public class LoginActivity extends AppCompatActivity {
      * @param view reference to actual button pressed
      */
     public void onLoginPressed(View view) {
-        EditText usernameField = findViewById(R.id.username_field);
+        EditText emailField = findViewById(R.id.email_field);
         EditText passwordField = findViewById(R.id.password_field);
+
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
 
         errorMsg.setText("");
@@ -37,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         LoginServiceFacade model = LoginServiceFacade.getInstance();
 
         //check the password and user id
-        if (model.doLogin(usernameField.getText().toString(), passwordField.getText().toString())) {
+        if (model.doLogin(emailField.getText().toString(), passwordField.getText().toString())) {
             //good login go to the Dashboard screen
             startActivity(new Intent(this, DashboardActivity.class));
         } else {
-            usernameField.setText("");
+            emailField.setText("");
             passwordField.setText("");
             errorMsg.setText("Username/Password incorrect. Try again.");
         }

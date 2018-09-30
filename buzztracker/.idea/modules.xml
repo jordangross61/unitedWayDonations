@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BuzzTracker.iml" filepath="$PROJECT_DIR$/BuzzTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buzztracker.iml" filepath="$PROJECT_DIR$/buzztracker.iml" />
     </modules>
   </component>
 </project>
