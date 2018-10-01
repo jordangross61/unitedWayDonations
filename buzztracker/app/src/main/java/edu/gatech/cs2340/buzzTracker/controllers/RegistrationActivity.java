@@ -32,6 +32,15 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        emailField = findViewById(R.id.email_field);
+        passwordField = findViewById(R.id.password_field);
+        nameField = findViewById(R.id.name_field);
+        rightsSpinner = findViewById(R.id.access_spinner);
+
+        ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, UserRights.values());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rightsSpinner.setAdapter(adapter);
     }
 
     public void onLoginOptPressed(View view){
@@ -62,24 +71,17 @@ public class RegistrationActivity extends AppCompatActivity {
 //    }
 
     public void onRegistration(View view) {
-        emailField = findViewById(R.id.email_field);
-        passwordField = findViewById(R.id.password_field);
-        nameField = findViewById(R.id.name_field);
 
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
-
         errorMsg.setText("");
 
         //get a reference to the model
         LoginServiceFacade model = LoginServiceFacade.getInstance();
-
         UserManager users = model.getUserManager();
 
         if (users.addUser(nameField.getText().toString(), emailField.getText().toString(),
-                passwordField.getText().toString())) {
-
+                passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem())) {
             startActivity(new Intent(this, DashboardActivity.class));
-
         } else {
             emailField.setText("");
             passwordField.setText("");

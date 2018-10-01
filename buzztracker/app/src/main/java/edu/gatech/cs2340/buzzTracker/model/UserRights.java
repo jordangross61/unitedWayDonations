@@ -10,9 +10,11 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public enum UserRights {
-    GUEST("GUEST"),
-    USER("USER"),
-    ADMIN("ADMIN");
+    GUEST("G"),
+    USER("U"),
+    EMPLOYEE("E"),
+    MANAGER("M"),
+    ADMIN("A");
 
 //    boolean _writeShelter;
 //    boolean _addUser;

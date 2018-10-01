@@ -26,9 +26,9 @@ public class UserManager {
      * @return  true if add was successful, false otherwise
      */
 
-    public boolean addUser(String name, String email, String password) {
+    public boolean addUser(String name, String email, String password, UserRights rights) {
 
-        User user = new User(name, email, password, UserRights.USER);
+        User user = new User(name, email, password, rights);
 
         //check that username is not already in collection
         if (_users.containsKey(email)) return false;
