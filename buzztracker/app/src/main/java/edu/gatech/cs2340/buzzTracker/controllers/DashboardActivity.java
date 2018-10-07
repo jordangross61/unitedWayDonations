@@ -50,12 +50,23 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(new Intent(this, WelcomeActivity.class));
     }
 
-    public void onShowMapClicked(View view) {
+    public void onShowMapPressed(View view) {
         LocationsManager model = LocationsManager.getInstance();
 
         readSDFile();
 
         startActivity(new Intent(this, MapsActivity.class));
+    }
+
+    /**
+     * Button handler for the load button
+     *
+     * @param view  the actual button object that was pressed
+     */
+    public void onLocationsButtonPressed(View view) {
+        readSDFile();
+
+        startActivity(new Intent(this, DataItemListActivity.class));
     }
 
     public void readSDFile() {

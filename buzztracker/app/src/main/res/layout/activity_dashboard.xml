@@ -8,34 +8,32 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="471dp">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="384dp"
             android:layout_height="48dp"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
+
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="0dp" />
 
         <Button
             android:id="@+id/logout_button"
-            android:layout_width="125dp"
+            android:layout_width="99dp"
             android:layout_height="42dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="128dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="268dp"
             android:layout_marginTop="2dp"
             android:onClick="onLogoutPressed"
             android:text="Logout"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.992"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.792" />
+            app:layout_constraintVertical_bias="0.98" />
 
         <TextView
             android:id="@+id/textView3"
@@ -61,13 +59,29 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="120dp"
-            android:onClick="onShowMapClicked"
+            android:onClick="onShowMapPressed"
             android:text="Show Map"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.259" />
+            app:layout_constraintVertical_bias="0.134" />
+
+        <Button
+            android:id="@+id/locations_button"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="onLocationsButtonPressed"
+            android:text="Show Locations"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.522" />
 
     </android.support.constraint.ConstraintLayout>
 

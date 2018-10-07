@@ -52,6 +52,15 @@
         <activity
             android:name=".controllers.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+
+        <activity
+            android:name=".controllers.DataItemDetailActivity"
+            android:label="Buzz Tracker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.DataItemListActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

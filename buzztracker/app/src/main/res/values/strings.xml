@@ -6,4 +6,7 @@
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_data_list">DataListActivity</string>
+    <string name="title_dataitem_list">Data Items</string>
+    <string name="title_dataitem_detail">DataItem Detail</string>
 </resources>

@@ -41,24 +41,27 @@ public class Location {
         _website = website;
     }
 
-    /**
-     *
-     * @return  the latitude value
-     */
-    public double getLatitude() { return _latitude; }
+    public int getKey() { return _key; }
 
-    /**
-     *
-     * @return the longitude value
-     */
-    public double getLongitude() { return _longitude; }
-
-    /**
-     *
-     * @return the longitude value
-     */
     public String getName() { return _name; }
 
-    public int getKey() { return _key; }
+    public double getLatitude() { return _latitude; }
+
+    public double getLongitude() { return _longitude; }
+
+    public String getStreet() { return _street; }
+
+    public String getCity() { return _city; }
+
+    public String getState() { return _state; }
+
+    public String getZipcode() { return _zipcode; }
+
+    public String getType() { return _type; }
+
+    public String getPhone() { return _phone; }
+
+    public String getWebsite() { return _website; }
+
 }
 
