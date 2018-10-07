@@ -46,29 +46,6 @@ public class RegistrationActivity extends AppCompatActivity {
     public void onLoginOptPressed(View view){
         startActivity(new Intent(this, LoginActivity.class));
     }
-//    public void onRegistration(View view) {
-//        emailField = findViewById(R.id.email_field);
-//        passwordField = findViewById(R.id.password_field);
-//        nameField = findViewById(R.id.name_field);
-//
-//        TextView errorMsg = findViewById(R.id.wrong_credentials_text);
-//
-//        errorMsg.setText("");
-//
-//        //get a reference to the user managers
-//        LoginServiceFacade model = LoginServiceFacade.getInstance();
-//
-//        if (users.addUser(nameField.getText().toString(), emailField.getText().toString(),
-//                passwordField.getText().toString())) {
-//
-//            startActivity(new Intent(this, DashboardActivity.class));
-//
-//        } else {
-//            emailField.setText("");
-//            passwordField.setText("");
-//            errorMsg.setText("Username/Password exists. Try again.");
-//        }
-//    }
 
     public void onRegistration(View view) {
 

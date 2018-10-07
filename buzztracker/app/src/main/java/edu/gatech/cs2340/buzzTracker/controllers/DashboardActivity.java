@@ -38,4 +38,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, WelcomeActivity.class));
     }
+
+    public void onShowMapClicked(View view) {
+        startActivity(new Intent(this, MapsActivity.class));
+    }
 }
