@@ -3,9 +3,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
-import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 
-import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,8 +26,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-    List<Location> locations;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,43 +34,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        readSDFile();
-
-    }
-
-    /**
-     * Button handler for the load button
-     *
-     * @param view  the actual button object that was pressed
-     */
-    public void onLoadButtonPressed(View view) {
-        readSDFile();
-        Intent intent = new Intent(this, DataItemListActivity.class);
-        startActivity(intent);
-    }
-
-
-    private void readSDFile() {
-        try {
-            //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.locationdata);
-            //From here we probably should call a model method and pass the InputStream
-            //Wrap it in a BufferedReader so that we get the readLine() method
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-
-            LocationsManager model = LocationsManager.getInstance();
-
-            String line;
-            br.readLine(); //get rid of header line
-            while ((line = br.readLine()) != null) {
-                String[] a = line.split(",");
-                model.addLocation((new Location(Integer.parseInt(a[0]), a[1], Double.parseDouble(a[2]),
-                        Double.parseDouble(a[3]), a[4], a[5], a[6], a[7], a[8], a[9], a[10])));
-            }
-            br.close();
-        } catch (IOException e) {
-            Log.e("MY APP", "exception: " + e.getMessage());
-        }
     }
 
 //    public void onMapReady(GoogleMap googleMap) {
@@ -99,11 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-//        for (Location loc : locations) {
-//            Log.d("myTag", loc.getName());
-//        }
-
-//        final LocationManager dataService = LocationManager.getInstance();
+        LocationsManager model = LocationsManager.getInstance();
+        List<Location> locations = model.getData();
 
         // get the data to display
         // iterate through the list and add a pin for each element in the model
