@@ -28,7 +28,9 @@ public class LocationsManager {
     }
 
     public void addLocation(Location loc) {
-        locations.add(loc);
+        if (!locations.contains(loc)) {
+            locations.add(loc);
+        }
     }
 
     public List<Location> getData() { return locations; }

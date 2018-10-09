@@ -63,5 +63,13 @@ public class Location {
 
     public String getWebsite() { return _website; }
 
+    public boolean equals(Object other) {
+        if (this == other) { return true; }
+        if (!(other instanceof Location)) {return false; }
+        Location that = (Location) other;
+        return this._name.equals(that._name) && this._key == that._key
+                && this._latitude == that._latitude && this._longitude == that._longitude;
+    }
+
 }
 
