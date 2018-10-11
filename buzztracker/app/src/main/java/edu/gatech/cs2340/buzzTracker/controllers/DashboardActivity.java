@@ -73,7 +73,7 @@ public class DashboardActivity extends AppCompatActivity {
         LocationsManager model = LocationsManager.getInstance();
         try {
             //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.sample);
+            InputStream is = getResources().openRawResource(R.raw.locationdata);
             //From here we probably should call a model method and pass the InputStream
             //Wrap it in a BufferedReader so that we get the readLine() method
             BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
