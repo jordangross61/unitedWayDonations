@@ -70,7 +70,7 @@ public class DataItemListActivity extends AppCompatActivity {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, DataItemDetailActivity.class);
                     Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-                    intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getKey());
+                    intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getKey() - 1);
                     context.startActivity(intent);
                 }
             });
