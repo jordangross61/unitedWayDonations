@@ -17,6 +17,8 @@ import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 import edu.gatech.cs2340.buzzTracker.model.UserManager;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
+
+
 /**
  * Controller for the main dashboard view of application
  */

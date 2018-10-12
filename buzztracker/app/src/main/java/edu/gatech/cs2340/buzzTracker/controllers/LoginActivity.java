@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +10,21 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
-
+//import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
  */
 public class LoginActivity extends AppCompatActivity {
 
+    //persistence work for firebase
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
