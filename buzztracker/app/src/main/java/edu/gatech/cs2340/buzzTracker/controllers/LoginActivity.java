@@ -3,6 +3,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -11,8 +12,11 @@ import android.widget.TextView;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 //import com.google.firebase.auth.AuthResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUser;
 //import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
@@ -43,17 +47,22 @@ public class LoginActivity extends AppCompatActivity {
         errorMsg.setText("");
 
         //get a reference to the model
-        LoginServiceFacade model = LoginServiceFacade.getInstance();
+        //LoginServiceFacade model = LoginServiceFacade.getInstance();
 
-        //check the password and user id
-        if (model.doLogin(emailField.getText().toString(), passwordField.getText().toString())) {
-            //good login go to the Dashboard screen
-            startActivity(new Intent(this, DashboardActivity.class));
-        } else {
-            emailField.setText("");
-            passwordField.setText("");
-            errorMsg.setText("Username/Password incorrect. Try again.");
-        }
+        mAuth.signInWithEmailAndPassword(emailField.getText().toString(), passwordField.getText().toString())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                } else {
+                                    TextView errorMsg = findViewById(R.id.wrong_credentials_text);
+                                    errorMsg.setText("Error");
+                                }
+                            }
+                        });
+
     }
 
     public void onRegistrationOptPressed(View view){
