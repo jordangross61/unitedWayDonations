@@ -6,6 +6,10 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public class User {
+    public String password;
+    public String name;
+    public String email;
+    public UserRights rights;
     private String _password;
     private String _name;
     private String _email;
@@ -17,6 +21,10 @@ public class User {
      * @param name the actual name of the user
      */
     public User (String name, String email, String pwd, UserRights rights) {
+        this.name = name;
+        this.email = email;
+        this.password = pwd;
+        this.rights = rights;
         _name = name;
         _email = email;
         _password = pwd;

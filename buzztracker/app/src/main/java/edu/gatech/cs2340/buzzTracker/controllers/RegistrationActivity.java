@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.Dash;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
+import edu.gatech.cs2340.buzzTracker.model.User;
 import edu.gatech.cs2340.buzzTracker.model.UserManager;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
@@ -23,7 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -37,6 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner rightsSpinner;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
         rightsSpinner.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     public void onLoginOptPressed(View view){
@@ -67,18 +71,26 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //get a reference to the model
         LoginServiceFacade model = LoginServiceFacade.getInstance();
-        UserManager users = model.getUserManager();
+        //UserManager users = model.getUserManager();
+        User user = new User(nameField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem());
+        //if (users.addUser(nameField.getText().toString(), emailField.getText().toString(),
+        //        passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem())) {
 
-        if (users.addUser(nameField.getText().toString(), emailField.getText().toString(),
-                passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem())) {
-            String email = emailField.getText().toString();
+
+        String email = emailField.getText().toString();
+        String name = nameField.getText().toString();
+        addToDatabase(user, name);
             String password = passwordField.getText().toString();
             mAuth.createUserWithEmailAndPassword(email, password);
             startActivity(new Intent(this, DashboardActivity.class));
-        } else {
-            emailField.setText("");
-            passwordField.setText("");
-            errorMsg.setText("Username/Password exists. Try again.");
-        }
+        //} else {
+        //    emailField.setText("");
+        //    passwordField.setText("");
+        //    errorMsg.setText("Username/Password exists. Try again.");
+        //}
+    }
+
+    private void addToDatabase(User user, String name) {
+        mDatabase.child("users").child(name).setValue(user);
     }
 }
