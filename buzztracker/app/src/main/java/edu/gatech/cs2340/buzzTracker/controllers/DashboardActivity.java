@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
-import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
+//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 import edu.gatech.cs2340.buzzTracker.controllers.MapsActivity;
 
 /**
@@ -44,8 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
      * @param view actual reference for the button pressed
      */
     public void onLogoutPressed(View view) {
-        LoginServiceFacade model = LoginServiceFacade.getInstance();
-        model.logout();
+        FirebaseAuth.getInstance().signOut();
 
         startActivity(new Intent(this, WelcomeActivity.class));
     }

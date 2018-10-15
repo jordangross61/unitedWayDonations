@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.buzzTracker.R;
-import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
+//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 //import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,9 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
 
         errorMsg.setText("");
-
-        //get a reference to the model
-        //LoginServiceFacade model = LoginServiceFacade.getInstance();
 
         mAuth.signInWithEmailAndPassword(emailField.getText().toString(), passwordField.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
