@@ -16,6 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,19 +36,38 @@ import java.util.List;
  */
 public class DataItemListActivity extends AppCompatActivity {
 
+    private DatabaseReference locationDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataitem_list);
-
+        locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
         View recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        LocationsManager locs = LocationsManager.getInstance();
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(locs.getData()));
+        this.getLocationDataToUpdateView(recyclerView);
+    }
+
+    private void getLocationDataToUpdateView(final RecyclerView recyclerView) {
+       // final Location[] locations = new
+        final List<Location> locations = new ArrayList<>();
+        locationDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Location loc = postSnapshot.getValue(Location.class);
+                    locations.add(loc);
+                }
+                recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(locations));
+            }
+            @Override
+            public void onCancelled(DatabaseError DatabaseError) {
+                Log.d("MYAPP", "Retrieving from database has error");
+            }
+        });
     }
 
     public class SimpleItemRecyclerViewAdapter
