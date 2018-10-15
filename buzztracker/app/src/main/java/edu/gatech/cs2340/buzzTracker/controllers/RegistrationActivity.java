@@ -64,33 +64,28 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void onRegistration(View view) {
-
-
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
         errorMsg.setText("");
 
-        //get a reference to the model
-        LoginServiceFacade model = LoginServiceFacade.getInstance();
-        //UserManager users = model.getUserManager();
-        User user = new User(nameField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem());
-        //if (users.addUser(nameField.getText().toString(), emailField.getText().toString(),
-        //        passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem())) {
-
-
         String email = emailField.getText().toString();
-        String name = nameField.getText().toString();
-        addToDatabase(user, name);
-            String password = passwordField.getText().toString();
-            mAuth.createUserWithEmailAndPassword(email, password);
-            startActivity(new Intent(this, DashboardActivity.class));
-        //} else {
-        //    emailField.setText("");
-        //    passwordField.setText("");
-        //    errorMsg.setText("Username/Password exists. Try again.");
-        //}
+        String password = passwordField.getText().toString();
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            User user = new User(nameField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem());
+                            addToDatabase(user, mAuth.getUid());
+                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                        } else {
+                            TextView errorMsg = findViewById(R.id.wrong_credentials_text);
+                            errorMsg.setText("Error");
+                        }
+                    }
+                });
     }
 
-    private void addToDatabase(User user, String name) {
-        mDatabase.child("users").child(name).setValue(user);
+    private void addToDatabase(User user, String userid) {
+        mDatabase.child("users").child(userid).setValue(user);
     }
 }
