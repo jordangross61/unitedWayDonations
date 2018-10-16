@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.buzzTracker.model;
 
+import java.io.Serializable;
+
 /**
  *
  * Information Holder
@@ -7,7 +9,7 @@ package edu.gatech.cs2340.buzzTracker.model;
  * Maintains information about Locations
  */
 
-public class Location {
+public class Location implements Serializable{
     private int key;
     private String name;
     private double latitude;

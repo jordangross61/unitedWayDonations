@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +9,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * An activity representing a single DataItem detail screen. This
@@ -51,14 +58,39 @@ public class DataItemDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putInt(DataItemDetailFragment.ARG_ITEM_ID,
-                    getIntent().getIntExtra(DataItemDetailFragment.ARG_ITEM_ID, 1000));
-            DataItemDetailFragment fragment = new DataItemDetailFragment();
-            fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.dataitem_detail_container, fragment)
-                    .commit();
+
+                int item_id = getIntent().getIntExtra(DataItemDetailFragment.ARG_ITEM_ID, 1000) + 1;
+                String locationid = Integer.toString(item_id);
+                Log.d("MYAPP", "populating fragment with id: " + locationid);
+                //locationid = "1";
+                FirebaseDatabase.getInstance().getReference().child("locations").child(locationid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get Post object and use the values to update the UI
+                        Log.d("MYAPP", "creating fragment");
+                        Location mItem = dataSnapshot.getValue(Location.class);
+                        Bundle arguments = new Bundle();
+                        arguments.putSerializable(DataItemDetailFragment.ARG_ITEM_ID, mItem);
+                        DataItemDetailFragment fragment = new DataItemDetailFragment();
+                        //fragment.onCreate(arguments);
+                        Log.d("MYAPP", "launching fragment");
+                        getSupportFragmentManager().beginTransaction()
+                                .add(R.id.dataitem_detail_container, fragment)
+                                .disallowAddToBackStack()
+                                .commit();
+                        fragment.updateLocation(mItem);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        // [START_EXCLUDE]
+                        int x = 0;
+                        Log.d("MYAPP", "Retrieving from database has error");
+                        // [END_EXCLUDE]
+                    }
+                });
+
         }
     }
 
