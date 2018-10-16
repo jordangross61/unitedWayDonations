@@ -19,8 +19,11 @@ public class Location {
     private String _type;
     private String _phone;
     private String _website;
+    private Inventory _inventory;
 
-    public Location() {}
+    public Location() {
+        _inventory = new Inventory();
+    }
 
     /**
      * Creates a new Location
