@@ -22,7 +22,6 @@ public class Location {
     private Inventory _inventory;
 
     public Location() {
-        _inventory = new Inventory();
     }
 
     /**
@@ -42,6 +41,7 @@ public class Location {
         _type = type;
         _phone = phone;
         _website = website;
+        _inventory = new Inventory();
     }
 
     public int getKey() { return _key; }
