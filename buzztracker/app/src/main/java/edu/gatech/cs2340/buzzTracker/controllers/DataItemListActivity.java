@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
 import edu.gatech.cs2340.buzzTracker.R;
-import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
+
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
 import android.content.Context;

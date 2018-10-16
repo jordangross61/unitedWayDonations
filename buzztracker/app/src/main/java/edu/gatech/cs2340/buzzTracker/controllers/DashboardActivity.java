@@ -20,7 +20,6 @@ import java.nio.charset.StandardCharsets;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
 //import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 import edu.gatech.cs2340.buzzTracker.controllers.MapsActivity;
 
@@ -59,7 +58,6 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void onShowMapPressed(View view) {
-        LocationsManager model = LocationsManager.getInstance();
 
         readSDFile();
 

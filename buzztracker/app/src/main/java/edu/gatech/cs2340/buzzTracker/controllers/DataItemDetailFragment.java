@@ -4,7 +4,7 @@ import edu.gatech.cs2340.buzzTracker.controllers.DataItemListActivity;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
+
 
 import android.app.Activity;
 import android.location.LocationManager;

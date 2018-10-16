@@ -2,7 +2,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
+
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -58,16 +58,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LocationsManager model = LocationsManager.getInstance();
-        List<Location> locations = model.getData();
+        //LocationsManager model = LocationsManager.getInstance();
+        //List<Location> locations = model.getData();
 
         // get the data to display
         // iterate through the list and add a pin for each element in the model
-        for (Location loc : locations) {
-            LatLng location = new LatLng(loc.getLatitude(), loc.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(location).title(loc.getName()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-        }
+        //for (Location loc : locations) {
+        //    LatLng location = new LatLng(loc.getLatitude(), loc.getLongitude());
+        //    mMap.addMarker(new MarkerOptions().position(location).title(loc.getName()));
+        //    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        //}
 
         // Use a custom layout for the pin data
 //        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
