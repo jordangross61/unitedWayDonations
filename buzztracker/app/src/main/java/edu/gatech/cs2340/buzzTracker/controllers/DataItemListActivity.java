@@ -37,37 +37,42 @@ import java.util.List;
 public class DataItemListActivity extends AppCompatActivity {
 
     private DatabaseReference locationDatabase;
+    private RecyclerView recyclerView;
+    private SimpleItemRecyclerViewAdapter adapter;
+    private List<Location> locations;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataitem_list);
         locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
-        View recyclerView = findViewById(R.id.dataitem_list);
+
+        recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-    }
 
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        this.getLocationDataToUpdateView(recyclerView);
-    }
-
-    private void getLocationDataToUpdateView(final RecyclerView recyclerView) {
-       // final Location[] locations = new
-        final List<Location> locations = new ArrayList<>();
+        locations = new ArrayList<>();
+        adapter = new SimpleItemRecyclerViewAdapter(locations);
+        recyclerView.setAdapter(adapter);
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Location loc = postSnapshot.getValue(Location.class);
-                    locations.add(loc);
-                }
-                recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(locations));
+                getLocationDataToUpdateView(snapshot);
             }
             @Override
             public void onCancelled(DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving from database has error");
             }
         });
+    }
+
+    private void getLocationDataToUpdateView(DataSnapshot snapshot) {
+        int index = 0;
+        for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+            Location loc = postSnapshot.getValue(Location.class);
+            locations.add(loc);
+            adapter.notifyItemInserted(index);
+            index++;
+        }
+        adapter.notifyDataSetChanged();
     }
 
     public class SimpleItemRecyclerViewAdapter

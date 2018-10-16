@@ -8,17 +8,17 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public class Location {
-    private int _key;
-    private String _name;
-    private double _latitude;
-    private double _longitude;
-    private String _street;
-    private String _city;
-    private String _state;
-    private String _zipcode;
-    private String _type;
-    private String _phone;
-    private String _website;
+    private int key;
+    private String name;
+    private double latitude;
+    private double longitude;
+    private String street;
+    private String city;
+    private String state;
+    private String zipcode;
+    private String type;
+    private String phone;
+    private String website;
 
     public Location() {}
 
@@ -28,47 +28,47 @@ public class Location {
     public Location(int key, String name, double latitude, double longitude, String street,
                     String city, String state, String zipcode, String type, String phone,
                     String website) {
-        _key = key;
-        _name = name;
-        _latitude = latitude;
-        _longitude = longitude;
-        _street = street;
-        _city = city;
-        _state = state;
-        _zipcode = zipcode;
-        _type = type;
-        _phone = phone;
-        _website = website;
+        this.key = key;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.type = type;
+        this.phone = phone;
+        this.website = website;
     }
 
-    public int getKey() { return _key; }
+    public int getKey() { return key; }
 
-    public String getName() { return _name; }
+    public String getName() { return name; }
 
-    public double getLatitude() { return _latitude; }
+    public double getLatitude() { return latitude; }
 
-    public double getLongitude() { return _longitude; }
+    public double getLongitude() { return longitude; }
 
-    public String getStreet() { return _street; }
+    public String getStreet() { return street; }
 
-    public String getCity() { return _city; }
+    public String getCity() { return city; }
 
-    public String getState() { return _state; }
+    public String getState() { return state; }
 
-    public String getZipcode() { return _zipcode; }
+    public String getZipcode() { return zipcode; }
 
-    public String getType() { return _type; }
+    public String getType() { return type; }
 
-    public String getPhone() { return _phone; }
+    public String getPhone() { return phone; }
 
-    public String getWebsite() { return _website; }
+    public String getWebsite() { return website; }
 
     public boolean equals(Object other) {
         if (this == other) { return true; }
         if (!(other instanceof Location)) {return false; }
         Location that = (Location) other;
-        return this._name.equals(that._name) && this._key == that._key
-                && this._latitude == that._latitude && this._longitude == that._longitude;
+        return this.name.equals(that.name) && this.key == that.key
+                && this.latitude == that.latitude && this.longitude == that.longitude;
     }
 
 }
