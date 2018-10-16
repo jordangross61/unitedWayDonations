@@ -9,6 +9,7 @@ import java.io.Serializable;
  * Maintains information about Locations
  */
 
+
 public class Location implements Serializable{
     private int key;
     private String name;
@@ -22,7 +23,9 @@ public class Location implements Serializable{
     private String phone;
     private String website;
 
-    public Location() {}
+
+    public Location() {
+    }
 
     /**
      * Creates a new Location
@@ -30,6 +33,7 @@ public class Location implements Serializable{
     public Location(int key, String name, double latitude, double longitude, String street,
                     String city, String state, String zipcode, String type, String phone,
                     String website) {
+
         this.key = key;
         this.name = name;
         this.latitude = latitude;
