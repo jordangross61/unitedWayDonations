@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "142828680783",
+    "firebase_url": "https://buzztracker-f81e0.firebaseio.com",
+    "project_id": "buzztracker-f81e0",
+    "storage_bucket": "buzztracker-f81e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142828680783:android:4ccc2ad4b7df604e",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.buzzTracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142828680783-enob8dngtlccm4bntptevstpokrtpmqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.buzzTracker",
+            "certificate_hash": "ca308cf77ec19c97d49edf30b4ebe856be634e10"
+          }
+        },
+        {
+          "client_id": "142828680783-c1cbni5q506upbs6kmv1fure008nvt6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhbzKucJG9ozEDSAAasga52t_Fjq6FKFY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142828680783-c1cbni5q506upbs6kmv1fure008nvt6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

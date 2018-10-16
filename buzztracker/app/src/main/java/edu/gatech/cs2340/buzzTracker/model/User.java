@@ -6,10 +6,10 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public class User {
-    private String _password;
-    private String _name;
-    private String _email;
-    private UserRights _rights;
+    private String password;
+    private String name;
+    private String email;
+    private UserRights rights;
 
     /**
      * Make a new User
@@ -17,19 +17,10 @@ public class User {
      * @param name the actual name of the user
      */
     public User (String name, String email, String pwd, UserRights rights) {
-        _name = name;
-        _email = email;
-        _password = pwd;
-        _rights = rights;
-    }
-
-    /**
-     * Check that the provided password matches
-     * @param pwd the provided password
-     * @return true if an exact string match for password, false otherwise
-     */
-    boolean checkPassword(String pwd) {
-        return _password.equals(pwd);
+        this.name = name;
+        this.email = email;
+        this.password = pwd;
+        this.rights = rights;
     }
 
     /**
@@ -37,15 +28,36 @@ public class User {
      *
      * @return the actual name of the user
      */
-    public String getName() { return _name; }
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserRights getRights() {
+        return rights;
+    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("user: ");
-        sb.append(_name);
+        sb.append(name);
         return sb.toString();
     }
-
+/**
+ * Check that the provided password matches
+      * @param pwd the provided password
+      * @return true if an exact string match for password, false otherwise
+      */
+    boolean checkPassword(String pwd) {
+        return password.equals(pwd);
+    }
     /**
      * Check whether user can add a new user or not
      * @return true if able to add user

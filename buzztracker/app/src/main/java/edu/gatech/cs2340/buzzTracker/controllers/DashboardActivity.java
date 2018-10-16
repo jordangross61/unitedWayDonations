@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.LocationsManager;
-import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
+//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 import edu.gatech.cs2340.buzzTracker.controllers.MapsActivity;
 
 /**
@@ -44,8 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
      * @param view actual reference for the button pressed
      */
     public void onLogoutPressed(View view) {
-        LoginServiceFacade model = LoginServiceFacade.getInstance();
-        model.logout();
+        FirebaseAuth.getInstance().signOut();
 
         startActivity(new Intent(this, WelcomeActivity.class));
     }
@@ -73,7 +74,7 @@ public class DashboardActivity extends AppCompatActivity {
         LocationsManager model = LocationsManager.getInstance();
         try {
             //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.sample);
+            InputStream is = getResources().openRawResource(R.raw.locationdata);
             //From here we probably should call a model method and pass the InputStream
             //Wrap it in a BufferedReader so that we get the readLine() method
             BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));

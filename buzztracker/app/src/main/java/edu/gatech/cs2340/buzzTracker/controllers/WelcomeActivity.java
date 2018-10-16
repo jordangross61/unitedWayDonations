@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.gatech.cs2340.buzzTracker.R;
-import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
+//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 import edu.gatech.cs2340.buzzTracker.model.User;
 
 /**
