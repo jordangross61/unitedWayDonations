@@ -88,6 +88,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (user.getRights().equals(UserRights.USER)) {
                     Log.d("MYAPP", "Gets into proper user rights");
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                } else if (user.getRights().equals(UserRights.EMPLOYEE)) {
+                    startActivity(new Intent(getApplicationContext(), DashboardActivityEmployee.class));
                 }
             }
             @Override
