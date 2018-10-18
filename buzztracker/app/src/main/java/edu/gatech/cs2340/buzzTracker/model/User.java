@@ -16,6 +16,9 @@ public class User {
      * @param pwd  the password for login
      * @param name the actual name of the user
      */
+
+    public User () {}
+
     public User (String name, String email, String pwd, UserRights rights) {
         this.name = name;
         this.email = email;

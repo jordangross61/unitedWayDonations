@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Location;
+import edu.gatech.cs2340.buzzTracker.model.User;
+import edu.gatech.cs2340.buzzTracker.model.UserRights;
 //import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
 //import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 //import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
@@ -25,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //persistence work for firebase
     private FirebaseAuth mAuth;
+    private DatabaseReference userDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    //FirebaseUser user = mAuth.getCurrentUser();
-                                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                    String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    showScreenBasedOnRights(userid);
+                                    //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                 } else {
                                     TextView errorMsg = findViewById(R.id.wrong_credentials_text);
                                     errorMsg.setText("Error");
@@ -64,5 +75,25 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onRegistrationOptPressed(View view){
         startActivity(new Intent(this, RegistrationActivity.class));
+    }
+
+    public void showScreenBasedOnRights(String userid) {
+        userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
+        userDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.d("MYAPP", "Goes into data snapshot");
+                User user = snapshot.getValue(User.class);
+
+                if (user.getRights().equals(UserRights.USER)) {
+                    Log.d("MYAPP", "Gets into proper user rights");
+                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError DatabaseError) {
+                Log.d("MYAPP", "Retrieving from database has error");
+            }
+        });
     }
 }
