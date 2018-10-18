@@ -35,7 +35,7 @@ public class AddCategoryActivity extends AppCompatActivity {
     public void onAddCategoryPressed(View view){
         ItemType selected = (ItemType)categorySpinner.getSelectedItem();
         // if item being added would need a size
-        if (selected.equals(ItemType.CLOTHING)) {
+        if (selected.equals(ItemType.CLOTHING) || selected.equals(ItemType.HAT)) {
             startActivity(new Intent(this, AddSizeItemActivity.class));
         } else {
             startActivity(new Intent(this, AddItemActivity.class));

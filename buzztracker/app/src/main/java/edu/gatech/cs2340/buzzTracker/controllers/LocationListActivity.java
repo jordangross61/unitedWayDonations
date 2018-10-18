@@ -1,13 +1,8 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
-import edu.gatech.cs2340.buzzTracker.R;
-
-import edu.gatech.cs2340.buzzTracker.model.Item;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Location;
+
 /**
  * An activity representing a list of Data Items. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -34,28 +31,28 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class DataItemListActivity extends AppCompatActivity {
+public class LocationListActivity extends AppCompatActivity {
 
-    private DatabaseReference itemDatabase;
+    private DatabaseReference locationDatabase;
     private RecyclerView recyclerView;
     private SimpleItemRecyclerViewAdapter adapter;
-    private List<Item> items;
+    private List<Location> locations;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataitem_list);
-        itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
+        setContentView(R.layout.activity_location_list);
+        locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
 
         recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
 
-        items = new ArrayList<>();
-        adapter = new SimpleItemRecyclerViewAdapter(items);
+        locations = new ArrayList<>();
+        adapter = new SimpleItemRecyclerViewAdapter(locations);
         recyclerView.setAdapter(adapter);
-        itemDatabase.addValueEventListener(new ValueEventListener() {
+        locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                getItemDataToUpdateView(snapshot);
+                getLocationDataToUpdateView(snapshot);
             }
             @Override
             public void onCancelled(DatabaseError DatabaseError) {
@@ -64,11 +61,11 @@ public class DataItemListActivity extends AppCompatActivity {
         });
     }
 
-    private void getItemDataToUpdateView(DataSnapshot snapshot) {
+    private void getLocationDataToUpdateView(DataSnapshot snapshot) {
         int index = 0;
         for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-            Item item = postSnapshot.getValue(Item.class);
-            items.add(item);
+            Location loc = postSnapshot.getValue(Location.class);
+            locations.add(loc);
             adapter.notifyItemInserted(index);
             index++;
         }
@@ -78,32 +75,31 @@ public class DataItemListActivity extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<Item> mValues;
+        private final List<Location> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+        public SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.dataitem_list_content, parent, false);
+                    .inflate(R.layout.location_list_content, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mContentView.setText(mValues.get(position).getCategory().toString() + ": " +
-                    mValues.get(position).getShortDescription());
+            holder.mContentView.setText(mValues.get(position).getName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DataItemDetailActivity.class);
-                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getId());
-                    intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId() - 1);
+                    Intent intent = new Intent(context, LocationDetailActivity.class);
+                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
+                    intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.mItem.getKey() - 1);
                     context.startActivity(intent);
                 }
             });
@@ -117,7 +113,7 @@ public class DataItemListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mContentView;
-            public Item mItem;
+            public Location mItem;
 
             public ViewHolder(View view) {
                 super(view);

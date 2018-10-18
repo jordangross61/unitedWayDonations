@@ -72,7 +72,7 @@ public class DashboardActivity extends AppCompatActivity {
     public void onLocationsButtonPressed(View view) {
         readSDFile();
 
-        startActivity(new Intent(this, DataItemListActivity.class));
+        startActivity(new Intent(this, LocationListActivity.class));
     }
 
     public void readSDFile() {

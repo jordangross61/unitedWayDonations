@@ -70,6 +70,14 @@
             android:label="Buzz Tracker Registration"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".controllers.LocationDetailActivity"
+            android:label="Buzz Tracker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.LocationListActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".controllers.AddCategoryActivity"
             android:label="Buzz Tracker"
             android:theme="@style/AppTheme.NoActionBar" />
