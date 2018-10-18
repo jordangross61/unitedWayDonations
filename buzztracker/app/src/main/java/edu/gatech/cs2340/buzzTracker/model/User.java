@@ -1,29 +1,39 @@
 package edu.gatech.cs2340.buzzTracker.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  *
  * Maintains information about the User class
  */
 
-public class User {
+public class User implements Serializable {
     private String password;
     private String name;
     private String email;
     private UserRights rights;
+    private Location location;
 
     /**
      * Make a new User
-     * @param pwd  the password for login
-     * @param name the actual name of the user
+     *
      */
 
     public User () {}
 
     public User (String name, String email, String pwd, UserRights rights) {
+        this(name, email, pwd, rights, null);
+    }
+
+    public User (String name, String email, String pwd, UserRights rights, Location location) {
         this.name = name;
         this.email = email;
         this.password = pwd;
         this.rights = rights;
+        this.location = location;
     }
 
     /**
@@ -47,12 +57,22 @@ public class User {
         return rights;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("user: ");
         sb.append(name);
         return sb.toString();
     }
+
+    public void setLocation(Location l) {
+        this.location = l;
+    }
+
+
 /**
  * Check that the provided password matches
       * @param pwd the provided password
