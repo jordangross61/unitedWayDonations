@@ -2,8 +2,10 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -68,15 +70,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
+        final UserRights myRights = (UserRights)rightsSpinner.getSelectedItem();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            User user = new User(nameField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), (UserRights)rightsSpinner.getSelectedItem());
-                            addToDatabase(user, mAuth.getUid());
-                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                            User user = new User(nameField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), myRights);
+                            if (myRights.equals(UserRights.USER)) {
+                                addToDatabase(user, mAuth.getUid());
+                                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                            } else if ((myRights.equals(UserRights.EMPLOYEE))) {
+                                Log.d ("MYAPP", "Noticed that we are registering employee");
+                                Intent i=new Intent(getApplicationContext(), RegisterLocation.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("User", user);
+                                i.putExtras(bundle);
+                                startActivity(i);
+                            }
                         } else {
                             TextView errorMsg = findViewById(R.id.wrong_credentials_text);
                             errorMsg.setText("Error");
