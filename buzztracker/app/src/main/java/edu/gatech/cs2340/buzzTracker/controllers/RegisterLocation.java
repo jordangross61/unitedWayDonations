@@ -60,7 +60,11 @@ public class RegisterLocation extends AppCompatActivity {
                 Location loc = snapshot.getValue(Location.class);
                 myEmployee.setLocation(loc);
                 mDatabase.child("users").child(mAuth.getUid()).setValue(myEmployee);
-                startActivity(new Intent(getApplicationContext(), DashboardActivityEmployee.class));
+                Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Location", loc);
+                i.putExtras(bundle);
+                startActivity(i);
             }
             @Override
             public void onCancelled(DatabaseError DatabaseError) {

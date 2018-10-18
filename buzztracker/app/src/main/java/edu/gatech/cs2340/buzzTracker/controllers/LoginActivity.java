@@ -89,7 +89,11 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("MYAPP", "Gets into proper user rights");
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 } else if (user.getRights().equals(UserRights.EMPLOYEE)) {
-                    startActivity(new Intent(getApplicationContext(), DashboardActivityEmployee.class));
+                    Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Location", user.getLocation());
+                    i.putExtras(bundle);
+                    startActivity(i);
                 }
             }
             @Override

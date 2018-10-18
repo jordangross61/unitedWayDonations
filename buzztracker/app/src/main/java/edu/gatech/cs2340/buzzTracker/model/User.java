@@ -57,6 +57,10 @@ public class User implements Serializable {
         return rights;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("user: ");

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import edu.gatech.cs2340.buzzTracker.R;
@@ -19,7 +20,7 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
 /**
  * Controller for the main dashboard view of application
  */
-public class LocationsActivity extends AppCompatActivity {
+public class LocationsActivity extends AppCompatActivity implements Serializable {
 
     private boolean mTwoPane;
 

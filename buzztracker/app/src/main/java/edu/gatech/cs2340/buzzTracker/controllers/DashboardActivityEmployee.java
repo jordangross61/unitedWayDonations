@@ -23,15 +23,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.User;
 
 public class DashboardActivityEmployee extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
+    private Location myLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_employee);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        myLocation = (Location) bundle.getSerializable("Location");
     }
     /**
      * Button handler for the Logout button
