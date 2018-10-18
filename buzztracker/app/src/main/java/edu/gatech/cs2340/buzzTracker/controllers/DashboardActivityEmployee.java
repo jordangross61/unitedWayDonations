@@ -57,13 +57,9 @@ public class DashboardActivityEmployee extends AppCompatActivity {
         startActivity(i);
     }
 
-    /**
-     * Button handler for the load button
-     *
-     * @param view  the actual button object that was pressed
-     */
     public void onShowListPressed(View view) {
 
         startActivity(new Intent(this, DataItemListActivity.class));
     }
+
 }
