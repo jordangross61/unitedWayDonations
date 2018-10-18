@@ -21,6 +21,7 @@ public class Item {
      * Create new element
      *
      */
+
     public Item(String time, Location location, String shortDescription, String longDescription,
                 double value, ItemType category, String comments) {
 

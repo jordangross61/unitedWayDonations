@@ -50,8 +50,11 @@ public class DashboardActivityEmployee extends AppCompatActivity {
     }
 
     public void onShowDataPressed(View view) {
-
-        startActivity(new Intent(this, AddCategoryActivity.class));
+        Intent i=new Intent(getApplicationContext(), AddCategoryActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Location", myLocation);
+        i.putExtras(bundle);
+        startActivity(i);
     }
 
     /**

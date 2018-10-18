@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
 /**
@@ -20,25 +21,40 @@ public class AddCategoryActivity extends AppCompatActivity {
 
 
     private Spinner categorySpinner;
+    private Location myLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("MYAPP", "Made it into add category activity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
-
         categorySpinner = findViewById(R.id.category_spinner);
-
         ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        myLocation = (Location) bundle.getSerializable("Location");
     }
 
     public void onAddCategoryPressed(View view){
         ItemType selected = (ItemType)categorySpinner.getSelectedItem();
         // if item being added would need a size
         if (selected.equals(ItemType.CLOTHING)) {
-            startActivity(new Intent(this, AddSizeItemActivity.class));
+            Intent i=new Intent(getApplicationContext(), AddSizeItemActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Location", myLocation);
+            bundle.putSerializable("Category", selected);
+            Log.d("MYAPP", "Created bundle - about to go to individual add size item page now");
+            i.putExtras(bundle);
+            startActivity(i);
         } else {
-            startActivity(new Intent(this, AddItemActivity.class));
+            Intent i=new Intent(getApplicationContext(), AddItemActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Location", myLocation);
+            bundle.putSerializable("Category", selected);
+            Log.d("MYAPP", "Created bundle - about to go to individual add item page now");
+            i.putExtras(bundle);
+            startActivity(i);
         }
     }
 }

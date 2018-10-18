@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.Size;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
@@ -23,6 +24,7 @@ public class AddSizeItemActivity extends AppCompatActivity {
     private EditText valueField;
     private EditText commentField;
     private Spinner sizeSpinner;
+    private Location myLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class AddSizeItemActivity extends AppCompatActivity {
         ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Size.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sizeSpinner.setAdapter(adapter);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        myLocation = (Location) bundle.getSerializable("Location");
     }
 
     public void onAddItemPressed(View view){
