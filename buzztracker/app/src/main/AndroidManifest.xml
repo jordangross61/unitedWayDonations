@@ -65,6 +65,14 @@
             android:name=".controllers.DataItemListActivity"
             android:label="Buzz Tracker Registration"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.AddCategoryActivity"
+            android:label="Buzz Tracker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.AddItemActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
