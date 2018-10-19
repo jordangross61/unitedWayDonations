@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
@@ -15,12 +17,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.User;
@@ -36,7 +41,6 @@ public class DashboardActivityEmployee extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         myLocation = (Location) bundle.getSerializable("Location");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
     /**
@@ -46,12 +50,10 @@ public class DashboardActivityEmployee extends AppCompatActivity {
      */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
-        mDatabase.child("locations").child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     public void onShowDataPressed(View view) {
-        mDatabase.child("locations").child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         Intent i=new Intent(getApplicationContext(), AddCategoryActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("Location", myLocation);
@@ -60,8 +62,12 @@ public class DashboardActivityEmployee extends AppCompatActivity {
     }
 
     public void onShowListPressed(View view) {
-
-        startActivity(new Intent(this, DataItemListActivity.class));
+        ArrayList<Item> itemList = myLocation.getItemList();
+        Intent i=new Intent(getApplicationContext(), DataItemListActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ItemList", itemList);
+        i.putExtras(bundle);
+        startActivity(i);
     }
 
 }

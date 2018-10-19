@@ -2,21 +2,31 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An activity representing a single DataItem detail screen. This
@@ -26,87 +36,93 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class DataItemDetailActivity extends AppCompatActivity {
 
+    private DatabaseReference itemDatabase;
+    private RecyclerView recyclerView;
+    private DataItemDetailActivity.SimpleItemRecyclerViewAdapter adapter;
+    private List<Item> itemList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataitem_detail);
+        setContentView(R.layout.activity_location_list);
+        itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        itemList = (List<Item>) bundle.getSerializable("ItemList");
 
-        // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        recyclerView = findViewById(R.id.dataitem_list);
+        assert recyclerView != null;
 
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
-        if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
-
-//                int item_id = getIntent().getIntExtra(DataItemDetailFragment.ARG_ITEM_ID, 1000) + 1;
-//                String itemid = Integer.toString(item_id);
-//                Log.d("MYAPP", "populating fragment with id: " + itemid);
-//                //itemid = "1";
-//                FirebaseDatabase.getInstance().getReference().child("items").child(itemid).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        // Get Post object and use the values to update the UI
-//                        Log.d("MYAPP", "creating fragment");
-//                        Item mItem = dataSnapshot.getValue(Item.class);
-//                        Bundle arguments = new Bundle();
-//                        arguments.putSerializable(DataItemDetailFragment.ARG_ITEM_ID, mItem);
-//                        DataItemDetailFragment fragment = new DataItemDetailFragment();
-//                        //fragment.onCreate(arguments);
-//                        Log.d("MYAPP", "launching fragment");
-//                        getSupportFragmentManager().beginTransaction()
-//                                .add(R.id.dataitem_detail_container, fragment)
-//                                .disallowAddToBackStack()
-//                                .commit();
-//                        fragment.updateItem(mItem);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        // Getting Post failed, log a message
-//                        // [START_EXCLUDE]
-//                        int x = 0;
-//                        Log.d("MYAPP", "Retrieving from database has error");
-//                        // [END_EXCLUDE]
-//                    }
-//                });
-
-        }
+        adapter = new DataItemDetailActivity.SimpleItemRecyclerViewAdapter(itemList);
+        recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-            navigateUpTo(new Intent(this, DataItemListActivity.class));
-            return true;
+    public class SimpleItemRecyclerViewAdapter
+            extends RecyclerView.Adapter<DataItemDetailActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
+
+        private final List<Item> mValues;
+
+        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+            mValues = items;
         }
-        return super.onOptionsItemSelected(item);
+
+        @Override
+        public DataItemDetailActivity.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.location_list_content, parent, false);
+            return new DataItemDetailActivity.SimpleItemRecyclerViewAdapter.ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(final DataItemDetailActivity.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+            holder.mItem = mValues.get(position);
+            //holder.mContentView.setText(mValues.get(position).getName());
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String key = holder.mItem.getItemKey();
+                    itemDatabase.child(key).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            Log.d("MYAPP", "Grabbing specific item");
+                            Item mItem = snapshot.getValue(Item.class);
+                            Intent i=new Intent(getApplicationContext(), DataItemDetailFragment.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("Item", mItem);
+                            i.putExtras(bundle);
+                            startActivity(i);
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError DatabaseError) {
+                            Log.d("MYAPP", "Retrieving specific item has error");
+                        }
+                    });
+
+
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return mValues.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public final View mView;
+            public final TextView mContentView;
+            public Item mItem;
+
+            public ViewHolder(View view) {
+                super(view);
+                mView = view;
+                mContentView = (TextView) view.findViewById(R.id.content);
+            }
+
+            @Override
+            public String toString() {
+                return super.toString() + " '" + mContentView.getText() + "'";
+            }
+        }
     }
 }
