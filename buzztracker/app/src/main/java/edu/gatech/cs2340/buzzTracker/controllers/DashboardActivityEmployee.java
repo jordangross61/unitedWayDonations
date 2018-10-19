@@ -33,10 +33,11 @@ public class DashboardActivityEmployee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_employee);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         myLocation = (Location) bundle.getSerializable("Location");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
     /**
      * Button handler for the Logout button
@@ -45,11 +46,12 @@ public class DashboardActivityEmployee extends AppCompatActivity {
      */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
-
+        mDatabase.child("locations").child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     public void onShowDataPressed(View view) {
+        mDatabase.child("locations").child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         Intent i=new Intent(getApplicationContext(), AddCategoryActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("Location", myLocation);

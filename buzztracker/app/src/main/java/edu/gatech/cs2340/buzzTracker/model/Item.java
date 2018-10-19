@@ -1,4 +1,5 @@
 package edu.gatech.cs2340.buzzTracker.model;
+import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -6,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * Primary responsibility is to maintain all the data about a single thing
  */
 
-public class Item {
+public class Item implements Serializable {
     private static int NEXT_ID = 0;
     private int id;
 

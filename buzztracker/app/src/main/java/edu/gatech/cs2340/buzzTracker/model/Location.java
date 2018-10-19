@@ -1,6 +1,9 @@
 package edu.gatech.cs2340.buzzTracker.model;
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,6 +25,7 @@ public class Location implements Serializable{
     private String type;
     private String phone;
     private String website;
+    private ArrayList<Item> itemList;
 
 
     public Location() {
@@ -45,6 +49,7 @@ public class Location implements Serializable{
         this.type = type;
         this.phone = phone;
         this.website = website;
+        this.itemList = new ArrayList<>();
     }
 
     public int getKey() { return key; }
@@ -69,12 +74,24 @@ public class Location implements Serializable{
 
     public String getWebsite() { return website; }
 
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
     public boolean equals(Object other) {
         if (this == other) { return true; }
         if (!(other instanceof Location)) {return false; }
         Location that = (Location) other;
         return this.name.equals(that.name) && this.key == that.key
                 && this.latitude == that.latitude && this.longitude == that.longitude;
+    }
+
+    public void setItemInList(Item myItem) {
+        if (itemList == null) {
+            itemList = new ArrayList<>();
+        }
+        Log.d("MYAPP", "Adding item to our location's item list");
+        itemList.add(myItem);
     }
 
 }
