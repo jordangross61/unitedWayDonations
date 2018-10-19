@@ -64,8 +64,8 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putInt(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getKey());
-                        DataItemDetailFragment fragment = new DataItemDetailFragment();
+                        arguments.putInt(LocationDetailFragment.ARG_ITEM_ID, holder.mItem.getKey());
+                        LocationDetailFragment fragment = new LocationDetailFragment();
                         fragment.setArguments(arguments);
 //                        getSupportFragmentManager().beginTransaction()
 //                                .replace(R.id.dataitem_detail_container, fragment)
@@ -74,7 +74,7 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
                         Context context = v.getContext();
                         Intent intent = new Intent(context, DataItemDetailActivity.class);
                         Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-                        intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getKey());
+                        intent.putExtra(LocationDetailFragment.ARG_ITEM_ID, holder.mItem.getKey());
 
                         context.startActivity(intent);
                     }

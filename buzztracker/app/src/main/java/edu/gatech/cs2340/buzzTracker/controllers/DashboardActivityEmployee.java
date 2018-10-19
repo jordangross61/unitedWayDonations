@@ -62,12 +62,24 @@ public class DashboardActivityEmployee extends AppCompatActivity {
     }
 
     public void onShowListPressed(View view) {
-        ArrayList<Item> itemList = myLocation.getItemList();
-        Intent i=new Intent(getApplicationContext(), DataItemListActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("ItemList", itemList);
-        i.putExtras(bundle);
-        startActivity(i);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(Integer.toString(myLocation.getKey()));
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.d("MYAPP", "Grabbing all items at a location");
+                Location updLoc = snapshot.getValue(Location.class);
+                ArrayList<Item> itemList = updLoc.getItemList();
+                Intent i=new Intent(getApplicationContext(), DataItemListActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ItemList", itemList);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+            @Override
+            public void onCancelled(DatabaseError DatabaseError) {
+                Log.d("MYAPP", "Grabbing items throws an error somehow, somewhere");
+            }
+        });
     }
 
 }
