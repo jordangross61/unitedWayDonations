@@ -12,7 +12,6 @@ public class Item implements Serializable {
     private int id;
 
     private String time;
-    private Location location;
     private String shortDescription;
     private String longDescription;
     private double value;
@@ -26,12 +25,11 @@ public class Item implements Serializable {
      *
      */
 
-    public Item(String time, Location location, String shortDescription, String longDescription,
+    public Item(String time, String shortDescription, String longDescription,
                 double value, ItemType category, String comments) {
 
         this.id = NEXT_ID++;
         this.time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
-        this.location = location;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.value = value;
@@ -44,7 +42,6 @@ public class Item implements Serializable {
      */
     public int getId() { return id; }
     public String getTime() { return time; }
-    public Location getLocation() {  return location; }
     public String getShortDescription() { return shortDescription; }
     public String getLongDescription() { return longDescription; }
     public double getValue() { return value; }

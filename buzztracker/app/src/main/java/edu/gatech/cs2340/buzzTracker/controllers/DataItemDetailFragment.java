@@ -79,7 +79,6 @@ public class DataItemDetailFragment extends Fragment {
         if (mItem != null) {
             Log.d("MYAPP", "fragment had item object");
             ((TextView) rootView.findViewById(R.id.time)).setText("Store Number: " + mItem.getTime());
-            ((TextView) rootView.findViewById(R.id.location)).setText( mItem.getLocation().getName());
             ((TextView) rootView.findViewById(R.id.shortDescription)).setText(mItem.getShortDescription());
             ((TextView) rootView.findViewById(R.id.longDescription)).setText(mItem.getLongDescription());
             ((TextView) rootView.findViewById(R.id.category)).setText(mItem.getCategory().toString());

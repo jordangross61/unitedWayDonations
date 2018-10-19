@@ -38,7 +38,7 @@ public class AddItemActivity extends AppCompatActivity {
     private DatabaseReference lDatabase;
     private FirebaseAuth mAuth;
     private ItemType category;
-    private String itemKey;
+
 
 
     @Override
@@ -54,8 +54,7 @@ public class AddItemActivity extends AppCompatActivity {
         myLocation = (Location) bundle.getSerializable("Location");
         category = (ItemType) bundle.getSerializable("Category");
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("items");
-        itemKey = mDatabase.push().getKey();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("items");
         Log.d("MYAPP", "Into the Add Item Activity Page");
     }
 
@@ -65,9 +64,10 @@ public class AddItemActivity extends AppCompatActivity {
         double value = Double.parseDouble(valueField.getText().toString());
         String comments = commentField.getText().toString();
         Log.d("MYAPP", "About to Add item");
-        Item item = new Item(null, myLocation, shortDescription, longDescription, value, category, comments);
+        Item item = new Item(null, shortDescription, longDescription, value, category, comments);
         myLocation.setItemInList(item);
         //BIG ISSUE AT THE LINE BELOW
+        String itemKey = mDatabase.push().getKey();
         mDatabase.child(itemKey).setValue(item);
         Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
         Bundle bundle = new Bundle();

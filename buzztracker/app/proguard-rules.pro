@@ -20,11 +20,12 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 # Add this global rule
--keepattributes Signature
-
-# This rule will properly ProGuard all the model classes in
-# the package com.yourcompany.models. Modify to fit the structure
-# of your app.
--keepclassmembers class com.yourcompany.models.** {
-  *;
-}
+-keep class !com.my.package.** { *; }
+-keepattributes Signatures
+-keep class com.firebase.** { *; }
+-keep class org.apache.** { *; }
+-keepnames class com.fasterxml.jackson.** { *; }
+-keepnames class javax.servlet.** { *; }
+-keepnames class org.ietf.jgss.** { *; }
+-dontwarn org.apache.**
+-dontwarn org.w3c.dom.**

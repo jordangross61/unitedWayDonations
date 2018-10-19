@@ -1,0 +1,577 @@
+[33mcommit 75d05a182d0e122561c043105386181a5a16028d[m[33m ([m[1;36mHEAD -> [m[1;32mpersistence[m[33m)[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Mon Oct 15 00:43:51 2018 -0400
+
+    Saving a portion of the putting location in database code
+
+[33mcommit 8af19f8d059e778a98122a6f9e79f0e2084ee2f3[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Sun Oct 14 21:43:18 2018 -0400
+
+    Final transition to users being backed by the database
+
+[33mcommit afc4e82d003dbf377133a18cb43bb9f2bc1f6a1b[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Sun Oct 14 21:07:17 2018 -0400
+
+    Fixed up more persistence things
+
+[33mcommit d1d8e978288869db64f3853204fda713c62f17bf[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Fri Oct 12 17:31:07 2018 -0400
+
+    First step with adding a user field
+
+[33mcommit 3adfd3d5fff8f4aa5bb257170851aaea9acf5305[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Fri Oct 12 15:57:49 2018 -0400
+
+    Authentication for users works :)
+
+[33mcommit 24985866faa6c1046a5d763b72d90e2c7db71187[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Fri Oct 12 15:21:02 2018 -0400
+
+    Successfully added a user to the database
+
+[33mcommit 1509e1aa0040b9e9fccbbcd838d97b914baf5773[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Fri Oct 12 14:45:03 2018 -0400
+
+    First round in adding firebase to our application
+
+[33mcommit e88ad8c2bd2db7060a2c12dc2f08d41c053dfcf2[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-112-72.lawn.gatech.edu>
+Date:   Thu Oct 11 15:32:03 2018 -0400
+
+    fixed location 6
+
+[33mcommit 22d7338ddf2dad6023f3879a5c1b137f5b9de504[m
+Merge: 5ae70a6 ac077a2
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Oct 10 20:24:23 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit 5ae70a6e14e030adff18afdbd681c196e451f3df[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Oct 10 20:22:53 2018 -0400
+
+    Adding in Firebase
+
+[33mcommit ac077a283b9f431f5e759c33450a9d30c24b9adf[m
+Author: [patelkb99] <Krishna@lawn-128-61-20-44.lawn.gatech.edu>
+Date:   Wed Oct 10 20:16:34 2018 -0400
+
+    remove id number from detail list and use locationdata file
+
+[33mcommit e5b9b2ef2e369e507793e6194e4b7e4d7d4c1abe[m
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Tue Oct 9 17:38:10 2018 -0400
+
+    Remove duplicates from location list
+
+[33mcommit ad492e6b8b6ee58cdd2acf1654d7db42f74ab052[m
+Author: [patelkb99] <Krishna@Krishnas-MBP.home>
+Date:   Sun Oct 7 22:43:25 2018 -0400
+
+    map api key fixes
+
+[33mcommit 1b938c14e41c592e2247ed36dcb7dd1a7fe7fd71[m
+Author: [patelkb99] <Krishna@Krishnas-MBP.home>
+Date:   Sun Oct 7 15:40:17 2018 -0400
+
+    added location list and detail functionality
+
+[33mcommit 9524743be289bfae0d3291426537d0d5dc673846[m
+Author: [patelkb99] <Krishna@Krishnas-MBP.home>
+Date:   Sun Oct 7 00:20:43 2018 -0400
+
+    points showing up on map and parsing through csv file correctly
+
+[33mcommit 49d905192e1b367fe78c8847954b6236eb203cd0[m
+Author: [patelkb99] <Krishna@Krishnas-MBP.home>
+Date:   Sat Oct 6 23:33:36 2018 -0400
+
+    initial location changes
+
+[33mcommit 2cf52c9df7f20e7d3c7aefa3bf6dfc9bd15c0445[m
+Author: [patelkb99] <Krishna@lawn-128-61-26-19.lawn.gatech.edu>
+Date:   Mon Oct 1 21:35:01 2018 -0400
+
+    edit spinner for registration page
+
+[33mcommit cea4efadb056f4fd3b266f40fa8203b0380db7e0[m
+Author: [patelkb99] <Krishna@Krishnas-MacBook-Pro.local>
+Date:   Sun Sep 30 21:16:22 2018 -0400
+
+    added spinner for type of user
+
+[33mcommit f206f8f2f7aafa4eed5b1ae21d2d0ee687063996[m
+Author: [patelkb99] <Krishna@lawn-128-61-28-236.lawn.gatech.edu>
+Date:   Sun Sep 30 15:12:28 2018 -0400
+
+    formatting on registration page
+
+[33mcommit 265cce74bec0794cd84af79477a9dcad9b415da0[m
+Author: [patelkb99] <Krishna@lawn-128-61-28-236.lawn.gatech.edu>
+Date:   Sun Sep 30 14:44:49 2018 -0400
+
+    M5 registration page functionality
+
+[33mcommit d7809d6ebf0bfc53d1d1f15fb521a12a4143d048[m
+Author: [patelkb99] <Krishna@lawn-128-61-18-129.lawn.gatech.edu>
+Date:   Mon Sep 24 16:51:23 2018 -0400
+
+    m4 android app
+
+[33mcommit 89c9e42f3024f67c994c5c229516b81c13eda356[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Mon Sep 24 09:53:45 2018 -0400
+
+    removing everything off of master
+
+[33mcommit 9e4d207c5deeb8a46033b9d01c9189306e9c066e[m
+Author: [patelkb99] <Krishna@lawn-128-61-20-53.lawn.gatech.edu>
+Date:   Fri Sep 7 10:10:46 2018 -0400
+
+    remove extra files
+
+[33mcommit e99cd29e7a7ec113c17eb5d51bcb32a6a18c305b[m
+Author: [patelkb99] <Krishna@lawn-128-61-20-53.lawn.gatech.edu>
+Date:   Fri Sep 7 10:07:16 2018 -0400
+
+    remove extra class file
+
+[33mcommit 0829ac49ceb55459b66b9c168b999095baf778ef[m
+Author: [patelkb99] <Krishna@lawn-128-61-20-53.lawn.gatech.edu>
+Date:   Fri Sep 7 10:05:50 2018 -0400
+
+    remove unnecessary class files
+
+[33mcommit 87e071e902e0be97359f0e2bc7acd3a6adbc7d69[m
+Merge: 81c5e02 a383b92
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Fri Sep 7 08:17:20 2018 -0400
+
+    Delete useless text file for P3
+
+[33mcommit a383b9223d7d7d3f0bc36fee1d655d653f86f736[m
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Fri Sep 7 08:17:04 2018 -0400
+
+    Delete useless text file
+
+[33mcommit 81c5e02bd2b146acd5356b58ad594ccba4c021be[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 15:35:23 2018 -0400
+
+    fixed antlabmain
+
+[33mcommit aa2c65efb8003ce10d81ab001ff3ed87b0e17e69[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 15:26:39 2018 -0400
+
+    removed extra build.gradle
+
+[33mcommit 8ddec76473d2ce273f8820746c20052438d9247c[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 15:24:07 2018 -0400
+
+    fixed gradle:
+
+[33mcommit 929d825b69ee4ed344f14a0000960c3e66ca420d[m
+Merge: 7831864 0b10ba6
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 15:21:15 2018 -0400
+
+    fixed gradle
+
+[33mcommit 783186466e748ba11e6977effea93d5480fe74a1[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 15:18:13 2018 -0400
+
+    fixed gradle
+
+[33mcommit 0b10ba6df40aced402d5ec8b19a11dcb32f8caf4[m
+Author: [patelkb99] <Krishna@lawn-128-61-30-252.lawn.gatech.edu>
+Date:   Thu Sep 6 15:16:09 2018 -0400
+
+    remove some extra files
+
+[33mcommit 26657f0381962ce5305119452978b06642b91d9a[m
+Author: Shilpa Patel <shilpapatel1123@gmail.com>
+Date:   Thu Sep 6 12:09:24 2018 -0400
+
+    Shilpas antlab changes
+
+[33mcommit 914001c01f62ffea659e8618a2e82b4aab2c30f2[m
+Merge: 803376e 4ec8455
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Thu Sep 6 11:58:27 2018 -0400
+
+    Merge branch 'Kate'
+    
+    Delete typos from earlier version.
+
+[33mcommit 4ec8455097dba3b0626a32e26181fb00bf3dabc0[m
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Thu Sep 6 11:58:09 2018 -0400
+
+    Delete typos
+
+[33mcommit 803376ed6f825f0550ca3347a6c8e83dabc66467[m
+Merge: ecc7369 ffb085f
+Author: [patelkb99] <Krishna@lawn-128-61-30-252.lawn.gatech.edu>
+Date:   Thu Sep 6 11:56:11 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit ecc73691d439b66c2ebe48134f65421f14ff43f5[m
+Merge: 8c7506b 466e67e
+Author: [patelkb99] <Krishna@lawn-128-61-30-252.lawn.gatech.edu>
+Date:   Thu Sep 6 11:55:50 2018 -0400
+
+    krishna p6 changes
+
+[33mcommit 4db73d2abc66afd628a4e70403344fefe6995051[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 11:51:21 2018 -0400
+
+    fixed some graddle issues
+
+[33mcommit ffb085f1a84e988512dccb294885b5dc90c6ed2f[m
+Merge: 8c7506b 6cd181d
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Thu Sep 6 11:48:49 2018 -0400
+
+    Add Kate's name and email in text file
+
+[33mcommit 466e67e2c24032bc2780be64b2c68d68991ff64c[m
+Author: [patelkb99] <Krishna@lawn-128-61-30-252.lawn.gatech.edu>
+Date:   Thu Sep 6 11:48:05 2018 -0400
+
+    krishna antlab main changes
+
+[33mcommit 6cd181dd9f81eacd3f108ef6ac84fddf72cf5042[m
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Thu Sep 6 11:38:56 2018 -0400
+
+    Replace P3 with Kate's name and ID
+
+[33mcommit 8c7506ba9b2867f89e592b00dd82026a13286dec[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Thu Sep 6 11:34:26 2018 -0400
+
+    updated gradle file
+
+[33mcommit 8740332de43fe8d8e85fc67da404028aca2c55ce[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 22:50:05 2018 -0400
+
+    delteed stufff
+
+[33mcommit 40417669dbd4e8863d994c3a212eeee2d0efe59d[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 22:48:57 2018 -0400
+
+    delete extra stuff
+
+[33mcommit cfc126ec1fa3c2ccb36773eac16b07c350c56693[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 22:46:40 2018 -0400
+
+    added more gradle stuff
+
+[33mcommit 356d95f94749e30c734d1e5b02bd0548f1e5b653[m
+Author: Virginia <virginiafishburn@gmail.com>
+Date:   Wed Sep 5 22:37:56 2018 -0400
+
+    delete random file
+
+[33mcommit 61240a2088149e17b69544578c849e4a99fc7545[m
+Merge: 3c6d8d3 f4c2654
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 22:27:38 2018 -0400
+
+    Merge branch 'Virginia'
+
+[33mcommit f4c2654b95f287a33eb54ed2c9c285266a932667[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 22:27:03 2018 -0400
+
+    virginia
+
+[33mcommit 3c6d8d340090ff05e054f4810d636156cb2499ea[m
+Merge: 769778f fe83f05
+Author: [patelkb99] <Krishna@Krishnas-MacBook-Pro.local>
+Date:   Wed Sep 5 22:08:28 2018 -0400
+
+    Merge branch 'Krishna'
+
+[33mcommit fe83f054c1519e63daa723ba0e6ea9c07564f0d3[m
+Author: [patelkb99] <Krishna@Krishnas-MacBook-Pro.local>
+Date:   Wed Sep 5 22:08:13 2018 -0400
+
+    krishna remove pg useless and add p6 readme
+
+[33mcommit 769778fead3dbbce77d86d540ef3e34ee9df11f6[m
+Merge: c63b62e dfc2ba3
+Author: [patelkb99] <Krishna@Krishnas-MacBook-Pro.local>
+Date:   Wed Sep 5 22:05:33 2018 -0400
+
+    Merge branch 'Krishna'
+
+[33mcommit dfc2ba33b5071b30abe25686e392d587be93cc0c[m
+Author: [patelkb99] <Krishna@Krishnas-MacBook-Pro.local>
+Date:   Wed Sep 5 22:05:13 2018 -0400
+
+    adding a p6 useless file
+
+[33mcommit c63b62e99e01c3d012f6f9efd5b7634a48e4869d[m
+Merge: f6c1e42 9a7c272
+Author: Shilpa Patel <shilpapatel1123@gmail.com>
+Date:   Wed Sep 5 21:56:07 2018 -0400
+
+    Merge branch 'shilpa2'
+
+[33mcommit 9a7c2725f1e115b1289daf6d9cf3dfabfc20977b[m
+Author: Shilpa Patel <shilpapatel1123@gmail.com>
+Date:   Wed Sep 5 21:55:46 2018 -0400
+
+    shilpas readme changes
+
+[33mcommit f6c1e42e2f75b8c909f8e733f4e20f5c5cf3d2f3[m
+Merge: 8381c57 65ed331
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:50:55 2018 -0400
+
+    Merge branch 'Krishna'
+
+[33mcommit 65ed3315da9c4f5ed287ce7a82397acd2a674410[m
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:50:36 2018 -0400
+
+    krishna readme changes
+
+[33mcommit 8381c576a071b29594f6cfc7c10a9f697b9b46b2[m[33m ([m[1;31morigin/shilpa2[m[33m)[m
+Author: Shilpa Patel <shilpapatel1123@gmail.com>
+Date:   Wed Sep 5 21:42:42 2018 -0400
+
+    shilpa package1
+
+[33mcommit 9621bf74586eba55ab681daea1c4a782cc0d62ac[m
+Merge: f0f7fdd c11a17a
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:39:58 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit f0f7fdd214c7d92fe6848fa07eb81c2bc9b94283[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:39:21 2018 -0400
+
+    add gradle file
+
+[33mcommit c11a17a8c8cb0ec6a76ac5b711b9a693a53d6e38[m
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:37:51 2018 -0400
+
+    krishna pkg1 changes
+
+[33mcommit 6be83f096e2b5d9a51260f8b5a882ed1765e7821[m[33m ([m[1;31morigin/jordan[m[33m)[m
+Author: Shilpa Patel <shilpapatel1123@gmail.com>
+Date:   Wed Sep 5 21:28:17 2018 -0400
+
+    Shilpas first commit
+
+[33mcommit ce92fc7290b0096b7b2841dc5136a480c7068664[m
+Merge: d58f5eb bbf5012
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:19:14 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit d58f5ebfa2e1f575c7b41bcc5ece7c670500b53e[m
+Merge: ba8046f 114bbb5
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:19:02 2018 -0400
+
+    Merge branch 'Krishna'
+
+[33mcommit bbf5012cd03dbbc331f7d7cefa368e649e81284c[m
+Author: Virginia <virginiafishburn@gmail.com>
+Date:   Wed Sep 5 21:19:01 2018 -0400
+
+    delete random file
+
+[33mcommit 114bbb5c425d841cff3c4196f8e4c6fdd79a68fa[m
+Merge: 8ccbef0 fb709d1
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:18:00 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations into Krishna
+
+[33mcommit ba8046f8c183f271fd76459c62bf11a14a93a391[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 21:17:55 2018 -0400
+
+    deleted useless
+
+[33mcommit fb709d1f381d0888ba5cb5d60e784bfa3ddc3b04[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 21:15:48 2018 -0400
+
+    readme.p2
+
+[33mcommit 2d3c0eee07cd3e1fd94bce72c226871616d84f5b[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 21:14:06 2018 -0400
+
+    Maddie Brickell updated readme files
+
+[33mcommit 3ce433700a711062fa02062a887202ba72176e1f[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:12:33 2018 -0400
+
+    removed useless p1
+
+[33mcommit 8ccbef0b5742c97d2b7358d148811692886e6c4f[m
+Author: [patelkb99] <Krishna@lawn-128-61-21-130.lawn.gatech.edu>
+Date:   Wed Sep 5 21:11:10 2018 -0400
+
+    Krishna First Commit
+
+[33mcommit d1dccba544d793125c9d24590681b61dfff3e433[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:11:05 2018 -0400
+
+    added txt file for p1
+
+[33mcommit fa8d8221e8e7b2de4c4b7ba62cc37762af1b6567[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 21:09:25 2018 -0400
+
+    Making changes for myself and Kate
+
+[33mcommit 88f6573e4511cc335077bd0c732d80321560142a[m
+Merge: b75e4ce ff62d99
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 21:06:57 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit b75e4ce75eb9cbb62dd29f39e2fdb8c08111496d[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 21:06:33 2018 -0400
+
+    p2 addition
+
+[33mcommit ff62d99d3b0cd5b230bfef02cf5ce49a68be02ee[m
+Merge: db812b3 55145a3
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 21:05:50 2018 -0400
+
+    Fixing merge conflicts
+
+[33mcommit db812b3c5c08caa84dde4dee584bf717f9e0ab16[m
+Merge: 8c3d35c fa28a19
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 21:02:55 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit 55145a3d6c480be507e12d1c4ed94165c06e4bf5[m
+Merge: 4986fb0 fa28a19
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:02:46 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit 4986fb0892283bd24f3024dbb5d33251ff3fcd60[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 21:01:41 2018 -0400
+
+    person1 addition
+
+[33mcommit 8c3d35c4179c3bfb4f0a0cb745f62557e018a76f[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 21:00:30 2018 -0400
+
+    Maddie updated AntLabMain
+
+[33mcommit fa28a1980e55f1a039275e3da36c2d5d65886b74[m
+Merge: f7976f7 b74796d
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 20:55:44 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit b74796d6a9eb8bd4175d4670e6276f327311b1ae[m
+Merge: 6670ab0 e311095
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 20:54:42 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit 6670ab05b90f8cb11474242dd8fcffbdb77c5c0d[m
+Author: Jordan Gross <jgross41@gatech.edu>
+Date:   Wed Sep 5 20:51:27 2018 -0400
+
+    person1
+
+[33mcommit f7976f75ba86782fa964675d13722d81e687957c[m
+Author: Virginia Fishburn <norte325sanrrcom@lawn-128-61-127-30.lawn.gatech.edu>
+Date:   Wed Sep 5 20:51:13 2018 -0400
+
+    First Commit
+
+[33mcommit e3110953e2a666e5345e035aaf87d12754674894[m[33m ([m[1;31morigin/Krishna[m[33m)[m
+Merge: 49908fb 0e2a02b
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Wed Sep 5 20:50:42 2018 -0400
+
+    Merge branch 'master' of https://github.com/jordangross61/unitedWayDonations
+
+[33mcommit 0e2a02bd71129218450c3fa065f7027a224b5275[m
+Merge: 5a69c6d 44b64f8
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 20:49:11 2018 -0400
+
+    Merge branch 'MaddieB'
+
+[33mcommit 44b64f8c94a6d232d79d33b0ce820c3a1a01f109[m[33m ([m[1;31morigin/MaddieB[m[33m, [m[1;32mMaddieB[m[33m)[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 20:43:57 2018 -0400
+
+    Maddie Branch commit
+
+[33mcommit 49908fb5fd3a4d24334fa71b58178e563fb75192[m[33m ([m[1;31morigin/Kate[m[33m)[m
+Author: Kate Schaffer <krschaffer@lawn-143-215-58-194.lawn.gatech.edu>
+Date:   Wed Sep 5 20:43:09 2018 -0400
+
+    Kate's first commit
+
+[33mcommit 5a69c6d458252bfcb50be71034fb0f6c945cff54[m[33m ([m[1;31morigin/original[m[33m, [m[1;32moriginal[m[33m)[m
+Author: jordangross61 <42777668+jordangross61@users.noreply.github.com>
+Date:   Wed Sep 5 20:11:01 2018 -0400
+
+    added .java
+
+[33mcommit 2a01895ad78a56ef5b22adeef6191f7b9475df4b[m
+Author: jordangross61 <42777668+jordangross61@users.noreply.github.com>
+Date:   Wed Sep 5 20:10:29 2018 -0400
+
+    Created person6
+
+[33mcommit 5588b915567a69ba2518448208ba8a1b3364db8a[m
+Author: Madeleine Brickell <mbrickell3@gatech.edu>
+Date:   Wed Sep 5 20:06:59 2018 -0400
+
+    First Commit!
+
+[33mcommit f37b9bfbe729d54f08237095491bb66d17878781[m
+Author: jordangross61 <42777668+jordangross61@users.noreply.github.com>
+Date:   Tue Aug 28 11:23:11 2018 -0400
+
+    Initial commit
