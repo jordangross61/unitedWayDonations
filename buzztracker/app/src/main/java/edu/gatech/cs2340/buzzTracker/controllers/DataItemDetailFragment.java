@@ -1,15 +1,18 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
-import edu.gatech.cs2340.buzzTracker.controllers.DataItemDetailActivity;
+//import edu.gatech.cs2340.buzzTracker.controllers.DataItemDetailActivity;
 import edu.gatech.cs2340.buzzTracker.controllers.DataItemListActivity;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +31,11 @@ import com.google.firebase.database.ValueEventListener;
  * in two-pane mode (on tablets) or a {@link DataItemDetailActivity}
  * on handsets.
  */
-public class DataItemDetailFragment extends Fragment {
+public class DataItemDetailFragment extends AppCompatActivity {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
     private DatabaseReference itemDatabase;
     /**
      * The dummy content this fragment is presenting.
@@ -44,36 +46,27 @@ public class DataItemDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public DataItemDetailFragment() {
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            Item temp = (Item) savedInstanceState.getSerializable(ARG_ITEM_ID);
-            mItem = temp == null ? mItem :temp;
-        }
+        setContentView(R.layout.activity_dataitem_detail);
 
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        mItem  = (Item) bundle.getSerializable("Item");
+
+        final TextView helloTextView = (TextView) findViewById(R.id.text_view_id);
+        helloTextView.setText(mItem.toString());
     }
 
-    // Key,Name,Latitude,Longitude,Street Address,City,State,Zip,Type,Phone,Website
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
-        if (savedInstanceState != null) {
+   /*     if (savedInstanceState != null) {
             Item temp = (Item) savedInstanceState.getSerializable(ARG_ITEM_ID);
             mItem = temp == null ? mItem :temp;
         }
 
-        if (container == null) {
-            Log.d("MYAPP", "fragment not attached to view");
-        }
-
-        Log.d("MYAPP", "Getting ready to set data");
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
@@ -86,25 +79,5 @@ public class DataItemDetailFragment extends Fragment {
         }
 
         return rootView;
-    }
-
-
-    public void updateItem(Item mItem) {
-        this.mItem = mItem;
-        // Show the dummy content as text in a TextView.
-        /*Log.d("MYAPP", "fragment init complete");
-        Log.d("MYAPP", "updating item");
-        View rootView = getView();
-        if (mItem != null) {
-            Log.d("MYAPP", "item non null");
-            ((TextView) rootView.findViewById(R.id.key)).setText("Store Number: " + mItem.getKey());
-            ((TextView) rootView.findViewById(R.id.name)).setText( mItem.getName());
-            ((TextView) rootView.findViewById(R.id.addressLine1)).setText(mItem.getStreet());
-            ((TextView) rootView.findViewById(R.id.addressLine2)).setText(mItem.getCity() + ", " +
-                    mItem.getState() + " " + mItem.getZipcode());
-            ((TextView) rootView.findViewById(R.id.type)).setText(mItem.getType());
-            ((TextView) rootView.findViewById(R.id.phone)).setText(mItem.getPhone());
-            ((TextView) rootView.findViewById(R.id.website)).setText(mItem.getWebsite());
-        }*/
-    }
+    }*/
 }

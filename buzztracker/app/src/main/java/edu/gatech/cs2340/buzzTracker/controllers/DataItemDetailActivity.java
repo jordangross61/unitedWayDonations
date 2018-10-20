@@ -1,3 +1,4 @@
+/*
 package edu.gatech.cs2340.buzzTracker.controllers;
 
 import edu.gatech.cs2340.buzzTracker.R;
@@ -18,12 +19,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+*/
 /**
  * An activity representing a single DataItem detail screen. This
  * activity is only used narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
  * in a {@link DataItemListActivity}.
- */
+ *//*
+
 public class DataItemDetailActivity extends AppCompatActivity {
 
     @Override
@@ -59,37 +62,37 @@ public class DataItemDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
 
-//                int item_id = getIntent().getIntExtra(DataItemDetailFragment.ARG_ITEM_ID, 1000) + 1;
-//                String itemid = Integer.toString(item_id);
-//                Log.d("MYAPP", "populating fragment with id: " + itemid);
-//                //itemid = "1";
-//                FirebaseDatabase.getInstance().getReference().child("items").child(itemid).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        // Get Post object and use the values to update the UI
-//                        Log.d("MYAPP", "creating fragment");
-//                        Item mItem = dataSnapshot.getValue(Item.class);
-//                        Bundle arguments = new Bundle();
-//                        arguments.putSerializable(DataItemDetailFragment.ARG_ITEM_ID, mItem);
-//                        DataItemDetailFragment fragment = new DataItemDetailFragment();
-//                        //fragment.onCreate(arguments);
-//                        Log.d("MYAPP", "launching fragment");
-//                        getSupportFragmentManager().beginTransaction()
-//                                .add(R.id.dataitem_detail_container, fragment)
-//                                .disallowAddToBackStack()
-//                                .commit();
-//                        fragment.updateItem(mItem);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        // Getting Post failed, log a message
-//                        // [START_EXCLUDE]
-//                        int x = 0;
-//                        Log.d("MYAPP", "Retrieving from database has error");
-//                        // [END_EXCLUDE]
-//                    }
-//                });
+                int item_id = getIntent().getIntExtra(DataItemDetailFragment.ARG_ITEM_ID, 1000) + 1;
+                String itemid = Integer.toString(item_id);
+                Log.d("MYAPP", "populating fragment with id: " + itemid);
+                //itemid = "1";
+                FirebaseDatabase.getInstance().getReference().child("items").child(itemid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get Post object and use the values to update the UI
+                        Log.d("MYAPP", "creating fragment");
+                        Item mItem = dataSnapshot.getValue(Item.class);
+                        Bundle arguments = new Bundle();
+                        arguments.putSerializable(DataItemDetailFragment.ARG_ITEM_ID, mItem);
+                        DataItemDetailFragment fragment = new DataItemDetailFragment();
+                        //fragment.onCreate(arguments);
+                        Log.d("MYAPP", "launching fragment");
+                        getSupportFragmentManager().beginTransaction()
+                                .add(R.id.dataitem_detail_container, fragment)
+                                .disallowAddToBackStack()
+                                .commit();
+                        fragment.updateItem(mItem);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        // [START_EXCLUDE]
+                        int x = 0;
+                        Log.d("MYAPP", "Retrieving from database has error");
+                        // [END_EXCLUDE]
+                    }
+                });
 
         }
     }
@@ -110,3 +113,4 @@ public class DataItemDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+*/

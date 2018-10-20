@@ -82,11 +82,11 @@ public class DataItemListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DataItemDetailActivity.class);
-                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getId());
-                    intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId() - 1);
-                    context.startActivity(intent);
+                    Intent i = new Intent(getApplicationContext(), DataItemDetailFragment.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Item", holder.mItem);
+                    i.putExtras(bundle);
+                    startActivity(i);
                 }
             });
         }
