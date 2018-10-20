@@ -17,6 +17,7 @@ public class Item implements Serializable {
     private double value;
     private ItemType category;
     private String comments;
+    private Size size;
 
     public Item() {}
 
@@ -26,7 +27,7 @@ public class Item implements Serializable {
      */
 
     public Item(String time, String shortDescription, String longDescription,
-                double value, ItemType category, String comments) {
+                double value, ItemType category, String comments, Size size) {
 
         this.id = NEXT_ID++;
         this.time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
@@ -35,6 +36,7 @@ public class Item implements Serializable {
         this.value = value;
         this.category = category;
         this.comments = comments;
+        this.size = size;
     }
 
     /*

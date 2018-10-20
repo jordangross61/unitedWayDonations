@@ -87,11 +87,11 @@ public class Location implements Serializable{
     }
 
     public void setItemInList(Item myItem) {
-        if (itemList == null) {
-            itemList = new ArrayList<>();
+        if (this.itemList == null) {
+            this.itemList = new ArrayList<>();
         }
         Log.d("MYAPP", "Adding item to our location's item list");
-        itemList.add(myItem);
+        this.itemList.add(myItem);
     }
 
 }
