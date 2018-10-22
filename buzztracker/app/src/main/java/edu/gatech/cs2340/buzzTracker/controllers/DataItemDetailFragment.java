@@ -7,6 +7,7 @@ import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,10 +57,21 @@ public class DataItemDetailFragment extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         mItem  = (Item) bundle.getSerializable("Item");
 
-        final TextView helloTextView = (TextView) findViewById(R.id.text_view_id);
-        helloTextView.setText(mItem.toString());
-    }
+        final TextView categoryTextView = (TextView) findViewById(R.id.text_view_category);
+        final TextView shortDescriptionTextView = (TextView) findViewById(R.id.text_view_short);
+        final TextView longDescriptionTextView = (TextView) findViewById(R.id.text_view_long);
+        final TextView timeTextView = (TextView) findViewById(R.id.text_view_time);
+        final TextView valueTextView = (TextView) findViewById(R.id.text_view_value);
+        final TextView commentTextView = (TextView) findViewById(R.id.text_view_comments);
 
+
+        categoryTextView.setText("Category : " + mItem.getCategory().toString());
+        shortDescriptionTextView.setText("Short Description : " + mItem.getShortDescription());
+        longDescriptionTextView.setText("Long Description : " + mItem.getLongDescription());
+        timeTextView.setText("Time Entered: " + mItem.getTime());
+        valueTextView.setText("Value: $" + mItem.getValue());
+        commentTextView.setText("Additional Comments: " + mItem.getComments());
+    }
 
 
    /*     if (savedInstanceState != null) {
