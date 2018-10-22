@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.User;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
@@ -26,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 //import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     //persistence work for firebase
     private FirebaseAuth mAuth;
     private DatabaseReference userDatabase;
+    private DatabaseReference locDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +93,25 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("MYAPP", "Gets into proper user rights");
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 } else if (user.getRights().equals(UserRights.EMPLOYEE)) {
-                    Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("Location", user.getLocation());
-                    i.putExtras(bundle);
-                    startActivity(i);
+                    String locKey = Integer.toString(user.getLocation().getKey());
+                    locDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(locKey);
+                    locDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            Log.d("MYAPP", "Grabs the updated version of the location");
+                            Location loc = snapshot.getValue(Location.class);
+                            Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("Location", loc);
+                            i.putExtras(bundle);
+                            startActivity(i);
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError DatabaseError) {
+                            Log.d("MYAPP", "Retrieving specific location has an error");
+                        }
+                    });
+
                 }
             }
             @Override
