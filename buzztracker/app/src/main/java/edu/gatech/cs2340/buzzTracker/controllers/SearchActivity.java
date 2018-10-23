@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
@@ -25,8 +27,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private Spinner categoryFilterSpinner;
     private Spinner locationFilterSpinner;
-    private ArrayAdapter<Location> adapter_location;
-    private List<Location> locations;
+    private ArrayAdapter<String> adapter_location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +36,34 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
-        locations = new ArrayList<>();
 
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
         ArrayAdapter<ItemType> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
         adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryFilterSpinner.setAdapter(adapter_category);
 
-        locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
-        adapter_location = new ArrayAdapter(this,android.R.layout.simple_spinner_item, locations);
-        adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationFilterSpinner.setAdapter(adapter_location);
+
+
+        locationDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.d("MYAPP", "Grabbing all location keys");
+                ArrayList<String> locations = new ArrayList<String>();
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Location loc = postSnapshot.getValue(Location.class);
+                    locations.add(Integer.toString(loc.getKey()));
+                }
+                locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
+                locations.add("All Locations");
+                adapter_location = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, locations);
+                adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                locationFilterSpinner.setAdapter(adapter_location);
+            }
+            @Override
+            public void onCancelled(DatabaseError DatabaseError) {
+                Log.d("MYAPP", "Retrieving specific location has an error");
+            }
+        });
         
     }
 
