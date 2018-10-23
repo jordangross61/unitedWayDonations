@@ -61,14 +61,15 @@ public class DataItemDetailFragment extends AppCompatActivity {
         final TextView shortDescriptionTextView = (TextView) findViewById(R.id.text_view_short);
         final TextView longDescriptionTextView = (TextView) findViewById(R.id.text_view_long);
         final TextView timeTextView = (TextView) findViewById(R.id.text_view_time);
+        final TextView sizeTextView = (TextView) findViewById(R.id.text_view_size);
         final TextView valueTextView = (TextView) findViewById(R.id.text_view_value);
         final TextView commentTextView = (TextView) findViewById(R.id.text_view_comments);
-
 
         categoryTextView.setText("Category : " + mItem.getCategory().toString());
         shortDescriptionTextView.setText("Short Description : " + mItem.getShortDescription());
         longDescriptionTextView.setText("Long Description : " + mItem.getLongDescription());
         timeTextView.setText("Time Entered: " + mItem.getTime());
+        sizeTextView.setText("Size: " + mItem.getSize());
         valueTextView.setText("Value: $" + mItem.getValue());
         commentTextView.setText("Additional Comments: " + mItem.getComments());
     }

@@ -55,6 +55,7 @@ public class Item implements Serializable {
      */
     public int getId() { return id; }
     public String getTime() { return time; }
+    public Size getSize() { return size; }
     public String getShortDescription() { return shortDescription; }
     public String getLongDescription() { return longDescription; }
     public double getValue() { return value; }

@@ -20,8 +20,4 @@ public class SizeItem extends Item {
         this (time, location, shortDescription, longDescription, value, category, comments);
         this.size = size;
     }
-
-    public Size getSize() {
-        return size;
-    }
 }
