@@ -6,8 +6,11 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,6 @@ import java.util.List;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private Spinner categoryFilterSpinner;
     private Spinner locationFilterSpinner;
+    private ArrayAdapter<Location> adapter_location;
     private List<Location> locations;
 
     @Override
@@ -35,17 +38,15 @@ public class SearchActivity extends AppCompatActivity {
         locations = new ArrayList<>();
 
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
-        ArrayAdapter<UserRights> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
+        ArrayAdapter<ItemType> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
         adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryFilterSpinner.setAdapter(adapter_category);
 
         locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
-        ArrayAdapter<UserRights> adapter_location = new ArrayAdapter(this,android.R.layout.simple_spinner_item, locations);
+        adapter_location = new ArrayAdapter(this,android.R.layout.simple_spinner_item, locations);
         adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationFilterSpinner.setAdapter(adapter_location);
-
-
+        
     }
-
 
 }

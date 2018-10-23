@@ -38,11 +38,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Button handler for the Logout button
-     *
-     * @param view actual reference for the button pressed
-     */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
 
@@ -55,11 +50,6 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(new Intent(this, MapsActivity.class));
     }
 
-    /**
-     * Button handler for the load button
-     *
-     * @param view  the actual button object that was pressed
-     */
     public void onLocationsButtonPressed(View view) {
         readSDFile();
 
@@ -71,7 +61,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, SearchActivity.class));
     }
-
 
     public void readSDFile() {
         try {
@@ -91,7 +80,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
             br.close();
         } catch (IOException e) {
-            Log.e("MY APP", "exception: " + e.getMessage());
+            Log.e("MY APP", "unable to read in locations");
         }
     }
 }
