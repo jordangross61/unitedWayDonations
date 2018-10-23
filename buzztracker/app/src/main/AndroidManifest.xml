@@ -93,6 +93,10 @@
             android:name=".controllers.SearchActivity"
             android:label="Buzz Tracker Registration"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.SearchResultsActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

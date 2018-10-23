@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -37,8 +38,14 @@ public class SearchActivity extends AppCompatActivity {
 
         locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
 
+        List<Object> categories = new ArrayList<>();
+        categories.add("All Categories");
+        for( ItemType s : ItemType.values()) {
+            categories.add(s);
+        }
+
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
-        ArrayAdapter<ItemType> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
+        ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
         adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryFilterSpinner.setAdapter(adapter_category);
 
@@ -49,12 +56,13 @@ public class SearchActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing all location keys");
                 ArrayList<String> locations = new ArrayList<String>();
+                locations.add("All Locations");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Location loc = postSnapshot.getValue(Location.class);
                     locations.add(Integer.toString(loc.getKey()));
                 }
+
                 locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
-                locations.add("All Locations");
                 adapter_location = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, locations);
                 adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 locationFilterSpinner.setAdapter(adapter_location);
@@ -65,6 +73,10 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
         
+    }
+
+    public void onSearchPressed(View view) {
+        startActivity(new Intent(this, SearchResultsActivity.class));
     }
 
 }
