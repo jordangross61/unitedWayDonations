@@ -67,7 +67,7 @@ public class AddSizeItemActivity extends AppCompatActivity {
         String comments = commentField.getText().toString();
         Size size = (Size)sizeSpinner.getSelectedItem();
         Log.d("MYAPP", "About to Add item");
-        Item item = new Item(null, shortDescription, longDescription, value, category, comments, size);
+        Item item = new Item(null, shortDescription, longDescription, value, category, comments, myLocation.getKey(), size);
         myLocation.setItemInList(item);
         String itemKey = mDatabase.push().getKey();
         mDatabase.child(itemKey).setValue(item);

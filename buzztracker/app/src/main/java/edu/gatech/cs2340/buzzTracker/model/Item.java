@@ -21,6 +21,7 @@ public class Item implements Serializable {
     private ItemType category;
     private String comments;
     private Size size;
+    private int locationId;
 
     public Item() {}
 
@@ -30,7 +31,7 @@ public class Item implements Serializable {
      */
 
     public Item(String time, String shortDescription, String longDescription,
-                double value, ItemType category, String comments, Size size) {
+                double value, ItemType category, String comments, int locationId, Size size) {
 
 
         this.id = NEXT_ID++;
@@ -40,6 +41,7 @@ public class Item implements Serializable {
         this.value = value;
         this.category = category;
         this.comments = comments;
+        this.locationId = locationId;
         this.size = size;
     }
 
@@ -61,5 +63,6 @@ public class Item implements Serializable {
     public double getValue() { return value; }
     public ItemType getCategory() { return category; }
     public String getComments() { return comments; }
+    public int getLocationId() {return locationId;};
 
 }

@@ -65,7 +65,7 @@ public class AddItemActivity extends AppCompatActivity {
         double value = Double.parseDouble(valueField.getText().toString());
         String comments = commentField.getText().toString();
         Log.d("MYAPP", "About to Add item");
-        Item item = new Item(null, shortDescription, longDescription, value, category, comments, null);
+        Item item = new Item(null, shortDescription, longDescription, value, category, comments, myLocation.getKey(), null);
         myLocation.setItemInList(item);
         String itemKey = mDatabase.push().getKey();
         mDatabase.child(itemKey).setValue(item);
