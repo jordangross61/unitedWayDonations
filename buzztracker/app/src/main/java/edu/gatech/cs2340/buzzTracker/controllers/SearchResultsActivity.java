@@ -3,6 +3,10 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,5 +31,11 @@ public class SearchResultsActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         items = (ArrayList<Item>) bundle.getSerializable("QueriedItems");
 
+        if (items != null) {
+            ArrayAdapter adapter = new ArrayAdapter<Item>(this, R.layout.activity_search_results_item, items);
+
+            ListView listView = (ListView) findViewById(R.id.item_list);
+            listView.setAdapter(adapter);
+        }
     }
 }
