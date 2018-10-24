@@ -45,13 +45,13 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void onShowMapPressed(View view) {
-        readSDFile();
+        //readSDFile();
 
         startActivity(new Intent(this, MapsActivity.class));
     }
 
     public void onLocationsButtonPressed(View view) {
-        readSDFile();
+        //readSDFile();
 
         startActivity(new Intent(this, LocationListActivity.class));
     }

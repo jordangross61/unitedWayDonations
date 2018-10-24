@@ -51,7 +51,6 @@ public class DashboardActivityEmployee extends AppCompatActivity {
      */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
-        mDatabase.child("locations").child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         startActivity(new Intent(this, WelcomeActivity.class));
     }
 
