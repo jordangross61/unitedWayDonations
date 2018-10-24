@@ -65,4 +65,6 @@ public class Item implements Serializable {
     public String getComments() { return comments; }
     public int getLocationId() {return locationId;};
 
+    public String toString() { return category.toString()+ ": " + shortDescription; }
+
 }
