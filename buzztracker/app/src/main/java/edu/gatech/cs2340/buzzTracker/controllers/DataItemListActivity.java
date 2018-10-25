@@ -53,8 +53,10 @@ public class DataItemListActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         items = (ArrayList<Item>) bundle.getSerializable("ItemList");
-        adapter = new SimpleItemRecyclerViewAdapter(items);
-        recyclerView.setAdapter(adapter);
+        if (items != null) {
+            adapter = new SimpleItemRecyclerViewAdapter(items);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     public class SimpleItemRecyclerViewAdapter
