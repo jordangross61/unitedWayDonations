@@ -21,10 +21,16 @@ public class Item {
     public Item() {}
 
     /**
-     * Create new element
+     * Create new item
      *
+     * @param time the time that the item is created
+     * @param location the location where the item is stored
+     * @param shortDescription the short description of the item
+     * @param longDescription the long description of the item
+     * @param value the monetary value of the item
+     * @param category the item's type
+     * @param comments any additional comments about the item
      */
-
     public Item(String time, Location location, String shortDescription, String longDescription,
                 double value, ItemType category, String comments) {
 
@@ -38,7 +44,7 @@ public class Item {
         this.comments = comments;
     }
 
-    /*
+    /**
      Getters for the data elements
      */
     public int getId() { return id; }
