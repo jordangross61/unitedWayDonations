@@ -55,6 +55,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Location loc = postSnapshot.getValue(Location.class);
                     locations.add(loc);
                 }
+
+                for (Location loc : locations) {
+                    LatLng location = new LatLng(loc.getLatitude(), loc.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(location).title(loc.getName()).
+                            snippet("Phone Number: " + loc.getPhone()));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                }
             }
             @Override
             public void onCancelled(DatabaseError DatabaseError) {
@@ -63,14 +70,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-//    public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
-//
-//        // Add a marker in Sydney, Australia, and move the camera.
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//    }
 
     /**
      * Manipulates the map once available.
@@ -85,19 +84,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // get the data to display
-        // iterate through the list and add a pin for each element in the model
-        while (temp == 0) {
-            //do nothing
-            int i = 0;
-        }
-
-        for (Location loc : locations) {
-            LatLng location = new LatLng(loc.getLatitude(), loc.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(location).title(loc.getName()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-        }
-        // Use a custom layout for the pin data
-        // mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 }
