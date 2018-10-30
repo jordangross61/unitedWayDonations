@@ -57,7 +57,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void onSearchItemsPressed(View view) {
-        readSDFile();
+        //readSDFile();
 
         startActivity(new Intent(this, SearchActivity.class));
     }
