@@ -88,7 +88,25 @@ public class SearchActivity extends AppCompatActivity {
         final Object category = categoryFilterSpinner.getSelectedItem();
         final String location = (String)locationFilterSpinner.getSelectedItem();
 
-        query = queryDatabase.child("items").orderByChild("shortDescription").equalTo(shortField.getText().toString());
+        if (!shortField.getText().toString().equals("")) {
+            query = queryDatabase.child("items").orderByChild("shortDescription").equalTo(shortField.getText().toString());
+            runQuery(query, category, location);
+        } else if (!category.equals("All Categories")) {
+            query = queryDatabase.child("items").orderByChild((String)"category").equalTo(category.toString());
+            runQuery(query, category, location);
+        } else if (!location.equals("All Locations")) {
+            query = queryDatabase.child("items").orderByChild("locationId").equalTo(Integer.parseInt(location));
+            runQuery(query, category, location);
+        } else {
+            query = queryDatabase.child("items");
+            runQuery(query, category, location);
+        }
+
+
+        //startActivity(new Intent(this, SearchResultsActivity.class));
+    }
+
+    public void runQuery(Query query, final Object category, final String location) {
         query.addValueEventListener( new ValueEventListener()
         {
             @Override
@@ -121,7 +139,5 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
-        //startActivity(new Intent(this, SearchResultsActivity.class));
     }
-
 }
