@@ -15,7 +15,7 @@ public class SizeItem extends Item {
     public SizeItem(String time, Location location, String shortDescription, String longDescription, double value, ItemType category, String comments) {}
 
     public SizeItem(String time, Location location, String shortDescription, String longDescription,
-               double value, ItemType category, String comments, Size size) {
+                    double value, ItemType category, String comments, Size size) {
 
         this (time, location, shortDescription, longDescription, value, category, comments);
         this.size = size;
