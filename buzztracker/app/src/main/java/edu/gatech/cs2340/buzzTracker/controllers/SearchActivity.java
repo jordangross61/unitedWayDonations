@@ -85,14 +85,14 @@ public class SearchActivity extends AppCompatActivity {
         Query query;
         DatabaseReference queryDatabase = FirebaseDatabase.getInstance().getReference();
 
-        final Object category = categoryFilterSpinner.getSelectedItem();
+        final String category = categoryFilterSpinner.getSelectedItem().toString();
         final String location = (String)locationFilterSpinner.getSelectedItem();
 
         if (!shortField.getText().toString().equals("")) {
             query = queryDatabase.child("items").orderByChild("shortDescription").equalTo(shortField.getText().toString());
             runQuery(query, category, location);
         } else if (!category.equals("All Categories")) {
-            query = queryDatabase.child("items").orderByChild((String)"category").equalTo(category.toString());
+            query = queryDatabase.child("items").orderByChild("category").equalTo(category.toString());
             runQuery(query, category, location);
         } else if (!location.equals("All Locations")) {
             query = queryDatabase.child("items").orderByChild("locationId").equalTo(Integer.parseInt(location));
@@ -120,9 +120,9 @@ public class SearchActivity extends AppCompatActivity {
                         queriedItems.add(item);
                     } else if ((category.equals("All Categories")) && (item.getLocationId() == Integer.parseInt(location))) {
                         queriedItems.add(item);
-                    } else if ((location.equals("All Locations")) && (item.getCategory().equals((ItemType)category))) {
+                    } else if ((location.equals("All Locations")) && (item.getCategory().equals(category))) {
                         queriedItems.add(item);
-                    } else if ((item.getLocationId() == Integer.parseInt(location)) && (item.getCategory().equals((ItemType)category))) {
+                    } else if ((item.getLocationId() == Integer.parseInt(location)) && (item.getCategory().equals(category))) {
                         queriedItems.add(item);
                     }
                 }
