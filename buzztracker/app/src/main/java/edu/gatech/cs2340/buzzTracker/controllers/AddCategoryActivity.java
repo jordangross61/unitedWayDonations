@@ -43,7 +43,7 @@ public class AddCategoryActivity extends AppCompatActivity {
             Intent i=new Intent(getApplicationContext(), AddSizeItemActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Location", myLocation);
-            bundle.putSerializable("Category", selected);
+            bundle.putSerializable("Category", selected.toString());
             Log.d("MYAPP", "Created bundle - about to go to individual add size item page now");
             i.putExtras(bundle);
             startActivity(i);
@@ -51,7 +51,7 @@ public class AddCategoryActivity extends AppCompatActivity {
             Intent i=new Intent(getApplicationContext(), AddItemActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Location", myLocation);
-            bundle.putSerializable("Category", selected);
+            bundle.putSerializable("Category", selected.toString());
             Log.d("MYAPP", "Created bundle - about to go to individual add item page now");
             i.putExtras(bundle);
             startActivity(i);
