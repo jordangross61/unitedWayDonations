@@ -3,12 +3,18 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import edu.gatech.cs2340.buzzTracker.R;
+import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.Size;
@@ -25,6 +31,10 @@ public class AddSizeItemActivity extends AppCompatActivity {
     private EditText commentField;
     private Spinner sizeSpinner;
     private Location myLocation;
+    private DatabaseReference mDatabase;
+    private DatabaseReference lDatabase;
+    private FirebaseAuth mAuth;
+    private ItemType category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +53,30 @@ public class AddSizeItemActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         myLocation = (Location) bundle.getSerializable("Location");
+        category = (ItemType) bundle.getSerializable("Category");
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("items");
+        lDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
+        Log.d("MYAPP", "Into the Add Size Item Activity Page");
     }
 
-    public void onAddItemPressed(View view){
-        startActivity(new Intent(this, DashboardActivityEmployee.class));    }
+    public void onAddItemPressed(View view) {
+        String shortDescription = shortField.getText().toString();
+        String longDescription = longField.getText().toString();
+        double value = Double.parseDouble(valueField.getText().toString());
+        String comments = commentField.getText().toString();
+        Size size = (Size)sizeSpinner.getSelectedItem();
+        Log.d("MYAPP", "About to Add item");
+        Item item = new Item(null, shortDescription, longDescription, value, category, comments, myLocation.getKey(), size);
+        myLocation.setItemInList(item);
+        String itemKey = mDatabase.push().getKey();
+        mDatabase.child(itemKey).setValue(item);
+        lDatabase.child(Integer.toString(myLocation.getKey())).setValue(myLocation);
+        Intent i = new Intent(getApplicationContext(), DashboardActivityEmployee.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Location", myLocation);
+        i.putExtras(bundle);
+        startActivity(i);
+    }
 
 }

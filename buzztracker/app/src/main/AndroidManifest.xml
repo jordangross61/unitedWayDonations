@@ -62,7 +62,7 @@
             android:label="@string/title_activity_maps"></activity>
 
         <activity
-            android:name=".controllers.DataItemDetailActivity"
+            android:name=".controllers.DataItemDetailFragment"
             android:label="Buzz Tracker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -87,6 +87,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controllers.AddSizeItemActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.SearchActivity"
+            android:label="Buzz Tracker Registration"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controllers.SearchResultsActivity"
             android:label="Buzz Tracker Registration"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

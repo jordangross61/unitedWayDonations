@@ -5,7 +5,6 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -20,8 +19,6 @@ import java.nio.charset.StandardCharsets;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
-import edu.gatech.cs2340.buzzTracker.controllers.MapsActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,18 +36,8 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        User user = LoginServiceFacade.getInstance().getCurrentUser();
-//        setTitle("Welcome back, " + user.getName());
     }
 
-    /**
-     * Button handler for the Logout button
-     *
-     * @param view actual reference for the button pressed
-     */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
 
@@ -58,21 +45,21 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void onShowMapPressed(View view) {
-
-        readSDFile();
+        //readSDFile();
 
         startActivity(new Intent(this, MapsActivity.class));
     }
 
-    /**
-     * Button handler for the load button
-     *
-     * @param view  the actual button object that was pressed
-     */
     public void onLocationsButtonPressed(View view) {
-        readSDFile();
+        //readSDFile();
 
         startActivity(new Intent(this, LocationListActivity.class));
+    }
+
+    public void onSearchItemsPressed(View view) {
+        readSDFile();
+
+        startActivity(new Intent(this, SearchActivity.class));
     }
 
     public void readSDFile() {
@@ -93,7 +80,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
             br.close();
         } catch (IOException e) {
-            Log.e("MY APP", "exception: " + e.getMessage());
+            Log.e("MY APP", "unable to read in locations");
         }
     }
 }

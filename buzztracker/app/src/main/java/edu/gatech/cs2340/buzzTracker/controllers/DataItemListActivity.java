@@ -3,6 +3,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import edu.gatech.cs2340.buzzTracker.R;
 
 import edu.gatech.cs2340.buzzTracker.model.Item;
+import edu.gatech.cs2340.buzzTracker.model.Location;
 
 import android.content.Context;
 import android.content.Intent;
@@ -49,30 +50,13 @@ public class DataItemListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
 
-        items = new ArrayList<>();
-        adapter = new SimpleItemRecyclerViewAdapter(items);
-        recyclerView.setAdapter(adapter);
-        itemDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                getItemDataToUpdateView(snapshot);
-            }
-            @Override
-            public void onCancelled(DatabaseError DatabaseError) {
-                Log.d("MYAPP", "Retrieving from database has error");
-            }
-        });
-    }
-
-    private void getItemDataToUpdateView(DataSnapshot snapshot) {
-        int index = 0;
-        for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-            Item item = postSnapshot.getValue(Item.class);
-            items.add(item);
-            adapter.notifyItemInserted(index);
-            index++;
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        items = (ArrayList<Item>) bundle.getSerializable("ItemList");
+        if (items != null) {
+            adapter = new SimpleItemRecyclerViewAdapter(items);
+            recyclerView.setAdapter(adapter);
         }
-        adapter.notifyDataSetChanged();
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -100,11 +84,11 @@ public class DataItemListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DataItemDetailActivity.class);
-                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getId());
-                    intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId() - 1);
-                    context.startActivity(intent);
+                    Intent i = new Intent(getApplicationContext(), DataItemDetailFragment.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Item", holder.mItem);
+                    i.putExtras(bundle);
+                    startActivity(i);
                 }
             });
         }
