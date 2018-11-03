@@ -11,8 +11,6 @@ import java.util.ArrayList;
  *
  * Maintains information about Locations
  */
-
-
 public class Location implements Serializable{
     private int key;
     private String name;
@@ -27,17 +25,29 @@ public class Location implements Serializable{
     private String website;
     private ArrayList<Item> itemList;
 
-
-    public Location() {
-    }
+    /**
+     * no-arg constructor for a location
+     */
+    public Location() { }
 
     /**
-     * Creates a new Location
+     * constructor for a Location object that sets all the instance fields
+     *
+     * @param key a number that is unique to this location
+     * @param name the name of the donation location
+     * @param latitude the latitude of the location
+     * @param longitude the longitude of the location
+     * @param street the address of the location
+     * @param city the city that the donation location is in
+     * @param state the state that the donation location is in
+     * @param zipcode the zip code of the location
+     * @param type the type of the location
+     * @param phone the location's phone number as a String
+     * @param website the location's website address
      */
     public Location(int key, String name, double latitude, double longitude, String street,
                     String city, String state, String zipcode, String type, String phone,
                     String website) {
-
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -52,32 +62,81 @@ public class Location implements Serializable{
         this.itemList = new ArrayList<>();
     }
 
+    /**
+     * getter method for the location's key
+     * @return the location's key
+     */
     public int getKey() { return key; }
 
+    /**
+     * getter method for the location's name
+     * @return the location's name
+     */
     public String getName() { return name; }
 
+    /**
+     * getter method for the location's latitude
+     * @return the location's latitude
+     */
     public double getLatitude() { return latitude; }
 
+    /**
+     * getter method for the location's longitude
+     * @return the location's longitude
+     */
     public double getLongitude() { return longitude; }
 
+    /**
+     * getter method for the location's street address
+     * @return the location's street address
+     */
     public String getStreet() { return street; }
 
+    /**
+     * getter method for the location's city
+     * @return the location's city
+     */
     public String getCity() { return city; }
 
+    /**
+     * getter method for the location's state
+     * @return the location's state
+     */
     public String getState() { return state; }
 
+    /**
+     * getter method for the location's zip code
+     * @return the location's zip code
+     */
     public String getZipcode() { return zipcode; }
 
+    /**
+     * getter method for the location's type
+     * @return the location's type
+     */
     public String getType() { return type; }
 
+    /**
+     * getter method for the location's phone number
+     * @return the location's phone number
+     */
     public String getPhone() { return phone; }
 
+    /**
+     * getter method for the location's website
+     * @return the location's website
+     */
     public String getWebsite() { return website; }
 
+    /**
+     * getter method for the location's list of items
+     * @return the location's item list
+     */
     public ArrayList<Item> getItemList() {
         return itemList;
     }
 
+    @Override
     public boolean equals(Object other) {
         if (this == other) { return true; }
         if (!(other instanceof Location)) {return false; }
@@ -86,6 +145,10 @@ public class Location implements Serializable{
                 && this.latitude == that.latitude && this.longitude == that.longitude;
     }
 
+    /**
+     * Adds an item to the list of items at this location
+     * @param myItem the item to be added to the list
+     */
     public void setItemInList(Item myItem) {
         if (this.itemList == null) {
             this.itemList = new ArrayList<>();
@@ -95,4 +158,3 @@ public class Location implements Serializable{
     }
 
 }
-
