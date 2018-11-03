@@ -3,26 +3,18 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import edu.gatech.cs2340.buzzTracker.R;
 
 import edu.gatech.cs2340.buzzTracker.model.Item;
-import edu.gatech.cs2340.buzzTracker.model.Location;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseError;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +33,7 @@ public class DataItemListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SimpleItemRecyclerViewAdapter adapter;
     private List<Item> items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +52,19 @@ public class DataItemListActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Represents a view for the list of items
+     */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Item> mValues;
 
+        /**
+         * constructor that sets the field mValues with the list of items
+         * 
+         * @param items the list of items
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
@@ -98,11 +99,18 @@ public class DataItemListActivity extends AppCompatActivity {
             return mValues.size();
         }
 
+        /**
+         * Class that holds a view and an item
+         */
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mContentView;
             public Item mItem;
 
+            /**
+             * constructor for the ViewHolder class
+             * @param view the view that this ViewHolder is holding
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
