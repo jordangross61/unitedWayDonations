@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.buzzTracker.R;
-import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
@@ -22,6 +21,7 @@ public class AddCategoryActivity extends AppCompatActivity {
 
     private Spinner categorySpinner;
     private Location myLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("MYAPP", "Made it into add category activity");
@@ -36,11 +36,16 @@ public class AddCategoryActivity extends AppCompatActivity {
         myLocation = (Location) bundle.getSerializable("Location");
     }
 
-    public void onAddCategoryPressed(View view){
-        ItemType selected = (ItemType)categorySpinner.getSelectedItem();
+    /**
+     * Determines if the new item has a size or not, then starts the corresponding activity
+     *
+     * @param view the view for selecting the item's category
+     */
+    public void onAddCategoryPressed(View view) {
+        ItemType selected = (ItemType) categorySpinner.getSelectedItem();
         // if item being added would need a size
         if (selected.equals(ItemType.CLOTHING)) {
-            Intent i=new Intent(getApplicationContext(), AddSizeItemActivity.class);
+            Intent i = new Intent(getApplicationContext(), AddSizeItemActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Location", myLocation);
             bundle.putSerializable("Category", selected.toString());
@@ -48,7 +53,7 @@ public class AddCategoryActivity extends AppCompatActivity {
             i.putExtras(bundle);
             startActivity(i);
         } else {
-            Intent i=new Intent(getApplicationContext(), AddItemActivity.class);
+            Intent i = new Intent(getApplicationContext(), AddItemActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Location", myLocation);
             bundle.putSerializable("Category", selected.toString());

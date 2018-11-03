@@ -2,27 +2,18 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
-import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.User;
 
 /**
  * Controller for the add item view of application
@@ -38,8 +29,6 @@ public class AddItemActivity extends AppCompatActivity {
     private DatabaseReference lDatabase;
     private FirebaseAuth mAuth;
     private String category;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +48,19 @@ public class AddItemActivity extends AppCompatActivity {
         Log.d("MYAPP", "Into the Add Item Activity Page");
     }
 
+    /**
+     * Adds an item to the specified location's list of items
+     *
+     * @param view the view for adding an item
+     */
     public void onAddItemPressed(View view){
         String shortDescription = shortField.getText().toString();
         String longDescription = longField.getText().toString();
         double value = Double.parseDouble(valueField.getText().toString());
         String comments = commentField.getText().toString();
         Log.d("MYAPP", "About to Add item");
-        Item item = new Item(null, shortDescription, longDescription, value, category, comments, myLocation.getKey(), null);
+        Item item = new Item(null, shortDescription, longDescription, value, category,
+                comments, myLocation.getKey(), null);
         myLocation.setItemInList(item);
         String itemKey = mDatabase.push().getKey();
         mDatabase.child(itemKey).setValue(item);

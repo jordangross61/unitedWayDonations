@@ -21,8 +21,6 @@ import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 
 /**
  * Controller for the main dashboard view of application
@@ -30,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DashboardActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,30 +37,50 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Logs out of the user's account and returns to the welcome page
+     *
+     * @param view the logout button
+     */
     public void onLogoutPressed(View view) {
         FirebaseAuth.getInstance().signOut();
-
         startActivity(new Intent(this, WelcomeActivity.class));
     }
 
+    /**
+     * Starts the activity for displaying the map
+     *
+     * @param view the Show Map button
+     */
     public void onShowMapPressed(View view) {
         //readSDFile();
-
         startActivity(new Intent(this, MapsActivity.class));
     }
 
+    /**
+     * Starts the activity for displaying the list of all the donation center locations
+     *
+     * @param view the Show Locations button
+     */
     public void onLocationsButtonPressed(View view) {
         //readSDFile();
-
         startActivity(new Intent(this, LocationListActivity.class));
     }
 
+    /**
+     * Starts the activity for searching the list of items
+     *
+     * @param view the Search Items button
+     */
     public void onSearchItemsPressed(View view) {
         //readSDFile();
-
         startActivity(new Intent(this, SearchActivity.class));
     }
 
+    /**
+     * Reads the SD file that contains the data for all the locations and adds those locations to
+     * the database
+     */
     public void readSDFile() {
         try {
             //Open a stream on the raw file

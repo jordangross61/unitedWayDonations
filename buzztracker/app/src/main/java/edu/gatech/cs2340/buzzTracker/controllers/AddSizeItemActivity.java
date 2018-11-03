@@ -15,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
-import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.Size;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
@@ -60,6 +59,11 @@ public class AddSizeItemActivity extends AppCompatActivity {
         Log.d("MYAPP", "Into the Add Size Item Activity Page");
     }
 
+    /**
+     * Adds an item to the specified location's list of items
+     *
+     * @param view the view for adding an item
+     */
     public void onAddItemPressed(View view) {
         String shortDescription = shortField.getText().toString();
         String longDescription = longField.getText().toString();
@@ -78,5 +82,4 @@ public class AddSizeItemActivity extends AppCompatActivity {
         i.putExtras(bundle);
         startActivity(i);
     }
-
 }
