@@ -85,20 +85,5 @@ public class LocationDetailFragment extends Fragment {
 
     public void updateLocation(Location mItem) {
         this.mItem = mItem;
-        // Show the dummy content as text in a TextView.
-        /*Log.d("MYAPP", "fragment init complete");
-        Log.d("MYAPP", "updating location");
-        View rootView = getView();
-        if (mItem != null) {
-            Log.d("MYAPP", "location non null");
-            ((TextView) rootView.findViewById(R.id.key)).setText("Store Number: " + mItem.getKey());
-            ((TextView) rootView.findViewById(R.id.name)).setText( mItem.getName());
-            ((TextView) rootView.findViewById(R.id.addressLine1)).setText(mItem.getStreet());
-            ((TextView) rootView.findViewById(R.id.addressLine2)).setText(mItem.getCity() + ", " +
-                    mItem.getState() + " " + mItem.getZipcode());
-            ((TextView) rootView.findViewById(R.id.type)).setText(mItem.getType());
-            ((TextView) rootView.findViewById(R.id.phone)).setText(mItem.getPhone());
-            ((TextView) rootView.findViewById(R.id.website)).setText(mItem.getWebsite());
-        }*/
     }
 }

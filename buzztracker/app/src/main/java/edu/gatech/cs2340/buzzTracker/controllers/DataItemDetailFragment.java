@@ -58,24 +58,4 @@ public class DataItemDetailFragment extends AppCompatActivity {
         valueTextView.setText("Value: $" + mItem.getValue());
         commentTextView.setText("Additional Comments: " + mItem.getComments());
     }
-
-
-   /*     if (savedInstanceState != null) {
-            Item temp = (Item) savedInstanceState.getSerializable(ARG_ITEM_ID);
-            mItem = temp == null ? mItem :temp;
-        }
-
-
-        // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            Log.d("MYAPP", "fragment had item object");
-            ((TextView) rootView.findViewById(R.id.time)).setText("Store Number: " + mItem.getTime());
-            ((TextView) rootView.findViewById(R.id.shortDescription)).setText(mItem.getShortDescription());
-            ((TextView) rootView.findViewById(R.id.longDescription)).setText(mItem.getLongDescription());
-            ((TextView) rootView.findViewById(R.id.category)).setText(mItem.getCategory().toString());
-            ((TextView) rootView.findViewById(R.id.comments)).setText(mItem.getComments());
-        }
-
-        return rootView;
-    }*/
 }
