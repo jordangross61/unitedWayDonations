@@ -23,8 +23,10 @@ import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.Size;
 
+/**
+ * Controller for searching the items
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private DatabaseReference locationDatabase;
@@ -81,6 +83,11 @@ public class SearchActivity extends AppCompatActivity {
         
     }
 
+    /**
+     * Determines what type of query to run based on the user's selection for categories and
+     * locations.
+     * @param view the search button
+     */
     public void onSearchPressed(View view) {
         Query query;
         DatabaseReference queryDatabase = FirebaseDatabase.getInstance().getReference();
@@ -106,6 +113,13 @@ public class SearchActivity extends AppCompatActivity {
         //startActivity(new Intent(this, SearchResultsActivity.class));
     }
 
+    /**
+     * Finds all items that match the description and starts the activity that displays the search
+     * results.
+     * @param query the Firebase query based on the locations and types of items we're searching for
+     * @param category the category of items we're searching for
+     * @param location the location where we want the item to be located
+     */
     public void runQuery(Query query, final Object category, final String location) {
         query.addValueEventListener( new ValueEventListener()
         {

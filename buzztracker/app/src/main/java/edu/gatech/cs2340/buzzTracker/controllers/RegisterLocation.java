@@ -2,17 +2,12 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,8 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.User;
-import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
+/**
+ * Controller for the view where users can enter their primary Location
+ */
 public class RegisterLocation extends AppCompatActivity {
     private EditText locationField;
     private FirebaseAuth mAuth;
@@ -47,6 +44,11 @@ public class RegisterLocation extends AppCompatActivity {
         myEmployee = (User) bundle.getSerializable("User");
     }
 
+    /**
+     * Matches the location id that the user enters with a location that is registered on the app
+     * and sets the user's primary location.
+     * @param view the registration button
+     */
     public void onRegistration(View view) {
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
         errorMsg.setText("");

@@ -1,16 +1,10 @@
 package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,6 +14,9 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 
+/**
+ * Controller for displaying the search results
+ */
 public class SearchResultsActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

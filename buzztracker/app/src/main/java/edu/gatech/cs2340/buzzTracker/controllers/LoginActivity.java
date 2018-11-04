@@ -11,24 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.buzzTracker.R;
-import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.User;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
-//import edu.gatech.cs2340.buzzTracker.model.LoginServiceFacade;
-//import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 //import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
@@ -77,10 +72,19 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Starts the registration activity
+     * @param view the registration button
+     */
     public void onRegistrationOptPressed(View view){
         startActivity(new Intent(this, RegistrationActivity.class));
     }
 
+    /**
+     * Determines what type of user is logging in and shows the proper dashboard based on their
+     * user-type rights
+     * @param userid the id of the user who is logging in
+     */
     public void showScreenBasedOnRights(String userid) {
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
         userDatabase.addValueEventListener(new ValueEventListener() {

@@ -2,7 +2,6 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,17 +10,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
-
-import com.google.android.gms.maps.model.Dash;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.User;
 import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,10 +54,18 @@ public class RegistrationActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
+    /**
+     * Starts the login activity if the user decides they don't need to register
+     * @param view the login button
+     */
     public void onLoginOptPressed(View view){
         startActivity(new Intent(this, LoginActivity.class));
     }
 
+    /**
+     * Creates a new user account with the provided information and adds the user to Firebase
+     * @param view the registration button
+     */
     public void onRegistration(View view) {
         TextView errorMsg = findViewById(R.id.wrong_credentials_text);
         errorMsg.setText("");

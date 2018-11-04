@@ -63,7 +63,8 @@ public class LocationDetailActivity extends AppCompatActivity {
                 String locationid = Integer.toString(item_id);
                 Log.d("MYAPP", "populating fragment with id: " + locationid);
                 //locationid = "1";
-                FirebaseDatabase.getInstance().getReference().child("locations").child(locationid).addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("locations").child(locationid)
+                        .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Get Post object and use the values to update the UI

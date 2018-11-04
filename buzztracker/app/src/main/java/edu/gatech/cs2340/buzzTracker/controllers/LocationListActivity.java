@@ -37,6 +37,7 @@ public class LocationListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SimpleItemRecyclerViewAdapter adapter;
     private List<Location> locations;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +73,18 @@ public class LocationListActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Represents a recycler view adapter for the list of locations
+     */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Location> mValues;
 
+        /**
+         * constructor for the SimpleItemRecyclerViewAdapter
+         * @param items the list of locations that will be displayed
+         */
         public SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }

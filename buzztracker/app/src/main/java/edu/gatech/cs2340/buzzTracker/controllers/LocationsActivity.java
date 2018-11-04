@@ -30,19 +30,34 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
         setContentView(R.layout.activity_locations);
     }
 
+    /**
+     * Starts the registration activity
+     * @param view the registration button
+     */
     public void onRegistrationOptPressed(View view){
         startActivity(new Intent(this, RegistrationActivity.class));
     }
 
+    /**
+     * Starts the login activity
+     * @param view the login button
+     */
     public void onLoginOptPressed(View view){
         startActivity(new Intent(this, LoginActivity.class));
     }
 
+    /**
+     * Represents a recycler view adapter for the list of locations
+     */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Location> mValues;
 
+        /**
+         * constructor for the SimpleItemRecyclerViewAdapter
+         * @param items the list of locations that will be displayed
+         */
         public SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
@@ -87,11 +102,18 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
             return mValues.size();
         }
 
+        /**
+         * A class that holds a view, a text view, and a Location
+         */
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mContentView;
             public Location mItem;
 
+            /**
+             * constructor for the ViewHolder class
+             * @param view the view that this class holds
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
