@@ -24,11 +24,6 @@ public class DataItemDetailFragment extends AppCompatActivity {
     private DatabaseReference itemDatabase;
 
     /**
-     * The dummy content this fragment is presenting.
-     */
-    private Item mItem;
-
-    /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
@@ -40,7 +35,10 @@ public class DataItemDetailFragment extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        mItem  = (Item) bundle.getSerializable("Item");
+        /*
+      The dummy content this fragment is presenting.
+     */
+        Item mItem = (Item) bundle.getSerializable("Item");
 
         final TextView categoryTextView = (TextView) findViewById(R.id.text_view_category);
         final TextView shortDescriptionTextView = (TextView) findViewById(R.id.text_view_short);

@@ -32,7 +32,6 @@ public class AddSizeItemActivity extends AppCompatActivity {
     private Location myLocation;
     private DatabaseReference mDatabase;
     private DatabaseReference lDatabase;
-    private FirebaseAuth mAuth;
     private String category;
 
     @Override
@@ -53,7 +52,7 @@ public class AddSizeItemActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         myLocation = (Location) bundle.getSerializable("Location");
         category = (String) bundle.getSerializable("Category");
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("items");
         lDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
         Log.d("MYAPP", "Into the Add Size Item Activity Page");

@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private DatabaseReference locationDatabase;
     private ArrayList<Location> locations;
     int temp = 0;
 
@@ -41,7 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
+        DatabaseReference locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {

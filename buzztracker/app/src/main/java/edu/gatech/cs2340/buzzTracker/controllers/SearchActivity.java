@@ -29,7 +29,6 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
  */
 public class SearchActivity extends AppCompatActivity {
 
-    private DatabaseReference locationDatabase;
     private EditText shortField;
 
     private Spinner categoryFilterSpinner;
@@ -42,7 +41,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
+        DatabaseReference locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
 
         List<Object> categories = new ArrayList<>();
         categories.add("All Categories");

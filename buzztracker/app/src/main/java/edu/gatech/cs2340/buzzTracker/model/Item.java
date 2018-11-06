@@ -116,7 +116,7 @@ public class Item implements Serializable {
      * getter method for the item's location
      * @return the item's location
      */
-    public int getLocationId() {return locationId;};
+    public int getLocationId() {return locationId; }
 
     @Override
     public String toString() {

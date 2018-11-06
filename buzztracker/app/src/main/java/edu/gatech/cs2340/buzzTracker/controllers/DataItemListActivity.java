@@ -29,25 +29,20 @@ import java.util.List;
  */
 public class DataItemListActivity extends AppCompatActivity {
 
-    private DatabaseReference itemDatabase;
-    private RecyclerView recyclerView;
-    private SimpleItemRecyclerViewAdapter adapter;
-    private List<Item> items;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataitem_list);
-        itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
+        DatabaseReference itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
 
-        recyclerView = findViewById(R.id.dataitem_list);
+        RecyclerView recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        items = (ArrayList<Item>) bundle.getSerializable("ItemList");
+        List<Item> items = (ArrayList<Item>) bundle.getSerializable("ItemList");
         if (items != null) {
-            adapter = new SimpleItemRecyclerViewAdapter(items);
+            SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(items);
             recyclerView.setAdapter(adapter);
         }
     }

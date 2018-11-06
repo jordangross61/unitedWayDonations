@@ -21,10 +21,8 @@ public enum UserRights {
 //    boolean _deleteUser;
 //    boolean _addAdmin;
 
-    private String _userRights;
-
     UserRights (String userRights) {
-        _userRights = userRights;
+        String _userRights = userRights;
     }
 
 //    UserRights(boolean writeShelter, boolean adduser, boolean deleteuser, boolean addadmin) {

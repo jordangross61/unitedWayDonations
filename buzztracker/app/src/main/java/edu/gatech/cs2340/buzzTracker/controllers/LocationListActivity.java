@@ -33,8 +33,6 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
  */
 public class LocationListActivity extends AppCompatActivity {
 
-    private DatabaseReference locationDatabase;
-    private RecyclerView recyclerView;
     private SimpleItemRecyclerViewAdapter adapter;
     private List<Location> locations;
 
@@ -42,9 +40,9 @@ public class LocationListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
-        locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
+        DatabaseReference locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
 
-        recyclerView = findViewById(R.id.dataitem_list);
+        RecyclerView recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;
 
         locations = new ArrayList<>();

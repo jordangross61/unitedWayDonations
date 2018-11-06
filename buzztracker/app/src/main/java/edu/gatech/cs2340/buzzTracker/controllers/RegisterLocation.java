@@ -27,7 +27,6 @@ public class RegisterLocation extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private User myEmployee;
-    private DatabaseReference locDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,7 @@ public class RegisterLocation extends AppCompatActivity {
         errorMsg.setText("");
 
         String location = locationField.getText().toString();
-        locDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(location);
+        DatabaseReference locDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(location);
         locDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {

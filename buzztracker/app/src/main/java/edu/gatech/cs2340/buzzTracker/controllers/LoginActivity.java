@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //persistence work for firebase
     private FirebaseAuth mAuth;
-    private DatabaseReference userDatabase;
     private DatabaseReference locDatabase;
 
     @Override
@@ -86,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param userid the id of the user who is logging in
      */
     public void showScreenBasedOnRights(String userid) {
-        userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {

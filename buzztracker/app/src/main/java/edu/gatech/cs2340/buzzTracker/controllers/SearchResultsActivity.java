@@ -19,18 +19,15 @@ import edu.gatech.cs2340.buzzTracker.model.Item;
  */
 public class SearchResultsActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
-    private ArrayList<Item> items;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        items = (ArrayList<Item>) bundle.getSerializable("QueriedItems");
+        ArrayList<Item> items = (ArrayList<Item>) bundle.getSerializable("QueriedItems");
 
         if (items != null) {
             ArrayAdapter adapter = new ArrayAdapter<Item>(this, R.layout.activity_search_results_item, items);
