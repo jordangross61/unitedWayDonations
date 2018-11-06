@@ -50,12 +50,20 @@ public class DataItemDetailFragment extends AppCompatActivity {
         final TextView valueTextView = (TextView) findViewById(R.id.text_view_value);
         final TextView commentTextView = (TextView) findViewById(R.id.text_view_comments);
 
-        categoryTextView.setText("Category : " + mItem.getCategory().toString());
-        shortDescriptionTextView.setText("Short Description : " + mItem.getShortDescription());
-        longDescriptionTextView.setText("Long Description : " + mItem.getLongDescription());
-        timeTextView.setText("Time Entered: " + mItem.getTime());
-        sizeTextView.setText("Size: " + mItem.getSize());
-        valueTextView.setText("Value: $" + mItem.getValue());
-        commentTextView.setText("Additional Comments: " + mItem.getComments());
+        String category = "Category : " + mItem.getCategory().toString();
+        String shortDes = "Short Description : " + mItem.getShortDescription();
+        String longDes = "Long Description : " + mItem.getLongDescription();
+        String time = "Time Entered: " + mItem.getTime();
+        String size = "Size: " + mItem.getSize();
+        String value = "Value: $" + mItem.getValue();
+        String comments = "Additional Comments: " + mItem.getComments();
+
+        categoryTextView.setText(category);
+        shortDescriptionTextView.setText(shortDes);
+        longDescriptionTextView.setText(longDes);
+        timeTextView.setText(time);
+        sizeTextView.setText(size);
+        valueTextView.setText(value);
+        commentTextView.setText(comments);
     }
 }

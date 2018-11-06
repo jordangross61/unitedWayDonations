@@ -16,7 +16,7 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
 /**
  * A fragment representing a single DataItem detail screen.
  * This fragment is either contained in a {@link DataItemListActivity}
- * in two-pane mode (on tablets) or a {@link DataItemDetailActivity}
+ * in two-pane mode (on tablets) or a {@link DataItemDetailFragment}
  * on handsets.
  */
 public class LocationDetailFragment extends Fragment {
@@ -69,11 +69,14 @@ public class LocationDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             Log.d("MYAPP", "fragment had location object");
-            ((TextView) rootView.findViewById(R.id.key)).setText("Store Number: " + mItem.getKey());
+
+            String storeNum = "Store Number: " + mItem.getKey();
+            String address = mItem.getCity() + ", " + mItem.getState() + " " + mItem.getZipcode();
+
+            ((TextView) rootView.findViewById(R.id.key)).setText(storeNum);
             ((TextView) rootView.findViewById(R.id.name)).setText( mItem.getName());
             ((TextView) rootView.findViewById(R.id.addressLine1)).setText(mItem.getStreet());
-            ((TextView) rootView.findViewById(R.id.addressLine2)).setText(mItem.getCity() + ", " +
-                    mItem.getState() + " " + mItem.getZipcode());
+            ((TextView) rootView.findViewById(R.id.addressLine2)).setText(address);
             ((TextView) rootView.findViewById(R.id.type)).setText(mItem.getType());
             ((TextView) rootView.findViewById(R.id.phone)).setText(mItem.getPhone());
             ((TextView) rootView.findViewById(R.id.website)).setText(mItem.getWebsite());

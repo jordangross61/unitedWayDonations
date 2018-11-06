@@ -78,9 +78,10 @@ public class DataItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
+            String contentText = mValues.get(position).getCategory().toString() + ": " +
+                    mValues.get(position).getShortDescription();
             holder.mItem = mValues.get(position);
-            holder.mContentView.setText(mValues.get(position).getCategory().toString() + ": " +
-                    mValues.get(position).getShortDescription());
+            holder.mContentView.setText(contentText);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
