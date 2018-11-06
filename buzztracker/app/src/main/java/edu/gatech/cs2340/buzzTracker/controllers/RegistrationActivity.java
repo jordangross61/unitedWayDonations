@@ -92,7 +92,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             }
                         } else {
                             TextView errorMsg = findViewById(R.id.wrong_credentials_text);
-                            errorMsg.setText("Error");
+                            String error = "Error";
+                            errorMsg.setText(error);
                         }
                     }
                 });

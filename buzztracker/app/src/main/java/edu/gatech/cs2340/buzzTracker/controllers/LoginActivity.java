@@ -64,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                                     //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                 } else {
                                     TextView errorMsg = findViewById(R.id.wrong_credentials_text);
-                                    errorMsg.setText("Error");
+                                    String error = "Error";
+                                    errorMsg.setText(error);
                                 }
                             }
                         });
