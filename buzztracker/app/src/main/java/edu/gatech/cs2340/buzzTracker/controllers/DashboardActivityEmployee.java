@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -70,7 +71,7 @@ public class DashboardActivityEmployee extends AppCompatActivity {
         mDatabase.child("locations").child(Integer.toString(myLocation.getKey()))
                 .addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing the specific data at a location");
                 Location loc = snapshot.getValue(Location.class);
 
@@ -82,7 +83,7 @@ public class DashboardActivityEmployee extends AppCompatActivity {
                 startActivity(i);
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving specific location has an error");
             }
         });

@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -66,7 +67,7 @@ public class LocationDetailActivity extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference().child("locations").child(locationid)
                         .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         // Get Post object and use the values to update the UI
                         Log.d("MYAPP", "creating fragment");
                         Location mItem = dataSnapshot.getValue(Location.class);
@@ -83,7 +84,7 @@ public class LocationDetailActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
                         // Getting Post failed, log a message
                         // [START_EXCLUDE]
                         int x = 0;

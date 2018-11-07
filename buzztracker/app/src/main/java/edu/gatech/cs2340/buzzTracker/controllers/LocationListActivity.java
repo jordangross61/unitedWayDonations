@@ -3,6 +3,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -48,11 +49,11 @@ public class LocationListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 getLocationDataToUpdateView(snapshot);
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving from database has error");
             }
         });

@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("MYAPP", "Goes into data snapshot");
                 User user = snapshot.getValue(User.class);
 
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     locDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(locKey);
                     locDatabase.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(DataSnapshot snapshot) {
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Log.d("MYAPP", "Grabs the updated version of the location");
                             Location loc = snapshot.getValue(Location.class);
                             Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                         @Override
-                        public void onCancelled(DatabaseError DatabaseError) {
+                        public void onCancelled(@NonNull DatabaseError DatabaseError) {
                             Log.d("MYAPP", "Retrieving specific location has an error");
                         }
                     });
@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving from database has error");
             }
         });

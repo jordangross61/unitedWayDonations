@@ -11,7 +11,7 @@ public enum ItemType {
     HOUSEHOLD("Household"),
     OTHER("Other");
 
-    private String category;
+    private final String category;
 
     ItemType (String category) {
         this.category = category;

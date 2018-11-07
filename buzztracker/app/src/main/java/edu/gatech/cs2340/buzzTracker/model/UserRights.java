@@ -18,11 +18,6 @@ public enum UserRights {
 
     private String _userRights;
 
-//    boolean _writeShelter;
-//    boolean _addUser;
-//    boolean _deleteUser;
-//    boolean _addAdmin;
-
     UserRights (String userRights) {
         String _userRights = userRights;
     }

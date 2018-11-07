@@ -47,11 +47,10 @@ public class AddSizeItemActivity extends AppCompatActivity {
         commentField = findViewById(R.id.comments_field);
         sizeSpinner = findViewById(R.id.size_spinner);
 
-        if (Size.values().length != 0) {
-            ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Size.values());
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            sizeSpinner.setAdapter(adapter);
-        }
+        ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Size.values());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sizeSpinner.setAdapter(adapter);
+
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();

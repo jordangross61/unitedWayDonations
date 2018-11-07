@@ -4,6 +4,7 @@ import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         DatabaseReference locationDatabase = FirebaseDatabase.getInstance().getReference().child("locations");
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing all location keys");
                 locations = new ArrayList<>();
 
@@ -60,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving specific location has an error");
             }
         });

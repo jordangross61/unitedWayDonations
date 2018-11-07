@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -58,7 +59,7 @@ public class RegisterLocation extends AppCompatActivity {
         DatabaseReference locDatabase = FirebaseDatabase.getInstance().getReference().child("locations").child(location);
         locDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("MYAPP", "Registering Location for an employee");
                 Location loc = snapshot.getValue(Location.class);
                 myEmployee.setLocation(loc);
@@ -70,7 +71,7 @@ public class RegisterLocation extends AppCompatActivity {
                 startActivity(i);
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving specific location has an error");
             }
         });

@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -51,17 +52,15 @@ public class SearchActivity extends AppCompatActivity {
 
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
 
-        if (categories.size() != 0) {
-            ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
-            adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            categoryFilterSpinner.setAdapter(adapter_category);
-        }
+        ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
+        adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoryFilterSpinner.setAdapter(adapter_category);
 
         shortField = findViewById(R.id.editText_search);
 
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing all location keys");
                 ArrayList<String> locations = new ArrayList<>();
                 locations.add("All Locations");
@@ -79,7 +78,7 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError DatabaseError) {
+            public void onCancelled(@NonNull DatabaseError DatabaseError) {
                 Log.d("MYAPP", "Retrieving specific location has an error");
             }
         });
@@ -127,7 +126,7 @@ public class SearchActivity extends AppCompatActivity {
         query.addValueEventListener( new ValueEventListener()
         {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 ArrayList<Item> queriedItems = new ArrayList<>();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
@@ -151,7 +150,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError)
+            public void onCancelled(@NonNull DatabaseError databaseError)
             {
 
             }
