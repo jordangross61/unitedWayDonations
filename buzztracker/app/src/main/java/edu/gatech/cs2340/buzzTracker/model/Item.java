@@ -57,7 +57,7 @@ public class Item implements Serializable {
      * @param time a long value representing a time
      * @return the formatted date
      */
-    public String makeTime(Long time) {
+    private String makeTime(Long time) {
         Date date = new Date(time);
         SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss.SSS");
         formatter.setTimeZone(TimeZone.getTimeZone("EST"));

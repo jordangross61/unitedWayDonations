@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
@@ -30,7 +31,7 @@ public class DashboardActivityEmployee extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_employee);
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        myLocation = (Location) bundle.getSerializable("Location");
+        myLocation = (Location) Objects.requireNonNull(bundle).getSerializable("Location");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
@@ -73,7 +74,7 @@ public class DashboardActivityEmployee extends AppCompatActivity {
                 Log.d("MYAPP", "Grabbing the specific data at a location");
                 Location loc = snapshot.getValue(Location.class);
 
-                ArrayList<Item> items = loc.getItemList();
+                ArrayList<Item> items = Objects.requireNonNull(loc).getItemList();
                 Intent i = new Intent(getApplicationContext(), DataItemListActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("ItemList", items);

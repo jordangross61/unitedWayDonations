@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
@@ -39,7 +41,7 @@ public class AddItemActivity extends AppCompatActivity {
         commentField = findViewById(R.id.comments_field);
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        myLocation = (Location) bundle.getSerializable("Location");
+        myLocation = (Location) Objects.requireNonNull(bundle).getSerializable("Location");
         category = (String) bundle.getSerializable("Category");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("items");
@@ -62,7 +64,7 @@ public class AddItemActivity extends AppCompatActivity {
                 comments, myLocation.getKey(), null);
         myLocation.setItemInList(item);
         String itemKey = mDatabase.push().getKey();
-        mDatabase.child(itemKey).setValue(item);
+        mDatabase.child(Objects.requireNonNull(itemKey)).setValue(item);
         lDatabase.child(Integer.toString(myLocation.getKey())).setValue(myLocation);
         Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
         Bundle bundle = new Bundle();

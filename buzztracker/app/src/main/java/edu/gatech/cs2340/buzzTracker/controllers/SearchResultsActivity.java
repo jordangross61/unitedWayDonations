@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
@@ -27,10 +28,10 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        ArrayList<Item> items = (ArrayList<Item>) bundle.getSerializable("QueriedItems");
+        ArrayList<Item> items = (ArrayList<Item>) Objects.requireNonNull(bundle).getSerializable("QueriedItems");
 
         if (items != null) {
-            ArrayAdapter adapter = new ArrayAdapter<Item>(this, R.layout.activity_search_results_item, items);
+            ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_search_results_item, items);
 
             ListView listView = (ListView) findViewById(R.id.item_list);
             listView.setAdapter(adapter);

@@ -46,9 +46,11 @@ public class RegistrationActivity extends AppCompatActivity {
         nameField = findViewById(R.id.name_field);
         rightsSpinner = findViewById(R.id.access_spinner);
 
-        ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, UserRights.values());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        rightsSpinner.setAdapter(adapter);
+        if (UserRights.values().length != 0) {
+            ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, UserRights.values());
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            rightsSpinner.setAdapter(adapter);
+        }
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();

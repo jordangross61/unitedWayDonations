@@ -45,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing all location keys");
-                locations = new ArrayList<Location>();
+                locations = new ArrayList<>();
 
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Location loc = postSnapshot.getValue(Location.class);

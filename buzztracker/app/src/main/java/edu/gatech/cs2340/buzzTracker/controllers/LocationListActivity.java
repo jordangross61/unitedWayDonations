@@ -24,12 +24,10 @@ import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 
 /**
- * An activity representing a list of Data Items. This activity
- * has different presentations for handset and tablet-size devices. On
+ * An activity representing a list of Data Items. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link DataItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * lead to a {@link DataItemDetailFragment} representing
+ * item details.
  */
 public class LocationListActivity extends AppCompatActivity {
 
@@ -83,7 +81,7 @@ public class LocationListActivity extends AppCompatActivity {
          * constructor for the SimpleItemRecyclerViewAdapter
          * @param items the list of locations that will be displayed
          */
-        public SimpleItemRecyclerViewAdapter(List<Location> items) {
+        SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
 
@@ -117,11 +115,11 @@ public class LocationListActivity extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mContentView;
-            public Location mItem;
+            final View mView;
+            final TextView mContentView;
+            Location mItem;
 
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.content);

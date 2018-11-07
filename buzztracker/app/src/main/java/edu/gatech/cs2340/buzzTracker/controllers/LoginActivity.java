@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 //import com.google.firebase.quickstart.auth.R;
 /**
  * This is the Controller for the Login View
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    String userid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
                                     showScreenBasedOnRights(userid);
                                     //startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                                 } else {
@@ -85,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
      * user-type rights
      * @param userid the id of the user who is logging in
      */
-    public void showScreenBasedOnRights(String userid) {
+    private void showScreenBasedOnRights(String userid) {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("MYAPP", "Goes into data snapshot");
                 User user = snapshot.getValue(User.class);
 
-                if (user.getRights().equals(UserRights.USER)) {
+                if (Objects.requireNonNull(user).getRights().equals(UserRights.USER)) {
                     Log.d("MYAPP", "Gets into proper user rights");
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 } else if (user.getRights().equals(UserRights.EMPLOYEE)) {

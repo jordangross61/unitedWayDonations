@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
@@ -28,12 +30,16 @@ public class AddCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
         categorySpinner = findViewById(R.id.category_spinner);
-        ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(adapter);
+
+        if (ItemType.values().length != 0) {
+            ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ItemType.values());
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            categorySpinner.setAdapter(adapter);
+        }
+
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        myLocation = (Location) bundle.getSerializable("Location");
+        myLocation = (Location) Objects.requireNonNull(bundle).getSerializable("Location");
     }
 
     /**

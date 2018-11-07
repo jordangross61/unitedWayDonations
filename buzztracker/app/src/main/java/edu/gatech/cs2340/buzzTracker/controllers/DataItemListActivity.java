@@ -18,14 +18,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * An activity representing a list of Data Items. This activity
- * has different presentations for handset and tablet-size devices. On
+ * An activity representing a list of Data Items. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link DataItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * lead to a {@link DataItemDetailFragment} representing
+ * item details.
  */
 public class DataItemListActivity extends AppCompatActivity {
 
@@ -40,7 +39,7 @@ public class DataItemListActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        List<Item> items = (ArrayList<Item>) bundle.getSerializable("ItemList");
+        List<Item> items = (ArrayList<Item>) Objects.requireNonNull(bundle).getSerializable("ItemList");
         if (items != null) {
             SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(items);
             recyclerView.setAdapter(adapter);
@@ -60,7 +59,7 @@ public class DataItemListActivity extends AppCompatActivity {
          * 
          * @param items the list of items
          */
-        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+        SimpleItemRecyclerViewAdapter(List<Item> items) {
             mValues = items;
         }
 
@@ -99,15 +98,15 @@ public class DataItemListActivity extends AppCompatActivity {
          * Class that holds a view and an item
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mContentView;
-            public Item mItem;
+            final View mView;
+            final TextView mContentView;
+            Item mItem;
 
             /**
              * constructor for the ViewHolder class
              * @param view the view that this ViewHolder is holding
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.content);

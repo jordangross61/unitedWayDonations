@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.User;
@@ -40,7 +42,7 @@ public class RegisterLocation extends AppCompatActivity {
         Log.d("MYAPP", "Made it to the registering location page");
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        myEmployee = (User) bundle.getSerializable("User");
+        myEmployee = (User) Objects.requireNonNull(bundle).getSerializable("User");
     }
 
     /**
@@ -60,7 +62,7 @@ public class RegisterLocation extends AppCompatActivity {
                 Log.d("MYAPP", "Registering Location for an employee");
                 Location loc = snapshot.getValue(Location.class);
                 myEmployee.setLocation(loc);
-                mDatabase.child("users").child(mAuth.getUid()).setValue(myEmployee);
+                mDatabase.child("users").child(Objects.requireNonNull(mAuth.getUid())).setValue(myEmployee);
                 Intent i=new Intent(getApplicationContext(), DashboardActivityEmployee.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Location", loc);

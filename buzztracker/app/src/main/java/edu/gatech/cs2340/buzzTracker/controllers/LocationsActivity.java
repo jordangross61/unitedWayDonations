@@ -103,15 +103,15 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
          * A class that holds a view, a text view, and a Location
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mContentView;
-            public Location mItem;
+            final View mView;
+            final TextView mContentView;
+            Location mItem;
 
             /**
              * constructor for the ViewHolder class
              * @param view the view that this class holds
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.content);

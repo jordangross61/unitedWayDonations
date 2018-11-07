@@ -110,35 +110,19 @@ public class User implements Serializable {
     boolean checkPassword(String pwd) {
         return password.equals(pwd);
     }
-    /**
-     * Check whether user can add a new user or not
-     * @return true if able to add user
-     */
-//    public boolean canAddUser() {
-//        return _rights.canAddNewUser();
-//    }
+    //    public boolean canAddUser() {
+    //        return _rights.canAddNewUser();
+    //    }
 
-    /**
-     * Check whether the user can add or edit existing shelter information
-     * @return true if able to add shelter
-     */
-//    public boolean canEditShelter() {
-//        return _rights.canAddShelter();
-//    }
+    //    public boolean canEditShelter() {
+    //        return _rights.canAddShelter();
+    //    }
 
-    /**
-     * Check whether user can add an administrator type
-     * @return true if able to add admin
-     */
-//    public boolean canAddAdmin() {
-//        return _rights.canAddAdmin();
-//    }
+    //    public boolean canAddAdmin() {
+    //        return _rights.canAddAdmin();
+    //    }
 
-    /**
-     * Check whether user can delete a user from system
-     * @return true if able to delete the user
-     */
-//    public boolean canDeleteUser() {
-//        return _rights.canDeleteUser();
-//    }
+    //    public boolean canDeleteUser() {
+    //        return _rights.canDeleteUser();
+    //    }
 }

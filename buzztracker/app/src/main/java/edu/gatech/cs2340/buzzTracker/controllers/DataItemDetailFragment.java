@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.Objects;
+
 /**
  * A fragment representing a single DataItem detail screen.
- * This fragment is either contained in a {@link DataItemListActivity}
- * in two-pane mode (on tablets) or a {@link DataItemDetailActivity}
- * on handsets.
+ * This fragment is contained in a {@link DataItemListActivity}
+ * or a {@link DataItemDetailFragment}
  */
 public class DataItemDetailFragment extends AppCompatActivity {
     /**
@@ -38,7 +39,7 @@ public class DataItemDetailFragment extends AppCompatActivity {
         /*
       The dummy content this fragment is presenting.
      */
-        Item mItem = (Item) bundle.getSerializable("Item");
+        Item mItem = (Item) Objects.requireNonNull(bundle).getSerializable("Item");
 
         final TextView categoryTextView = (TextView) findViewById(R.id.text_view_category);
         final TextView shortDescriptionTextView = (TextView) findViewById(R.id.text_view_short);
@@ -48,7 +49,7 @@ public class DataItemDetailFragment extends AppCompatActivity {
         final TextView valueTextView = (TextView) findViewById(R.id.text_view_value);
         final TextView commentTextView = (TextView) findViewById(R.id.text_view_comments);
 
-        String category = "Category : " + mItem.getCategory().toString();
+        String category = "Category : " + Objects.requireNonNull(mItem).getCategory().toString();
         String shortDes = "Short Description : " + mItem.getShortDescription();
         String longDes = "Long Description : " + mItem.getLongDescription();
         String time = "Time Entered: " + mItem.getTime();

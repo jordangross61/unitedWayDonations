@@ -17,7 +17,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
@@ -45,34 +47,36 @@ public class SearchActivity extends AppCompatActivity {
 
         List<Object> categories = new ArrayList<>();
         categories.add("All Categories");
-        for( ItemType s : ItemType.values()) {
-            categories.add(s);
-        }
+        categories.addAll(Arrays.asList(ItemType.values()));
 
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
-        ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
-        adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categoryFilterSpinner.setAdapter(adapter_category);
+
+        if (categories.size() != 0) {
+            ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
+            adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            categoryFilterSpinner.setAdapter(adapter_category);
+        }
 
         shortField = findViewById(R.id.editText_search);
-
-
 
         locationDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Log.d("MYAPP", "Grabbing all location keys");
-                ArrayList<String> locations = new ArrayList<String>();
+                ArrayList<String> locations = new ArrayList<>();
                 locations.add("All Locations");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Location loc = postSnapshot.getValue(Location.class);
-                    locations.add(Integer.toString(loc.getKey()));
+                    locations.add(Integer.toString(Objects.requireNonNull(loc).getKey()));
                 }
 
                 locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
-                adapter_location = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, locations);
-                adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                locationFilterSpinner.setAdapter(adapter_location);
+
+                if (locations.size() != 0) {
+                    adapter_location = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, locations);
+                    adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    locationFilterSpinner.setAdapter(adapter_location);
+                }
             }
             @Override
             public void onCancelled(DatabaseError DatabaseError) {
@@ -119,23 +123,23 @@ public class SearchActivity extends AppCompatActivity {
      * @param category the category of items we're searching for
      * @param location the location where we want the item to be located
      */
-    public void runQuery(Query query, final Object category, final String location) {
+    private void runQuery(Query query, final Object category, final String location) {
         query.addValueEventListener( new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                ArrayList<Item> queriedItems = new ArrayList<Item>();
+                ArrayList<Item> queriedItems = new ArrayList<>();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                 {
                     Item item = postSnapshot.getValue(Item.class);
                     if ((location.equals("All Locations")) && (category.equals("All Categories"))) {
                         queriedItems.add(item);
-                    } else if ((category.equals("All Categories")) && (item.getLocationId() == Integer.parseInt(location))) {
+                    } else if ((category.equals("All Categories")) && (Objects.requireNonNull(item).getLocationId() == Integer.parseInt(location))) {
                         queriedItems.add(item);
-                    } else if ((location.equals("All Locations")) && (item.getCategory().equals(category))) {
+                    } else if ((location.equals("All Locations")) && (Objects.requireNonNull(item).getCategory().equals(category))) {
                         queriedItems.add(item);
-                    } else if ((item.getLocationId() == Integer.parseInt(location)) && (item.getCategory().equals(category))) {
+                    } else if ((Objects.requireNonNull(item).getLocationId() == Integer.parseInt(location)) && (item.getCategory().equals(category))) {
                         queriedItems.add(item);
                     }
                 }
