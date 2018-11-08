@@ -157,8 +157,8 @@ public class Location implements Serializable{
     }
 
     public void removeItemInList(Item myItem) {
-        if (this.itemList == null) {
-            throw new IllegalArgumentException("Cannot take in null item");
+        if (myItem == null) {
+            throw new IllegalArgumentException();
         }
         if (myItem != null) {
             this.itemList.remove(myItem);
@@ -179,7 +179,7 @@ public class Location implements Serializable{
         ArrayList<Item> temp = new ArrayList<>();
 
         if (this.itemList == null) {
-            throw new IllegalArgumentException("Cannot take in null item");
+            throw new IllegalArgumentException();
         }
 
         for (Item item : itemList) {
