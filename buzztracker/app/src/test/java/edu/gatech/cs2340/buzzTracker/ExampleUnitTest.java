@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.M4;
+package edu.gatech.cs2340.buzzTracker;
 
 import org.junit.Test;
 
