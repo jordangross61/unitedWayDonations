@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.buzzTracker.model;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -177,4 +175,31 @@ public class Location implements Serializable{
         return false;
     }
 
+    public ArrayList<Item> returnAllItemsWithSize() {
+        ArrayList<Item> temp = new ArrayList<>();
+
+        if (this.itemList == null) {
+            throw new IllegalArgumentException("Cannot take in null item");
+        }
+
+        for (Item item : itemList) {
+            if (item.getCategory().equals(ItemType.CLOTHING)) {
+                temp.add(item);
+            }
+        }
+        return temp;
+    }
+
+    public void removeCategory(ItemType myItemType) {
+        if (myItemType == null) {
+            throw new IllegalArgumentException("Cannot take in null category");
+        }
+        if (myItemType != null) {
+            for (int i = 0; i < itemList.size(); i++) {
+                if (itemList.get(i).getCategory().equals(myItemType)) {
+                    itemList.remove(i);
+                }
+            }
+        }
+    }
 }
