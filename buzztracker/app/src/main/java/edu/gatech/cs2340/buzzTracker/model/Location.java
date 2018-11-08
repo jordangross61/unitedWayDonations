@@ -158,4 +158,23 @@ public class Location implements Serializable{
         }
     }
 
+    public void removeItemInList(Item myItem) {
+        if (this.itemList == null) {
+            throw new IllegalArgumentException("Cannot take in null item");
+        }
+        if (myItem != null) {
+            this.itemList.remove(myItem);
+        }
+    }
+
+    public boolean checkItemInList(Item myItem) {
+        if (this.itemList == null) {
+            throw new IllegalArgumentException("Cannot take in null item");
+        }
+        if (myItem != null) {
+            return itemList.contains(myItem);
+        }
+        return false;
+    }
+
 }
