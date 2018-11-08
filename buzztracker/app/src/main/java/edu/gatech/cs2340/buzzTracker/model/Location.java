@@ -153,8 +153,10 @@ public class Location implements Serializable{
         if (this.itemList == null) {
             this.itemList = new ArrayList<>();
         }
-        Log.d("MYAPP", "Adding item to our location's item list");
-        this.itemList.add(myItem);
+        if (myItem != null) {
+            Log.d("MYAPP", "Adding item to our location's item list");
+            this.itemList.add(myItem);
+        }
     }
 
 }
