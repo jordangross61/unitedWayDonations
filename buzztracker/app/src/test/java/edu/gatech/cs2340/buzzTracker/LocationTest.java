@@ -9,6 +9,12 @@ import static org.junit.Assert.assertTrue;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 
+/**
+ * Unit test for the setItemInList method in the Location class. Tests for null and non-null list,
+ * as well as null and non-null Items.
+ *
+ * @author Kate Schaffer
+ */
 public class LocationTest {
 
     private Location l;
@@ -23,19 +29,30 @@ public class LocationTest {
 
     @Test
     public void setItemInListNotNull() {
+        assertTrue(l.getItemList().isEmpty());
         l.setItemInList(new Item());
         assertFalse(l.getItemList().isEmpty());
     }
 
     @Test
     public void setItemInNullList() {
+        assertTrue(nullItemList.getItemList() == null);
         nullItemList.setItemInList(new Item());
         assertFalse(nullItemList.getItemList().isEmpty());
     }
 
     @Test
     public void putNullInList() {
+        assertTrue(l.getItemList().isEmpty());
         l.setItemInList(null);
         assertTrue(l.getItemList().isEmpty());
+    }
+
+    @Test
+    public void putNullInNullList() {
+        assertTrue(nullItemList.getItemList() == null);
+        nullItemList.setItemInList(null);
+        assertTrue(nullItemList.getItemList() != null);
+        assertTrue(nullItemList.getItemList().isEmpty());
     }
 }
