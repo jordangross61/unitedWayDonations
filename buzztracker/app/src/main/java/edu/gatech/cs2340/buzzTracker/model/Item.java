@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -59,13 +60,13 @@ public class Item implements Serializable {
      */
     private String makeTime(Long time) {
         Date date = new Date(time);
-        SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss.SSS");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS", Locale.ENGLISH);
         formatter.setTimeZone(TimeZone.getTimeZone("EST"));
         return formatter.format(date);
     }
 
     /**
-     * getter method for the item's ID
+     * getter method for the item's id
      * @return the item's id
      */
     public int getId() { return id; }

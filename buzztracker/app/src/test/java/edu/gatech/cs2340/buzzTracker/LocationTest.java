@@ -3,11 +3,11 @@ package edu.gatech.cs2340.buzzTracker;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.gatech.cs2340.buzzTracker.model.Item;
+import edu.gatech.cs2340.buzzTracker.model.Location;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.Item;
 
 /**
  * Unit test for the setItemInList method in the Location class. Tests for null and non-null list,

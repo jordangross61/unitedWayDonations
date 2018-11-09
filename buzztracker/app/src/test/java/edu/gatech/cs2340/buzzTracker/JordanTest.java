@@ -8,6 +8,11 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Unit test for the removeItemInList method in the Location class.
+ *
+ * @author Jordan Gross
+ */
 public class JordanTest {
 
     private Location l;
