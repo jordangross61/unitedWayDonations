@@ -10,19 +10,5 @@ package edu.gatech.cs2340.buzzTracker.model;
  */
 
 public enum UserRights {
-    // GUEST("G"),
-    USER("U"),
-    EMPLOYEE("E"),
-    MANAGER("M"),
-    ADMIN("A");
-
-    private String _userRights;
-
-    UserRights (String userRights) {
-        String _userRights = userRights;
-    }
-
-    public String getUserRights() {
-        return _userRights;
-    }
+    USER, EMPLOYEE, MANAGER, ADMIN
 }
