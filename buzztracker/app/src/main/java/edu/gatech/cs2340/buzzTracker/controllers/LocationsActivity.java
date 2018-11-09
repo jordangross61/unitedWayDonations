@@ -114,7 +114,7 @@ public class LocationsActivity extends AppCompatActivity implements Serializable
             ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

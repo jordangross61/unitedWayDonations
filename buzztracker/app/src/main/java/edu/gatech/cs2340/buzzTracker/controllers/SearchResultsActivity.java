@@ -33,7 +33,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         if (items != null) {
             ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_search_results_item, items);
 
-            ListView listView = (ListView) findViewById(R.id.item_list);
+            ListView listView = findViewById(R.id.item_list);
             listView.setAdapter(adapter);
         }
     }

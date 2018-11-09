@@ -109,7 +109,7 @@ public class DataItemListActivity extends AppCompatActivity {
             ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

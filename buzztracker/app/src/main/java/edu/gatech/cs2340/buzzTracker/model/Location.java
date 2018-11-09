@@ -164,9 +164,8 @@ public class Location implements Serializable{
         if (myItem == null) {
             throw new IllegalArgumentException();
         }
-        if (myItem != null) {
-            this.itemList.remove(myItem);
-        }
+
+        this.itemList.remove(myItem);
     }
 
     /**

@@ -41,13 +41,13 @@ public class DataItemDetailFragment extends AppCompatActivity {
      */
         Item mItem = (Item) Objects.requireNonNull(bundle).getSerializable("Item");
 
-        final TextView categoryTextView = (TextView) findViewById(R.id.text_view_category);
-        final TextView shortDescriptionTextView = (TextView) findViewById(R.id.text_view_short);
-        final TextView longDescriptionTextView = (TextView) findViewById(R.id.text_view_long);
-        final TextView timeTextView = (TextView) findViewById(R.id.text_view_time);
-        final TextView sizeTextView = (TextView) findViewById(R.id.text_view_size);
-        final TextView valueTextView = (TextView) findViewById(R.id.text_view_value);
-        final TextView commentTextView = (TextView) findViewById(R.id.text_view_comments);
+        final TextView categoryTextView = findViewById(R.id.text_view_category);
+        final TextView shortDescriptionTextView = findViewById(R.id.text_view_short);
+        final TextView longDescriptionTextView = findViewById(R.id.text_view_long);
+        final TextView timeTextView = findViewById(R.id.text_view_time);
+        final TextView sizeTextView = findViewById(R.id.text_view_size);
+        final TextView valueTextView = findViewById(R.id.text_view_value);
+        final TextView commentTextView = findViewById(R.id.text_view_comments);
 
         String category = "Category : " + Objects.requireNonNull(mItem).getCategory().toString();
         String shortDes = "Short Description : " + mItem.getShortDescription();
