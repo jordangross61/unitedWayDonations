@@ -32,7 +32,7 @@ public class DataItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataitem_list);
-        DatabaseReference itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
+        // DatabaseReference itemDatabase = FirebaseDatabase.getInstance().getReference().child("items");
 
         RecyclerView recyclerView = findViewById(R.id.dataitem_list);
         assert recyclerView != null;

@@ -22,7 +22,7 @@ public class DataItemDetailFragment extends AppCompatActivity {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    private DatabaseReference itemDatabase;
+    // private DatabaseReference itemDatabase;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the

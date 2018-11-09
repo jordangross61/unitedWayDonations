@@ -26,7 +26,8 @@ public class LocationDetailFragment extends Fragment {
      */
     public static final String ARG_ITEM_ID = "item_id";
     private static final String ARG_LOCATION_ID = "loc_id";
-    private DatabaseReference locationDatabase;
+    // private DatabaseReference locationDatabase;
+
     /**
      * The dummy content this fragment is presenting.
      */

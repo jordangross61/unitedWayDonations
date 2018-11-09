@@ -24,7 +24,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        // DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();

@@ -87,7 +87,6 @@ public class LocationDetailActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         // Getting Post failed, log a message
                         // [START_EXCLUDE]
-                        int x = 0;
                         Log.d("MYAPP", "Retrieving from database has error");
                         // [END_EXCLUDE]
                     }

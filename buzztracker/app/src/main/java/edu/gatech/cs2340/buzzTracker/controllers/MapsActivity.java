@@ -30,7 +30,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ArrayList<Location> locations;
-    int temp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
