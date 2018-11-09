@@ -175,15 +175,15 @@ public class Location implements Serializable{
         return false;
     }
 
-    public ArrayList<Item> returnAllItemsWithSize() {
+    public ArrayList<Item> returnAllItemsAtLocation(int locationId) {
         ArrayList<Item> temp = new ArrayList<>();
 
         if (this.itemList == null) {
             throw new IllegalArgumentException();
         }
 
-        for (Item item : itemList) {
-            if (item.getCategory().equals(ItemType.CLOTHING)) {
+        for (Item item : this.itemList) {
+            if (item.getLocationId() == locationId) {
                 temp.add(item);
             }
         }
@@ -202,4 +202,5 @@ public class Location implements Serializable{
             }
         }
     }
+
 }
