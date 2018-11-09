@@ -29,6 +29,11 @@ public class KrishnaTest {
         assertTrue(loc.getItemList().isEmpty());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullList() {
+        loc.returnAllItemsAtLocation(1);
+    }
+
     @Test
     public void testListWithOnlyLocationLookingFor() {
         Item item1 = new Item(null, "Clothing 1", "This is Test Item Clothing 1", 10.00, "CLOTHING", "Extra Comments",

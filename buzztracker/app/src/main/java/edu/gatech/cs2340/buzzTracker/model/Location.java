@@ -179,7 +179,7 @@ public class Location implements Serializable{
         ArrayList<Item> temp = new ArrayList<>();
 
         if (this.itemList == null) {
-            throw new IllegalArgumentException();
+            throw new NullPointerException();
         }
 
         for (Item item : this.itemList) {
