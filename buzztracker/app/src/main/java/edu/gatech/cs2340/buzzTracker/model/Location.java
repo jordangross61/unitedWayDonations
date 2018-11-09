@@ -156,6 +156,10 @@ public class Location implements Serializable{
         }
     }
 
+    /**
+     * removes an item in the list of items for a location
+     * @param myItem to be removed
+     */
     public void removeItemInList(Item myItem) {
         if (myItem == null) {
             throw new IllegalArgumentException();
@@ -165,6 +169,11 @@ public class Location implements Serializable{
         }
     }
 
+    /**
+     * checks to see if an item exists in a list of items for a location
+     * @param myItem to be removed
+     * @return true is myItem is in list and false if myItem does not exist in list
+     */
     public boolean checkItemInList(Item myItem) {
         if (this.itemList == null) {
             throw new IllegalArgumentException("Cannot take in null item");
@@ -175,21 +184,31 @@ public class Location implements Serializable{
         return false;
     }
 
-    public ArrayList<Item> returnAllItemsAtLocation(int locationId) {
+    /**
+     * filters a location's item list for a specific category
+     * @param category the ItemType that is being filtered for
+     * @return a list of only specified category
+     */
+    public ArrayList<Item> filterCategories(ItemType category) {
         ArrayList<Item> temp = new ArrayList<>();
 
-        if (this.itemList == null) {
-            throw new NullPointerException();
+        // if there are no items in the list
+        if (this.itemList.size() == 0) {
+            throw new IllegalArgumentException();
         }
 
         for (Item item : this.itemList) {
-            if (item.getLocationId() == locationId) {
+            if (item.getCategory() == category.toString()) {
                 temp.add(item);
             }
         }
         return temp;
     }
 
+    /**
+     * removes all of specified category from a location's itemList
+     * @param myItemType category to be removed from the location's itemList
+     */
     public void removeCategory(ItemType myItemType) {
         if (myItemType == null) {
             throw new IllegalArgumentException("Cannot take in null category");
