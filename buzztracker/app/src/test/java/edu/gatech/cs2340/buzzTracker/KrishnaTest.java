@@ -18,24 +18,37 @@ public class KrishnaTest {
     private Location loc;
     private ArrayList<Item> items;
 
-    private Item item1;
-    private Item item2;
-    private Item item3;
-    private Item item4;
+    private Item clothing1;
+    private Item clothing2;
+    private Item clothing3;
+    private Item clothing4;
+    private Item household;
+    private Item hat;
+    private Item electronic;
+    private Item other;
 
     @Before
     public void setUp() {
         loc = new Location(1, "test", 100.0, 100.0, "101 First St.", "Atlanta", "GA", "30332", "donation center",
                 "555-5555", "testsite.com");
         items = new ArrayList<>();
-        item1 = new Item(null, "Clothing 1", "This is Test Item Clothing 1", 10.00, "Clothing", "Extra Comments",
+
+        clothing1 = new Item(null, "Clothing 1", "This is Test Item Clothing 1", 10.00, "Clothing", "Extra Comments",
                 1, Size.XS);
-        item2 = new Item(null, "Clothing 2", "This is Test Item Clothing 2", 10.00, "Clothing", "Extra Comments",
+        clothing2 = new Item(null, "Clothing 2", "This is Test Item Clothing 2", 10.00, "Clothing", "Extra Comments",
                 1, Size.XS);
-        item3 = new Item(null, "Clothing 3", "This is Test Item Clothing 3", 10.00, "Clothing", "Extra Comments",
+        clothing3 = new Item(null, "Clothing 3", "This is Test Item Clothing 3", 10.00, "Clothing", "Extra Comments",
                 1, Size.XS);
-        item4 = new Item(null, "Clothing 4", "This is Test Item Clothing 4", 10.00, "Clothing", "Extra Comments",
+        clothing4 = new Item(null, "Clothing 4", "This is Test Item Clothing 4", 10.00, "Clothing", "Extra Comments",
                 1, Size.XS);
+        household = new Item(null, "Household", "This is Test Item Clothing 8", 10.00, "Household", "Extra Comments",
+                1, null);
+        hat = new Item(null, "Hat", "This is Test Item Clothing 6", 10.00, "Hat", "Extra Comments",
+                1, null);
+        electronic = new Item(null, "Electronic", "This is Test Item Clothing 5", 10.00, "Electronics", "Extra Comments",
+                1, null);
+        other = new Item(null, "Other", "This is Test Item Clothing 7", 10.00, "Other", "Extra Comments",
+                1, null);
     }
 
     @Test
@@ -50,61 +63,53 @@ public class KrishnaTest {
     }
 
     @Test
+    // Should return empty array
     public void testListWithNoMatchingCategory() {
-        // Should return empty array
 
-        // item1, item2, item3, item4 all Items at Location1
-        loc.setItemInList(item1);
-        loc.setItemInList(item2);
-        loc.setItemInList(item3);
-        loc.setItemInList(item4);
+        // household, electronic, hat, other all Items at Location1 not of ItemType CLOTHING
+        loc.setItemInList(household);
+        loc.setItemInList(electronic);
+        loc.setItemInList(hat);
+        loc.setItemInList(other);
 
-        // filterCategory will filter all items with the category CLOTHING
+        // filterCategory will filter all items with the category CLOTHING (result in empty array)
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
     }
 
     @Test
     public void testListWithOnlyMatchingCategory() {
 
-        loc.setItemInList(item1);
-        loc.setItemInList(item2);
-        loc.setItemInList(item3);
-        loc.setItemInList(item4);
+        loc.setItemInList(clothing1);
+        loc.setItemInList(clothing2);
+        loc.setItemInList(clothing3);
+        loc.setItemInList(clothing4);
 
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
+        items.add(clothing1);
+        items.add(clothing2);
+        items.add(clothing3);
+        items.add(clothing4);
 
+        //return all items at that location
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
     }
 
     @Test
     public void testListWithManyDifferentCategories() {
-        Item item5 = new Item(null, "Clothing 5", "This is Test Item Clothing 5", 10.00, "Electronics", "Extra Comments",
-                1, Size.XS);
-        Item item6 = new Item(null, "Clothing 6", "This is Test Item Clothing 6", 10.00, "Hat", "Extra Comments",
-                1, Size.XS);
-        Item item7 = new Item(null, "Clothing 7", "This is Test Item Clothing 7", 10.00, "Other", "Extra Comments",
-                1, Size.XS);
-        Item item8 = new Item(null, "Clothing 8", "This is Test Item Clothing 8", 10.00, "Household", "Extra Comments",
-                1, Size.XS);
-
         // Add all items to the location
-        loc.setItemInList(item1);
-        loc.setItemInList(item2);
-        loc.setItemInList(item3);
-        loc.setItemInList(item4);
-        loc.setItemInList(item5);
-        loc.setItemInList(item6);
-        loc.setItemInList(item7);
-        loc.setItemInList(item8);
+        loc.setItemInList(clothing1);
+        loc.setItemInList(clothing2);
+        loc.setItemInList(clothing3);
+        loc.setItemInList(clothing4);
+        loc.setItemInList(hat);
+        loc.setItemInList(electronic);
+        loc.setItemInList(household);
+        loc.setItemInList(other);
 
         // All Items that have a CLOTHING category
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
+        items.add(clothing1);
+        items.add(clothing2);
+        items.add(clothing3);
+        items.add(clothing4);
 
         // Check that only items @category CLOTHING is filtered
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
@@ -112,20 +117,11 @@ public class KrishnaTest {
 
     @Test
     public void testListWithManyDifferentCategoriesForHat() {
-        Item electronic = new Item(null, "Electronic", "This is Test Item Clothing 5", 10.00, "Electronics", "Extra Comments",
-                1, null);
-        Item hat = new Item(null, "Hat", "This is Test Item Clothing 6", 10.00, "Hat", "Extra Comments",
-                1, null);
-        Item other = new Item(null, "Other", "This is Test Item Clothing 7", 10.00, "Other", "Extra Comments",
-                1, null);
-        Item household = new Item(null, "Household", "This is Test Item Clothing 8", 10.00, "Household", "Extra Comments",
-                1, null);
-
         // Add all items to the location
-        loc.setItemInList(item1);
-        loc.setItemInList(item2);
-        loc.setItemInList(item3);
-        loc.setItemInList(item4);
+        loc.setItemInList(clothing1);
+        loc.setItemInList(clothing2);
+        loc.setItemInList(clothing3);
+        loc.setItemInList(clothing4);
         loc.setItemInList(electronic);
         loc.setItemInList(hat);
         loc.setItemInList(other);
