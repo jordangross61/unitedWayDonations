@@ -46,7 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
         nameField = findViewById(R.id.name_field);
         rightsSpinner = findViewById(R.id.access_spinner);
 
-        ArrayAdapter<UserRights> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, UserRights.values());
+        ArrayAdapter<UserRights> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserRights.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rightsSpinner.setAdapter(adapter);
 

@@ -52,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
 
         categoryFilterSpinner = findViewById(R.id.spinner_categoryFilter);
 
-        ArrayAdapter<Object> adapter_category = new ArrayAdapter(this,android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<Object> adapter_category = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryFilterSpinner.setAdapter(adapter_category);
 
@@ -71,11 +71,9 @@ public class SearchActivity extends AppCompatActivity {
 
                 locationFilterSpinner = findViewById(R.id.spinner_locationFilter);
 
-                if (locations.size() != 0) {
-                    adapter_location = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, locations);
-                    adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    locationFilterSpinner.setAdapter(adapter_location);
-                }
+                adapter_location = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, locations);
+                adapter_location.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                locationFilterSpinner.setAdapter(adapter_location);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError DatabaseError) {
