@@ -197,7 +197,7 @@ public class Location implements Serializable{
         }
 
         for (Item item : this.itemList) {
-            if (item.getCategory() == category.toString()) {
+            if (item.getCategory().equals(category.toString())) {
                 temp.add(item);
             }
         }

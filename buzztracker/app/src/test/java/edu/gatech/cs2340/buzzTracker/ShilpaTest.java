@@ -34,10 +34,7 @@ public class ShilpaTest {
     //tests that there are no items at this location before items are set in list
     @Test
     public void testNoItemsAtLocation() {
-        assertTrue(location.getItemList().isEmpty());
-    }
-
-    private void assertTrue(boolean empty) {
+        Assert.assertTrue(location.getItemList().isEmpty());
     }
 
     //tests for exception thrown if the list is empty
@@ -146,6 +143,6 @@ public class ShilpaTest {
         location.setItemInList(d);
 
         location.removeCategory(myItemType);
-        assertTrue(location.getItemList().isEmpty());
+        Assert.assertTrue(location.getItemList().isEmpty());
     }
 }

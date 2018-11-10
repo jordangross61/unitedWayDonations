@@ -109,7 +109,7 @@ public class Item implements Serializable {
 
     /**
      * getter method for the item's category
-     * @return the item's category
+     * @param category the item's category
      */
     public void setCategory(String category) { this.category = category; }
 

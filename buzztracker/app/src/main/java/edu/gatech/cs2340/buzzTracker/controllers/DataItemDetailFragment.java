@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.Objects;
 
 /**
@@ -18,10 +16,7 @@ import java.util.Objects;
  * or a {@link DataItemDetailFragment}
  */
 public class DataItemDetailFragment extends AppCompatActivity {
-    /**
-     * The fragment argument representing the item ID that this fragment
-     * represents.
-     */
+
     // private DatabaseReference itemDatabase;
 
     /**
