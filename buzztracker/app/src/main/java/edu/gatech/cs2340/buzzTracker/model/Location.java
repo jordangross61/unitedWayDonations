@@ -212,11 +212,13 @@ public class Location implements Serializable{
         if (myItemType == null) {
             throw new IllegalArgumentException("Cannot take in null category");
         }
-        if (myItemType != null) {
-            for (int i = 0; i < itemList.size(); i++) {
-                if (itemList.get(i).getCategory().equals(myItemType)) {
-                    itemList.remove(i);
-                }
+        if (itemList.size() == 0) {
+            throw new NullPointerException("Cannot remove from null list");
+        }
+        for (int i = 0; i < itemList.size(); i++) {
+            if (itemList.get(i).getCategory().equals(myItemType.toString())) {
+                itemList.remove(i);
+                i--;
             }
         }
     }

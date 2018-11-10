@@ -108,6 +108,12 @@ public class Item implements Serializable {
     public String getCategory() { return category; }
 
     /**
+     * getter method for the item's category
+     * @return the item's category
+     */
+    public void setCategory(String category) { this.category = category; }
+
+    /**
      * getter method for the comments about the item
      * @return the item's comments
      */
