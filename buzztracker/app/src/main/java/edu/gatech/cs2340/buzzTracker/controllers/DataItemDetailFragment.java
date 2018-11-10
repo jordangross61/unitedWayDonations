@@ -44,7 +44,7 @@ public class DataItemDetailFragment extends AppCompatActivity {
         final TextView valueTextView = findViewById(R.id.text_view_value);
         final TextView commentTextView = findViewById(R.id.text_view_comments);
 
-        String category = "Category : " + Objects.requireNonNull(mItem).getCategory().toString();
+        String category = "Category : " + Objects.requireNonNull(mItem).getCategory();
         String shortDes = "Short Description : " + mItem.getShortDescription();
         String longDes = "Long Description : " + mItem.getLongDescription();
         String time = "Time Entered: " + mItem.getTime();

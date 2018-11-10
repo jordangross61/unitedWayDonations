@@ -101,7 +101,7 @@ public class SearchActivity extends AppCompatActivity {
             query = queryDatabase.child("items").orderByChild("shortDescription").equalTo(shortField.getText().toString());
             runQuery(query, category, location);
         } else if (!category.equals("All Categories")) {
-            query = queryDatabase.child("items").orderByChild("category").equalTo(category.toString());
+            query = queryDatabase.child("items").orderByChild("category").equalTo(category);
             runQuery(query, category, location);
         } else if (!location.equals("All Locations")) {
             query = queryDatabase.child("items").orderByChild("locationId").equalTo(Integer.parseInt(location));

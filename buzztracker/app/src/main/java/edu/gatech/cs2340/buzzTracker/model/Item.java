@@ -127,6 +127,6 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return category.toString()+ ": " + shortDescription + " @ Location No. " + locationId;
+        return category + ": " + shortDescription + " @ Location No. " + locationId;
     }
 }
