@@ -13,7 +13,6 @@ import java.util.Objects;
 import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
 import edu.gatech.cs2340.buzzTracker.model.Location;
-import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
 /**
  * Controller for the add category view of application

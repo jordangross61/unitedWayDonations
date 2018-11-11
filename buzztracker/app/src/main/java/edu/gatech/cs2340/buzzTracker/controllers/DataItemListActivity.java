@@ -36,7 +36,9 @@ public class DataItemListActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        List<Item> items = (ArrayList<Item>) Objects.requireNonNull(bundle).getSerializable("ItemList");
+
+        List<Item> items = (List<Item>) Objects.requireNonNull(bundle).getSerializable("ItemList");
+
         if (items != null) {
             SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(items);
             recyclerView.setAdapter(adapter);

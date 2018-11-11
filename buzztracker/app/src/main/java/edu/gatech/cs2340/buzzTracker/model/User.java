@@ -89,9 +89,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("user: ");
-        sb.append(name);
-        return sb.toString();
+        return "user: " + name;
     }
 
     /**

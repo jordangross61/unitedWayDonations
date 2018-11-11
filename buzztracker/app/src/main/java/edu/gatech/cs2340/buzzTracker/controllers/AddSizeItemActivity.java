@@ -19,7 +19,6 @@ import edu.gatech.cs2340.buzzTracker.R;
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.Location;
 import edu.gatech.cs2340.buzzTracker.model.Size;
-import edu.gatech.cs2340.buzzTracker.model.UserRights;
 
 /**
  * Controller for the add item view of application
