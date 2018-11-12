@@ -81,7 +81,14 @@ public class Item implements Serializable {
      * getter method for the item's size
      * @return the item's size
      */
-    public Size getSize() { return size; }
+    public Size getSize() {
+        if (this.getCategory().equals("Clothing")) {
+            return size;
+        } else{
+            return null;
+        }
+    }
+
 
     /**
      * getter method for the item's short description
