@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class KrishnaTest {
 
     private Location loc;
-    private ArrayList<Item> items;
+    private List<Item> items;
 
     private Item clothing1;
     private Item clothing2;

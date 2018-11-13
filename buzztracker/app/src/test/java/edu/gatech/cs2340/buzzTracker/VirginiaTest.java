@@ -9,17 +9,15 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit test for the removeItemInList method in the Location class.
- *
- * @author Jordan Gross
+ * Class to test checkItemNull() method
  */
-public class JordanTest {
+public class VirginiaTest {
 
     private Location l;
     private Location nullItemList;
 
     /**
-     * What to do before each test
+     * Set up before testing
      */
     @Before
     public void setUp() {
@@ -29,26 +27,29 @@ public class JordanTest {
     }
 
     /**
-     * Test remove when its not null
+     * Test when contain not null
      */
     @Test
-    public void removeNotNull() {
-        l.removeItemInList(new Item());
+    public void containNotNull() {
+        l.checkItemInList(new Item());
         assertTrue(l.getItemList().isEmpty());
     }
 
     /**
-     * Test remove when its null
+     * Test if item is null
      */
-    @Test(expected = IllegalArgumentException.class)
-    public void removeNull() {
-        l.removeItemInList(null);
+    @Test
+    public void containNull() {
+        boolean answer = l.checkItemInList(null);
+        assertTrue(answer == false);
     }
 
+
+
     /**
-     * Test remove when itemList is null
+     * Test when itemList null
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = Exception.class)
     public void NullList() {
         nullItemList.removeItemInList(new Item());
     }

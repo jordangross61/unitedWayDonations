@@ -21,6 +21,9 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * A dashboard for the employee activity
+ */
 public class DashboardActivityEmployee extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

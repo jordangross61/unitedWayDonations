@@ -2,6 +2,7 @@ package edu.gatech.cs2340.buzzTracker.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -139,9 +140,13 @@ public class Location implements Serializable{
         if (this == other) { return true; }
         if (!(other instanceof Location)) {return false; }
         Location that = (Location) other;
-        return this.name.equals(that.name) && this.key == that.key
-                && this.latitude == that.latitude && this.longitude == that.longitude;
+        return (this.name.equals(that.name)) && (this.key == that.key)
+                && (this.latitude == that.latitude) && (this.longitude == that.longitude);
     }
+
+//    public int hashCode(Object other) {
+//        return this.name.hashCode();
+//    }
 
     /**
      * Adds an item to the list of items at this location
@@ -161,6 +166,10 @@ public class Location implements Serializable{
      * @param myItem to be removed
      */
     public void removeItemInList(Item myItem) {
+        if (this.itemList == null) {
+            throw new IllegalArgumentException();
+        }
+
         if (myItem == null) {
             throw new IllegalArgumentException();
         }
@@ -188,11 +197,11 @@ public class Location implements Serializable{
      * @param category the ItemType that is being filtered for
      * @return a list of only specified category
      */
-    public ArrayList<Item> filterCategories(ItemType category) {
-        ArrayList<Item> temp = new ArrayList<>();
+    public List<Item> filterCategories(ItemType category) {
+        List<Item> temp = new ArrayList<>();
 
         // if there are no items in the list
-        if (this.itemList.size() == 0) {
+        if (this.itemList.isEmpty()) {
             throw new IllegalArgumentException();
         }
 
@@ -212,7 +221,7 @@ public class Location implements Serializable{
         if (myItemType == null) {
             throw new IllegalArgumentException("Cannot take in null category");
         }
-        if (itemList.size() == 0) {
+        if (itemList.isEmpty()) {
             throw new NullPointerException("Cannot remove from null list");
         }
         for (int i = 0; i < itemList.size(); i++) {

@@ -43,7 +43,7 @@ public class LocationDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             Location temp = (Location) savedInstanceState.getSerializable(ARG_LOCATION_ID);
-            mItem = temp == null ? mItem :temp;
+            mItem = (temp == null ? mItem :temp);
         }
 
     }
@@ -57,7 +57,7 @@ public class LocationDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.location_detail, container, false);
         if (savedInstanceState != null) {
             Location temp = (Location) savedInstanceState.getSerializable(ARG_LOCATION_ID);
-            mItem = temp == null ? mItem :temp;
+            mItem = (temp == null ? mItem :temp);
         }
 
         if (container == null) {
@@ -84,7 +84,11 @@ public class LocationDetailFragment extends Fragment {
         return rootView;
     }
 
-
+    /**
+     * Updates the location
+     *
+     * @param mItem item in location
+     */
     public void updateLocation(Location mItem) {
         this.mItem = mItem;
     }

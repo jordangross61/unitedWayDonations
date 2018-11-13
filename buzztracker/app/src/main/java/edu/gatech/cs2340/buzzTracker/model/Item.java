@@ -82,7 +82,7 @@ public class Item implements Serializable {
      * @return the item's size
      */
     public Size getSize() {
-        if (this.getCategory().equals("Clothing")) {
+        if ("Clothing".equals(this.getCategory())) {
             return size;
         } else{
             return null;

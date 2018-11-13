@@ -95,13 +95,13 @@ public class SearchActivity extends AppCompatActivity {
         final String category = categoryFilterSpinner.getSelectedItem().toString();
         final String location = (String)locationFilterSpinner.getSelectedItem();
 
-        if (!shortField.getText().toString().equals("")) {
+        if (!("").equals(shortField.getText().toString())) {
             query = queryDatabase.child("items").orderByChild("shortDescription").equalTo(shortField.getText().toString());
             runQuery(query, category, location);
-        } else if (!category.equals("All Categories")) {
+        } else if (!("All Categories").equals(category)) {
             query = queryDatabase.child("items").orderByChild("category").equalTo(category);
             runQuery(query, category, location);
-        } else if (!location.equals("All Locations")) {
+        } else if (!("All Locations").equals(location)) {
             query = queryDatabase.child("items").orderByChild("locationId").equalTo(Integer.parseInt(location));
             runQuery(query, category, location);
         } else {
@@ -130,11 +130,11 @@ public class SearchActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                 {
                     Item item = postSnapshot.getValue(Item.class);
-                    if ((location.equals("All Locations")) && (category.equals("All Categories"))) {
+                    if ((("All Locations").equals(location)) && (("All Categories").equals(category))) {
                         queriedItems.add(item);
-                    } else if ((category.equals("All Categories")) && (Objects.requireNonNull(item).getLocationId() == Integer.parseInt(location))) {
+                    } else if ((("All Categories").equals(category)) && (Objects.requireNonNull(item).getLocationId() == Integer.parseInt(location))) {
                         queriedItems.add(item);
-                    } else if ((location.equals("All Locations")) && (Objects.requireNonNull(item).getCategory().equals(category))) {
+                    } else if ((("All Locations").equals(location)) && (Objects.requireNonNull(item).getCategory().equals(category))) {
                         queriedItems.add(item);
                     } else if ((Objects.requireNonNull(item).getLocationId() == Integer.parseInt(location)) && (item.getCategory().equals(category))) {
                         queriedItems.add(item);
