@@ -33,6 +33,9 @@ public class KrishnaTest {
     private Item electronic;
     private Item other;
 
+    /**
+     * Set up before testing
+     */
     @Before
     public void setUp() {
         loc = new Location(1, "test", 100.0, 100.0, "101 First St.", "Atlanta", "GA", "30332", "donation center",
@@ -57,19 +60,27 @@ public class KrishnaTest {
                 1, null);
     }
 
+    /**
+     * Test item list at location is empty before items are added to it
+     */
     @Test
     public void testNoItemsAtLocation() {
         assertTrue(loc.getItemList().isEmpty());
     }
 
+    /**
+     * Test exception thrown when try to filter an empty item list
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testNullList() {
         // itemList will be empty bc no items have been added
         loc.filterCategories(ItemType.CLOTHING);
     }
 
+    /**
+     * Test a list that does not contain any clothing items (should return empty array)
+     */
     @Test
-    // Should return empty array
     public void testListWithNoMatchingCategory() {
 
         // household, electronic, hat, other all Items at Location1 not of ItemType CLOTHING
@@ -78,10 +89,13 @@ public class KrishnaTest {
         loc.setItemInList(hat);
         loc.setItemInList(other);
 
-        // filterCategory will filter all items with the category CLOTHING (result in empty array)
+        // filterCategory will filter all items with the category CLOTHING
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
     }
 
+    /**
+     * Test a list that only contains clothing items (should return all items added to location)
+     */
     @Test
     public void testListWithOnlyMatchingCategory() {
 
@@ -99,6 +113,9 @@ public class KrishnaTest {
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
     }
 
+    /**
+     * Test a list that has different categories of items and return only clothing items
+     */
     @Test
     public void testListWithManyDifferentCategories() {
         // Add all items to the location
@@ -121,6 +138,9 @@ public class KrishnaTest {
         Assert.assertEquals(loc.filterCategories(ItemType.CLOTHING), items);
     }
 
+    /**
+     * Test a list that has different categories of items and only return a single item
+     */
     @Test
     public void testListWithManyDifferentCategoriesForHat() {
         // Add all items to the location
