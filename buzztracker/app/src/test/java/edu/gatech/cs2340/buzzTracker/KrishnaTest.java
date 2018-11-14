@@ -159,5 +159,4 @@ public class KrishnaTest {
         // Check that only items @category HAT is filtered
         Assert.assertEquals(loc.filterCategories(ItemType.HAT), items);
     }
-
 }
