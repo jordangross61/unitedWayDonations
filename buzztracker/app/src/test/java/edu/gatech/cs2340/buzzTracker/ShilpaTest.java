@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.buzzTracker.model.Item;
 import edu.gatech.cs2340.buzzTracker.model.ItemType;
@@ -17,10 +18,10 @@ import edu.gatech.cs2340.buzzTracker.model.Location;
  */
 public class ShilpaTest {
     private Location location;
-    private ArrayList<Item> itemList;
-    private ArrayList<Item> removedItemList;
+    private List<Item> itemList;
+    private List<Item> removedItemList;
     private ItemType myItemType;
-    private ItemType nullItemType;
+    //private ItemType nullItemType;
 
     @Before
     public void setUp() {
@@ -46,8 +47,8 @@ public class ShilpaTest {
     //tests for exception thrown if itemType passed into method is null
     @Test (expected = IllegalArgumentException.class)
     public void removeCategoryNull() {
-        nullItemType = null;
-        location.removeCategory(nullItemType);
+        //nullItemType = null;
+        location.removeCategory(null);
     }
 
     //tests for proper removal of ItemType in list
@@ -100,7 +101,7 @@ public class ShilpaTest {
         Item d = new Item();
 
         myItemType = ItemType.CLOTHING;
-        nullItemType = null;
+        //nullItemType = null;
 
         a.setCategory("Hat");
         b.setCategory("Other");
