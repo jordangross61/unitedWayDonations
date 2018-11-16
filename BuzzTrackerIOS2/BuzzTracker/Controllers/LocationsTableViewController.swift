@@ -18,11 +18,11 @@ class LocationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        var newItems: [Location] = []
 //        ref.observeSingleEvent(of: .value) { snapshot in
-//            var newItems: [String] = []
 //            let enumerator = snapshot.children
 //                while let rest = enumerator.nextObject() as? DataSnapshot {
+//                    let temp = snapshot.value as ?
 //                    print(rest.value)
 //                    newItems.append(rest)
 //                }
@@ -32,12 +32,47 @@ class LocationsTableViewController: UITableViewController {
 //            self.tableView.reloadData()
 //        })
         
+        init?(snapshot: DataSnapshot) {
+            guard
+                let value = snapshot.value as? [String: AnyObject],
+                let key = value["key"] as? String,
+                let name = value["name"] as? String,
+                let latitude = value["latitude"] as? Double,
+                let longitude = value["longitude"] as? Double,
+                let street = value["street"] as? String,
+                let city = value["city"] as? String,
+                let state = value["state"] as? String,
+                let zipcode = value["zipcode"] as? String,
+                let type = value["type"] as? String,
+                let phone = value["phone"] as? String,
+                let website = value["website"] as? String else {
+                    return nil
+            }
+        var newItems: [Location] = []
         ref.observeSingleEvent(of: .value) { snapshot in
             print(snapshot.childrenCount) // I got the expected number of items
             let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? DataSnapshot {
-                print(rest.value)
-                self.locations.append(snapshot as! Location)
+            //print(snapshot)
+            while let each = enumerator.nextObject() as? DataSnapshot {
+                let value = each.value as! [String:AnyObject]
+                let key = value["key"] as? String
+                let name = value["name"] as? String
+                let latitude = value["latitude"] as? Double
+                let longitude = value["longitude"] as? Double
+                let street = value["street"] as? String
+                let city = value["city"] as? String
+                let state = value["state"] as? String
+                let zipcode = value["zipcode"] as? String
+                let type = value["type"] as? String
+                let phone = value["phone"] as? String
+                let website = value["website"] as? String
+                var local:Location!
+                local = Location(key, name, latitude, longitude, street, city, state, zipcode)
+                //let local = data as! Location
+                //let data = each as! DataSnapshot
+                //let value = data.value! as! [Location:Any]
+                //print()
+                //newItems.append(value)
             }
         }
     }
