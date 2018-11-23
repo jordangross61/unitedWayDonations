@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "97D6AF72613D1649DE8C8D41D9F33D56"
-               BlueprintName = "GTMSessionFetcher"
+               BlueprintIdentifier = "F27A4EEB387AAD63B7E76D21F942948E"
+               BlueprintName = "FirebaseAuth"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "GTMSessionFetcher.framework">
+               BuildableName = "FirebaseAuth.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
