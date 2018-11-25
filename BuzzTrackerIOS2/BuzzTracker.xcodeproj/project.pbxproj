@@ -15,12 +15,14 @@
 		6B003A31219A8FC500E4F7B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B003A2F219A8FC500E4F7B5 /* LaunchScreen.storyboard */; };
 		6B003A3C219A908700E4F7B5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B003A3B219A908700E4F7B5 /* RegisterViewController.swift */; };
 		6B003A3E219A973A00E4F7B5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B003A3D219A973A00E4F7B5 /* DashboardViewController.swift */; };
+		6B40880021AA55460000C24E /* DashboardEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4087FF21AA55460000C24E /* DashboardEmployeeViewController.swift */; };
 		6BA099A7219B93C1000325AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA099A6219B93C1000325AA /* LoginViewController.swift */; };
 		6BACF6BD21A6550000DD5A5F /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */; };
 		6BACF6C121A65EF600DD5A5F /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */; };
 		6BACF6C921A6664500DD5A5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BACF6C721A665C900DD5A5F /* GoogleService-Info.plist */; };
 		6BB8C9A9219D269D00C15AD5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB8C9A8219D269D00C15AD5 /* Location.swift */; };
 		6BE4BA5221A8F3CE0051F844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4BA5121A8F3CE0051F844 /* User.swift */; };
+		6BE4BA5421AA373D0051F844 /* RegisterEmployeeLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4BA5321AA373D0051F844 /* RegisterEmployeeLocationViewController.swift */; };
 		6BE7A5A8219CACD300E2A320 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7A5A7219CACD300E2A320 /* MapViewController.swift */; };
 		6BE7A5AC219CACEC00E2A320 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7A5AB219CACEC00E2A320 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,12 +38,14 @@
 		6B003A32219A8FC500E4F7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B003A3B219A908700E4F7B5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6B003A3D219A973A00E4F7B5 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		6B4087FF21AA55460000C24E /* DashboardEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEmployeeViewController.swift; sourceTree = "<group>"; };
 		6BA099A6219B93C1000325AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		6BACF6C721A665C900DD5A5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BB8C9A8219D269D00C15AD5 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		6BE4BA5121A8F3CE0051F844 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6BE4BA5321AA373D0051F844 /* RegisterEmployeeLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmployeeLocationViewController.swift; sourceTree = "<group>"; };
 		6BE7A5A7219CACD300E2A320 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6BE7A5AB219CACEC00E2A320 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9607C32C0FD9E0BBB77B5599 /* Pods-BuzzTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuzzTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuzzTracker/Pods-BuzzTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				6B003A26219A8FC400E4F7B5 /* AppDelegate.swift */,
+				6BE4BA5321AA373D0051F844 /* RegisterEmployeeLocationViewController.swift */,
 				6B003A3D219A973A00E4F7B5 /* DashboardViewController.swift */,
+				6B4087FF21AA55460000C24E /* DashboardEmployeeViewController.swift */,
 				6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */,
 				6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */,
 				6BE7A5A7219CACD300E2A320 /* MapViewController.swift */,
@@ -289,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B003A29219A8FC400E4F7B5 /* ViewController.swift in Sources */,
+				6B40880021AA55460000C24E /* DashboardEmployeeViewController.swift in Sources */,
 				6BE7A5AC219CACEC00E2A320 /* SearchViewController.swift in Sources */,
 				6BE7A5A8219CACD300E2A320 /* MapViewController.swift in Sources */,
 				6BACF6BD21A6550000DD5A5F /* LocationTableViewCell.swift in Sources */,
@@ -299,6 +306,7 @@
 				6BA099A7219B93C1000325AA /* LoginViewController.swift in Sources */,
 				6B003A3C219A908700E4F7B5 /* RegisterViewController.swift in Sources */,
 				6BE4BA5221A8F3CE0051F844 /* User.swift in Sources */,
+				6BE4BA5421AA373D0051F844 /* RegisterEmployeeLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

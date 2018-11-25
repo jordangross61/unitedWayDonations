@@ -14,7 +14,7 @@ import FirebaseCore
 class LocationTableViewController: UITableViewController {
 
     var locations: [Location] = []
-    let ref = Database.database().reference().child("locations")
+    let ref = Database.database().reference()
     
     @IBOutlet var locationsTableView: UITableView!
     
@@ -32,42 +32,37 @@ class LocationTableViewController: UITableViewController {
         self.locations.append(location5)
         let location6 = Location(key: "6", name: "KEEP NORTH FULTON BEAUTIFUL", latitude: "33.96921", longitude: "-84.3688", street: "470 MORGAN FALLS RD", city: "Sandy Springs", state: "GA", zipcode: "30302", type: "Store", phone: "(770) 555 - 7321", website: "www.knfb.org")
         self.locations.append(location6)
-        
+
         self.locationsTableView.reloadData()
 
-        
-//        FirebaseApp.configure()
-        
-        //observing the data changes
-//        ref.observe(DataEventType.value, with: { (Lsnapshot) in
+//        ref.child("locations").observe(DataEventType.value, with: { (Lsnapshot) in
 //
 //            //if the reference have some values
 //            if Lsnapshot.childrenCount > 0 {
 //
-//
 //                //iterating through all the values
-//                for artists in Lsnapshot.children.allObjects as! [DataSnapshot] {
-//                    let artistObject = artists.value as? [String: AnyObject]
-//                    let Lkey  = artistObject?["key"]
-//                    let Lname  = artistObject?["name"]
-////                    let Llatitude = artistObject?["latitude"]
-////                    let Llongitude = artistObject?["longitude"]
-//                    let Lstreet = artistObject?["street"]
-//                    let Lcity = artistObject?["city"]
-//                    let Lstate = artistObject?["state"]
-//                    let Lzipcode = artistObject?["zipcode"]
-//                    let Ltype = artistObject?["type"]
-//                    let Lphone = artistObject?["phone"]
-//                    let Lwebsite = artistObject?["website"]
+//                for locs in Lsnapshot.children.allObjects as! [DataSnapshot] {
+//                    let value = locs.value as? NSDictionary
+//                    let Lkey = value?["key"] as? String ?? ""
+//                    let Lname = value?["key"] as? String ?? ""
+//                    let Llatitude = value?["key"] as? String ?? ""
+//                    let Llongitude = value?["key"] as? String ?? ""
+//                    let Lstreet = value?["key"] as? String ?? ""
+//                    let Lcity = value?["key"] as? String ?? ""
+//                    let Lstate = value?["key"] as? String ?? ""
+//                    let Lzipcode = value?["key"] as? String ?? ""
+//                    let Ltype = value?["key"] as? String ?? ""
+//                    let Lphone = value?["key"] as? String ?? ""
+//                    let Lwebsite = value?["key"] as? String ?? ""
 //
-//                    let location = Location(key: Lkey!.stringValue as! String?, name: Lname?.stringValue as! String, street: Lstreet?.stringValue as! String, city: Lcity as! String, state: Lstate as! String, zipcode: Lzipcode as! String, type: Ltype as! String, phone: Lphone as! String, website: Lwebsite as! String)
+//                    let location = Location(key: Lkey, name: Lname, latitude: Llatitude, longitude: Llongitude, street: Lstreet, city: Lcity, state: Lstate, zipcode: Lzipcode, type: Ltype, phone: Lphone, website: Lwebsite)
 //
 //                    //appending it to list
 //                    self.locations.append(location)
 //                }
 //
-//                // reloading the tableview
-//                self.locationsTableView.reloadData()
+//            // reloading the tableview
+//            self.locationsTableView.reloadData()
 //            }
 //        })
     }

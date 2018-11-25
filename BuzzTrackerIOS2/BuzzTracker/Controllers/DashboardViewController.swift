@@ -12,7 +12,7 @@ import FirebaseAuth
 class DashboardViewController: UIViewController {
 
     @IBAction func logout_button(_ sender: Any) {
-        signOut()
+        logout()
     }
     
     @IBAction func seeMap_button(_ sender: Any) {
@@ -31,7 +31,7 @@ class DashboardViewController: UIViewController {
         
     }
     
-    func signOut() {
+    func logout() {
         do {
             try Auth.auth().signOut()
             self.performSegue(withIdentifier: "goFromDashboardToWelcome", sender: self)

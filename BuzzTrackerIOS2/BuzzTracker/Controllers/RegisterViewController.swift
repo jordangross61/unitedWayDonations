@@ -19,7 +19,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func register_button(_ sender: Any) {
         register()
-        performSegue(withIdentifier: "goFromRegistrationToDashboard", sender: self)
     }
     
     var pickerData: [String] = [String]()
@@ -70,15 +69,25 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
                     if error == nil {
                         let userID = (Auth.auth().currentUser?.uid)
+                        print(userID)
                         let ref: DatabaseReference = Database.database().reference()
                         
-                        ref.child("users").child(userID!).setValue(
-                            ["email": email,
-                            "name": username,
-                            "password": password,
-                            "rights": self.rightsPicked])
+                        if (self.rightsPicked == "EMPLOYEE") {
+                            ref.child("users").child(userID!).setValue(
+                                ["email": email,
+                                 "name": username,
+                                 "password": password,
+                                 "rights": self.rightsPicked])
+                            self.performSegue(withIdentifier: "goToEmployeeLocationPicker", sender: self)
+                        } else {
+                            ref.child("users").child(userID!).setValue(
+                                ["email": email,
+                                 "name": username,
+                                 "password": password,
+                                 "rights": self.rightsPicked])
+                            self.performSegue(withIdentifier: "goFromRegistrationToDashboard", sender: self)
+                        }
                         
-                        self.performSegue(withIdentifier: "goFromRegistrationToDashboard", sender: self)
                         
                     } else {
                         print("\(String(describing: error?.localizedDescription))")
@@ -87,6 +96,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         }
         
-        
+
     }
 }

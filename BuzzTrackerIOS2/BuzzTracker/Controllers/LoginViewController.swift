@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
@@ -32,7 +33,22 @@ class LoginViewController: UIViewController {
                     
                     if error == nil {
                         print ("You have successfully logged in")
-                        self.performSegue(withIdentifier: "goFromLoginToDashboard", sender: self)
+                        let userID = (Auth.auth().currentUser?.uid)
+                        let ref: DatabaseReference = Database.database().reference().child("users")
+
+                        ref.child(userID!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                                // Get user value
+                                let value = snapshot.value as? NSDictionary
+                                let rights = value?["rights"] as? String ?? ""
+                            if (rights == "EMPLOYEE") {
+                                self.performSegue(withIdentifier: "goToEmployeeDashboard", sender: self)
+                            } else {
+                                self.performSegue(withIdentifier: "goFromLoginToDashboard", sender: self)
+                            }
+                        }) { (error) in
+                                print(error.localizedDescription)
+                    }
                         self.errorMsg.text = ""
                     } else {
                         print("Error")
