@@ -23,17 +23,18 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     var pickerData: [String] = [String]()
-    var rights: String = ""
-    
+    var rightsPicked: String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Connect data:
         self.user_picker.delegate = self
         self.user_picker.dataSource = self
-        
+        self.user_picker.selectRow(0, inComponent: 0, animated: true)
+
         // input picker data
-        pickerData = ["User", "Employee", "Manager", "Admin"]
+        pickerData = ["USER", "EMPLOYEE", "MANAGER", "ADMIN"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,29 +54,13 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return 1;
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(row == 0)
-        {
-            self.rights = "User"
-        }
-        else if(row == 1)
-        {
-            self.rights = "Employee"
-        }
-        else if(row == 2)
-        {
-            self.rights = "Manager"
-        }
-        else
-        {
-            self.rights = "Admin"
-        }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(pickerData[row])
+        rightsPicked = pickerData[row]
     }
-    
     
     func register() {
         let username = self.name_field.text
-        
         
         if let email = self.email_field.text, let password = self.password_field.text {
             if email == "" {
@@ -91,7 +76,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                             ["email": email,
                             "name": username,
                             "password": password,
-                            "rights": self.rights])
+                            "rights": self.rightsPicked])
                         
                         self.performSegue(withIdentifier: "goFromRegistrationToDashboard", sender: self)
                         
