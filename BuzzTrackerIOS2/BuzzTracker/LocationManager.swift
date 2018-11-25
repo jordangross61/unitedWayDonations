@@ -1,37 +1,90 @@
+////
+////  LocationManager.swift
+////  BuzzTracker
+////
+////  Created by Krishna Patel on 11/25/18.
+////  Copyright © 2018 krishnapatel. All rights reserved.
+////
 //
-//  LocationManager.swift
-//  BuzzTracker
+//import Foundation
+//import FirebaseDatabase
 //
-//  Created by Krishna Patel on 11/25/18.
-//  Copyright © 2018 krishnapatel. All rights reserved.
+//class LocationManager {
 //
-
-import Foundation
-
-class LocationManager {
-    
-    var locations: [Location] = []
-    
-    init() {
-        addLocations()
-    }
-    
-    func addLocations() {
-        let location1 = Location(key: "1", name: "AFD Station 4", latitude: "33.75416", longitude: "-84.37742", street: "309 EDGEWOOD AVE SE", city: "Atlanta", state: "GA", zipcode: "30332", type: "Drop Off", phone: "(404) 555 - 3456", website: "www.afd04.atl.ga")
-        self.locations.append(location1)
-        let location2 = Location(key: "2", name: "BOYS & GILRS CLUB W.W. WOOLFOLK", latitude: "33.73182", longitude: "-84.43971", street: "1642 RICHLAND RD", city: "Atlanta", state: "GA", zipcode: "30332", type: "Store", phone: "(404) 555 - 1234", website: "www.bgc.wool.ga")
-        self.locations.append(location2)
-        let location3 = Location(key: "3", name: "PATHWAY UPPER ROOM CHRISTIAN MINISTRIES", latitude: "33.70866", longitude: "-84.41853", street: "1683 SYLVAN RD", city: "Atlanta", state: "GA", zipcode: "30332", type: "Warehouse", phone: "(404) 555 - 3456", website: "www.pathways.org")
-        self.locations.append(location3)
-        let location4 = Location(key: "4", name: "PAVILION OF HOPE INC", latitude: "33.75416", longitude: "-84.25537", street: "3558 EAST PONCE DE LEON AVE", city: "Atlanta", state: "GA", zipcode: "30079", type: "Warehouse", phone: "(404) 555 - 3456", website: "www.pavhope.org")
-        self.locations.append(location4)
-        let location5 = Location(key: "5", name: "D&D CONVENIENCE STORE", latitude: "33.71747", longitude: "-84.2521", street: "2426 COLUMBIA DRIVE", city: "Atlanta", state: "GA", zipcode: "30034", type: "Drop Off", phone: "(404) 555 - 9876", website: "www.ddconv.com")
-        self.locations.append(location5)
-        let location6 = Location(key: "6", name: "KEEP NORTH FULTON BEAUTIFUL", latitude: "33.96921", longitude: "-84.3688", street: "470 MORGAN FALLS RD", city: "Sandy Springs", state: "GA", zipcode: "30302", type: "Store", phone: "(770) 555 - 7321", website: "www.knfb.org")
-        self.locations.append(location6)
-    }
-    
-    func getLocations() -> Array<Location> {
-        return locations
-    }
-}
+//    var locations: [Location] = []
+//    let ref = Database.database().reference()
+//
+//    init() {
+//        addLocations()
+//    }
+//
+//    func addLocations() {
+//        ref.child("locations").observe(DataEventType.value, with: { (Lsnapshot) in
+//
+//            //if the reference have some values
+//            if Lsnapshot.childrenCount > 0 {
+//
+//                //iterating through all the values
+//                for locs in Lsnapshot.children.allObjects as! [DataSnapshot] {
+//
+//                    let value = locs.value as? NSDictionary
+//                    var Lkey: Int64 = 0
+//                    var Lname: String = ""
+//                    var Llatitude: Double = 0.0
+//                    var Llongitude: Double = 0.0
+//                    var Lstreet: String = ""
+//                    var Lcity: String = ""
+//                    var Lstate: String = ""
+//                    var Lzipcode: String = ""
+//                    var Ltype: String = ""
+//                    var Lphone: String = ""
+//                    var Lwebsite: String = ""
+//
+//                    if let key = value?["key"] {
+//                        Lkey = (key as! Int64)
+//                    }
+//                    if let name = value?["name"] {
+//                        Lname = (name as! String)
+//                    }
+//                    if let latitude = value?["latitude"] {
+//                        Llatitude = (latitude as! Double)
+//                    }
+//                    if let longitude = value?["longitude"] {
+//                        Llongitude = (longitude as! Double)
+//                    }
+//                    if let street = value?["street"] {
+//                        Lstreet = (street as! String)
+//                    }
+//                    if let city = value?["city"] {
+//                        Lcity = (city as! String)
+//                    }
+//                    if let state = value?["state"] {
+//                        Lstate = (state as! String)
+//                    }
+//                    if let zipcode = value?["street"] {
+//                        Lzipcode = (zipcode as! String)
+//                    }
+//                    if let type = value?["type"] {
+//                        Ltype = (type as! String)
+//                    }
+//                    if let phone = value?["phone"] {
+//                        Lphone = (phone as! String)
+//                    }
+//                    if let website = value?["website"] {
+//                        Lwebsite = (website as! String)
+//                    }
+//
+//                    let location = Location(key: Lkey, name: Lname, latitude: Llatitude, longitude: Llongitude, street: Lstreet, city: Lcity, state: Lstate, zipcode: Lzipcode, type: Ltype, phone: Lphone, website: Lwebsite)
+//
+//                    print(location)
+//                    //appending it to list
+//                    self.locations.append(location)
+//                }
+//            }
+//        })
+//    }
+//
+//    func getLocations() -> Array<Location> {
+//        return locations
+//    }
+//}

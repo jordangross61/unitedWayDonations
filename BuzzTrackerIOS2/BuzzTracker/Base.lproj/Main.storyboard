@@ -683,7 +683,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="locationsTableView" destination="e1C-Va-Lah" id="hbn-NO-kiG"/>
+                        <outlet property="locationsTableView" destination="e1C-Va-Lah" id="7Y7-zf-wc7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMG-hL-VLA" userLabel="First Responder" sceneMemberID="firstResponder"/>

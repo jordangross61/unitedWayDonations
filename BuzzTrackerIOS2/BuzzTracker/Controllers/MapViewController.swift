@@ -8,48 +8,58 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
 
 class MapViewController: UIViewController {
-    
+
     @IBOutlet weak var locationMap: MKMapView!
-    
+
     var locations: [Location] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addLocationsToMap()
     }
-    
+
     func addLocationsToMap() {
-        
-        let locs = LocationManager()
-        locations = locs.getLocations()
-        
-        for loc in locations {
+
+        let ref = Database.database().reference()
+        ref.child("locations").observe(DataEventType.value, with: { (Lsnapshot) in
             
-            var lati = 0.0
-            var long = 0.0
-            var name: String = ""
-            let annotation = MKPointAnnotation()
-            
-            if let lat = loc.latitude {
-                lati = (lat as NSString).doubleValue
-                print(lati)
+            //if the reference have some values
+            if Lsnapshot.childrenCount > 0 {
+                
+                //iterating through all the values
+                for locs in Lsnapshot.children.allObjects as! [DataSnapshot] {
+                    
+                    let value = locs.value as? NSDictionary
+                    var Lkey: Int64 = 0
+                    var Lname: String = ""
+                    var Llatitude: Double = 0.0
+                    var Llongitude: Double = 0.0
+                    
+                    if let key = value?["key"] {
+                        Lkey = (key as! Int64)
+                    }
+                    if let name = value?["name"] {
+                        Lname = (name as! String)
+                    }
+                    if let latitude = value?["latitude"] {
+                        Llatitude = (latitude as! Double)
+                    }
+                    if let longitude = value?["longitude"] {
+                        Llongitude = (longitude as! Double)
+                    }
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Llatitude), longitude: CLLocationDegrees(Llongitude))
+                    annotation.title = Lname
+                    self.locationMap.addAnnotation(annotation)
+                }
             }
-            if let lon = loc.longitude {
-                long = (lon as NSString).doubleValue
-                print(long)
-            }
-            if let na = loc.name {
-                name = ((na as NSString) as String)
-                print(name)
-            }
-            
-            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lati), longitude: CLLocationDegrees(long))
-            annotation.title = name
-            locationMap.addAnnotation(annotation)
-        }
+            print(self.locations)
+        })
     }
 
 }
