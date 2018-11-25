@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
  
@@ -22,6 +23,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     var pickerData: [String] = [String]()
+    var rights: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,24 +48,60 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
-
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(row == 0)
+        {
+            self.rights = "User"
+        }
+        else if(row == 1)
+        {
+            self.rights = "Employee"
+        }
+        else if(row == 2)
+        {
+            self.rights = "Manager"
+        }
+        else
+        {
+            self.rights = "Admin"
+        }
+    }
+    
+    
     func register() {
+        let username = self.name_field.text
+        
+        
         if let email = self.email_field.text, let password = self.password_field.text {
             if email == "" {
                 print("Error")
             } else {
-                
                 Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+
                     if error == nil {
-                        print ("You have successfully signed up")
+                        let userID = (Auth.auth().currentUser?.uid)
+                        let ref: DatabaseReference = Database.database().reference()
+                        
+                        ref.child("users").child(userID!).setValue(
+                            ["email": email,
+                            "name": username,
+                            "password": password,
+                            "rights": self.rights])
+                        
+                        self.performSegue(withIdentifier: "goFromRegistrationToDashboard", sender: self)
+                        
                     } else {
-                        print("Error")
+                        print("\(String(describing: error?.localizedDescription))")
                     }
                 }
             }
         }
+        
+        
     }
 }
