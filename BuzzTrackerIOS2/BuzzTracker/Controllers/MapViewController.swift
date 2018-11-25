@@ -1,22 +1,56 @@
+//
+//  SearchViewController.swift
+//  BuzzTracker
+//
+//  Created by Krishna Patel on 11/14/18.
+//  Copyright © 2018 krishnapatel. All rights reserved.
+//
+
 import UIKit
-import GoogleMaps
+import MapKit
 
 class MapViewController: UIViewController {
     
-    // You don't need to modify the default init(nibName:bundle:) method.
+    @IBOutlet weak var locationMap: MKMapView!
     
-    override func loadView() {
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+    var locations: [Location] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        addLocationsToMap()
     }
+    
+    func addLocationsToMap() {
+        
+        let locs = LocationManager()
+        locations = locs.getLocations()
+        
+        for loc in locations {
+            
+            var lati = 0.0
+            var long = 0.0
+            var name: String = ""
+            let annotation = MKPointAnnotation()
+            
+            if let lat = loc.latitude {
+                lati = (lat as NSString).doubleValue
+                print(lati)
+            }
+            if let lon = loc.longitude {
+                long = (lon as NSString).doubleValue
+                print(long)
+            }
+            if let na = loc.name {
+                name = ((na as NSString) as String)
+                print(name)
+            }
+            
+            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lati), longitude: CLLocationDegrees(long))
+            annotation.title = name
+            locationMap.addAnnotation(annotation)
+        }
+    }
+
 }
+

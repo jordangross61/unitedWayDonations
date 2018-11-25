@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class ItemSizeViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -15,6 +17,7 @@ class ItemSizeViewController: UIViewController,  UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var value_field: UITextField!
     @IBOutlet weak var comments_field: UITextField!
     @IBOutlet weak var sizePicker: UIPickerView!
+    @IBOutlet weak var errorMsg: UILabel!
     
     @IBAction func add_button(_ sender: Any) {
         addSizeItem()
@@ -55,6 +58,39 @@ class ItemSizeViewController: UIViewController,  UIPickerViewDelegate, UIPickerV
     
     func addSizeItem() {
         print("size item added")
+        
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let time = formatter.string(from: now)
+        
+        if let short = self.shortDes_field.text, let long = self.longDes_field.text, let val = self.value_field.text, let comments = self.comments_field.text {
+            if short == "" || long == "" || val == "" || comments == "" {
+                self.errorMsg.text = "Please Enter Text in All Fields"
+                print("Error")
+            } else {
+                let userID = (Auth.auth().currentUser?.uid)
+                let ref: DatabaseReference = Database.database().reference().child("users")
+                
+                ref.child(userID!).observeSingleEvent(of: .value, with: {
+                    (snapshot) in
+                    // Get user value
+                    let value = snapshot.value as? NSDictionary
+                    let locationId = value?["location"] as? String ?? ""
+                
+                let userRef: DatabaseReference = Database.database().reference().child("items")
+                userRef.childByAutoId().setValue(
+                    ["category": "CLOTHING",
+                     "shortDescription": short,
+                     "longDescription": long,
+                     "time": time,
+                     "value": val,
+                     "comments": comments,
+                     "size": self.sizePicked,
+                     "locationId": locationId])
+                })
+            }
+        }
     }
-
 }

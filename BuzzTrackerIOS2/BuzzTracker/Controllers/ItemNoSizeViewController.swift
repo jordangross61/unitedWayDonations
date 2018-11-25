@@ -14,6 +14,7 @@ class ItemNoSizeViewController: UIViewController {
     @IBOutlet weak var longDes_field: UITextField!
     @IBOutlet weak var value_field: UITextField!
     @IBOutlet weak var comments_field: UITextField!
+    @IBOutlet weak var errorMsg: UILabel!
     
     @IBAction func add_button(_ sender: Any) {
         addItem()

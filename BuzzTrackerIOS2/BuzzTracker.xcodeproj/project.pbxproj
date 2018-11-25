@@ -20,6 +20,9 @@
 		6B40880A21AA68CE0000C24E /* PickCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40880921AA68CE0000C24E /* PickCategoryViewController.swift */; };
 		6B40880C21AA6C3F0000C24E /* ItemSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40880B21AA6C3F0000C24E /* ItemSizeViewController.swift */; };
 		6B40880E21AA6C4F0000C24E /* ItemNoSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40880D21AA6C4F0000C24E /* ItemNoSizeViewController.swift */; };
+		6B4464D421AB163500AB5D23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4464D321AB163500AB5D23 /* LocationManager.swift */; };
+		6B4464D621AB212400AB5D23 /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4464D521AB212400AB5D23 /* InventoryTableViewController.swift */; };
+		6B4464D821AB213A00AB5D23 /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4464D721AB213A00AB5D23 /* InventoryTableViewCell.swift */; };
 		6BA099A7219B93C1000325AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA099A6219B93C1000325AA /* LoginViewController.swift */; };
 		6BACF6BD21A6550000DD5A5F /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */; };
 		6BACF6C121A65EF600DD5A5F /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */; };
@@ -47,6 +50,9 @@
 		6B40880921AA68CE0000C24E /* PickCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCategoryViewController.swift; sourceTree = "<group>"; };
 		6B40880B21AA6C3F0000C24E /* ItemSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSizeViewController.swift; sourceTree = "<group>"; };
 		6B40880D21AA6C4F0000C24E /* ItemNoSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoSizeViewController.swift; sourceTree = "<group>"; };
+		6B4464D321AB163500AB5D23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6B4464D521AB212400AB5D23 /* InventoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
+		6B4464D721AB213A00AB5D23 /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
 		6BA099A6219B93C1000325AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +128,8 @@
 				6B4087FF21AA55460000C24E /* DashboardEmployeeViewController.swift */,
 				6BACF6BC21A6550000DD5A5F /* LocationTableViewCell.swift */,
 				6BACF6C021A65EF600DD5A5F /* LocationTableViewController.swift */,
+				6B4464D521AB212400AB5D23 /* InventoryTableViewController.swift */,
+				6B4464D721AB213A00AB5D23 /* InventoryTableViewCell.swift */,
 				6BE7A5A7219CACD300E2A320 /* MapViewController.swift */,
 				6BE7A5AB219CACEC00E2A320 /* SearchViewController.swift */,
 				6B003A28219A8FC400E4F7B5 /* ViewController.swift */,
@@ -153,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				6BB8C9A8219D269D00C15AD5 /* Location.swift */,
+				6B4464D321AB163500AB5D23 /* LocationManager.swift */,
 				6B40880721AA66AD0000C24E /* Item.swift */,
 				6BE4BA5121A8F3CE0051F844 /* User.swift */,
 			);
@@ -318,14 +327,17 @@
 				6BE7A5A8219CACD300E2A320 /* MapViewController.swift in Sources */,
 				6B40880A21AA68CE0000C24E /* PickCategoryViewController.swift in Sources */,
 				6B40880821AA66AD0000C24E /* Item.swift in Sources */,
+				6B4464D421AB163500AB5D23 /* LocationManager.swift in Sources */,
 				6BACF6BD21A6550000DD5A5F /* LocationTableViewCell.swift in Sources */,
 				6BB8C9A9219D269D00C15AD5 /* Location.swift in Sources */,
 				6BACF6C121A65EF600DD5A5F /* LocationTableViewController.swift in Sources */,
+				6B4464D821AB213A00AB5D23 /* InventoryTableViewCell.swift in Sources */,
 				6B003A3E219A973A00E4F7B5 /* DashboardViewController.swift in Sources */,
 				6B003A27219A8FC400E4F7B5 /* AppDelegate.swift in Sources */,
 				6BA099A7219B93C1000325AA /* LoginViewController.swift in Sources */,
 				6B003A3C219A908700E4F7B5 /* RegisterViewController.swift in Sources */,
 				6BE4BA5221A8F3CE0051F844 /* User.swift in Sources */,
+				6B4464D621AB212400AB5D23 /* InventoryTableViewController.swift in Sources */,
 				6BE4BA5421AA373D0051F844 /* RegisterEmployeeLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

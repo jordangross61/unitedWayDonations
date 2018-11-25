@@ -17,6 +17,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var password_field: UITextField!
     @IBOutlet weak var user_picker: UIPickerView!
     
+    @IBOutlet weak var errorMsg: UILabel!
+    
     @IBAction func register_button(_ sender: Any) {
         register()
     }
@@ -62,7 +64,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let username = self.name_field.text
         
         if let email = self.email_field.text, let password = self.password_field.text {
-            if email == "" {
+            if email == "" || username == "" {
+                self.errorMsg.text = "Please Enter Text in All Fields"
                 print("Error")
             } else {
                 Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
