@@ -9,13 +9,13 @@ class Item {
     var time: String?
     var shortDescription: String?
     var longDescription: String?
-    var value: String?
+    var value: Double?
     var category: String?
     var comments: String?
     var size: String?
-    var locationId: String?
+    var locationId: Int64?
     
-    init(time: String, shortDescription: String, longDescription: String, value: String, category: String, comments: String, size: String, locationId: String) {
+    init(time: String, shortDescription: String, longDescription: String, value: Double, category: String, comments: String, size: String, locationId: Int64) {
         
         self.ref = nil
         self.time = time

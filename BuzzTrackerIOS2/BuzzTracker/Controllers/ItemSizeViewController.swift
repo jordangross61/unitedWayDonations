@@ -73,11 +73,14 @@ class ItemSizeViewController: UIViewController,  UIPickerViewDelegate, UIPickerV
                 let userID = (Auth.auth().currentUser?.uid)
                 let ref: DatabaseReference = Database.database().reference().child("users")
                 
+                let v = self.value_field.text
+                let val: Double? = Double(v!)
+                
                 ref.child(userID!).observeSingleEvent(of: .value, with: {
                     (snapshot) in
                     // Get user value
                     let value = snapshot.value as? NSDictionary
-                    let locationId = value?["location"] as? String ?? ""
+                    let locationId = value?["location"] as? Int64 ?? 0
                 
                 let userRef: DatabaseReference = Database.database().reference().child("items")
                 userRef.childByAutoId().setValue(
@@ -85,7 +88,7 @@ class ItemSizeViewController: UIViewController,  UIPickerViewDelegate, UIPickerV
                      "shortDescription": short,
                      "longDescription": long,
                      "time": time,
-                     "value": val,
+                     "value": val!,
                      "comments": comments,
                      "size": self.sizePicked,
                      "locationId": locationId])

@@ -9,7 +9,7 @@
 import UIKit
 
 class PickCategoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBAction func picker_button(_ sender: Any) {
         if (categoryPicked == "CLOTHING") {
@@ -32,6 +32,13 @@ class PickCategoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         // input picker data
         pickerData = ["CLOTHING", "HAT", "KITCHEN", "ELECTRONICS", "HOUSEHOLD", "OTHER"]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToItemNoSize"{
+            let vc = segue.destination as! ItemNoSizeViewController
+            vc.categoryPicked = categoryPicked
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
