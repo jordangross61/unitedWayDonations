@@ -56,22 +56,20 @@ class ItemNoSizeViewController: UIViewController {
                 formatter.dateFormat = "yyyy-MM-dd HH:mm"
                 let time = formatter.string(from: now)
                 
-                if let short = self.shortDes_field.text, let long = self.longDes_field.text, let comments = self.comments_field.text {
-                    if short == "" || long == "" || comments == "" {
+                if let short = self.shortDes_field.text, let long = self.longDes_field.text, let comments = self.comments_field.text, let v = self.value_field.text {
+                    if short == "" || long == "" || comments == "" || v == "" {
                         self.errorMsg.text = "Please Enter Text in All Fields"
                         print("Error")
                     } else {
+                        let val: Double? = Double(v)
+                        
                         let userID = (Auth.auth().currentUser?.uid)
                         let ref: DatabaseReference = Database.database().reference().child("users")
-                        
-                        let v = self.value_field.text
-                        let val: Double? = Double(v!)
-                        
                         ref.child(userID!).observeSingleEvent(of: .value, with: {
                             (snapshot) in
                             // Get user value
                             let value = snapshot.value as? NSDictionary
-                            let locationId = value?["location"] as? Int64 ?? 0
+                            let locationId = value?["location"] as? Int32 ?? 0
                             
                             let userRef: DatabaseReference = Database.database().reference().child("items")
                             userRef.childByAutoId().setValue(
@@ -79,7 +77,7 @@ class ItemNoSizeViewController: UIViewController {
                                  "shortDescription": short,
                                  "longDescription": long,
                                  "time": time,
-                                 "value": val!,
+                                 "value": val,
                                  "comments": comments,
                                  "locationId": locationId])
                         })

@@ -10,29 +10,33 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseCore
+
 class InventoryTableViewController: UITableViewController {
 
-    var items: [Item] = []
     var locationItems: [Item] = []
+    var employeeLocationId: Int32 = 0
     let ref = Database.database().reference()
+    let userID = (Auth.auth().currentUser?.uid)
+    let userRef: DatabaseReference = Database.database().reference().child("users")
     
     @IBOutlet var inventoryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let item1 = Item(time: "10:00:00.00", shortDescription: "Dress", longDescription: "Black little black", value: "10.00", category: "CLOTHING", comments: "fun", size: "M", locationId: "2")
-//        self.items.append(item1)
-//
-//        let item2 = Item(time: "12:33:11.02", shortDescription: "Cowboy", longDescription: "Brown", value: "4.00", category: "HAT", comments: "yee haw", size: "", locationId: "2")
-//        self.items.append(item2)
-//
-//        let item3 = Item(time: "2:04:03.40", shortDescription: "Baseball", longDescription: "Blue Yankees", value: "10.00", category: "HAT", comments: "Woo", size: "", locationId: "2")
-//        self.items.append(item3)
-//        self.inventoryTableView.reloadData()
-
+        self.inventoryTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let ref = Database.database().reference()
+        userRef.child(userID!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            self.employeeLocationId = value?["location"] as? Int32 ?? 0
+        })
+        
         ref.child("items").observe(DataEventType.value, with: { (Lsnapshot) in
             
             //if the reference have some values
@@ -49,7 +53,7 @@ class InventoryTableViewController: UITableViewController {
                     var Lsize: String = ""
                     var Ltime: String = ""
                     var Lval: Double = 0.0
-                    var LlocationId: Int64 = 0
+                    var LlocationId: Int32 = 0
                     
                     if let comments = value?["comments"] {
                         Lcomments = (comments as! String)
@@ -57,58 +61,35 @@ class InventoryTableViewController: UITableViewController {
                     if let category = value?["category"] {
                         Lcategory = (category as! String)
                     }
-                    if let long = value?["long"] {
+                    if let long = value?["longDescription"] {
                         Llong = (long as! String)
                     }
-                    if let short = value?["short"] {
+                    if let short = value?["shortDescription"] {
                         Lshort = (short as! String)
                     }
                     if let size = value?["size"] {
                         Lsize = (size as! String)
                     }
-                    if let time = value?["state"] {
+                    if let time = value?["time"] {
                         Ltime = (time as! String)
                     }
                     if let locId = value?["locationId"] {
-                        LlocationId = (locId as! Int64)
+                        LlocationId = locId as! Int32
+                    }
+                    if let val = (value?["value"]) {
+                        Lval = val as! Double
                     }
                     
-                    if let val = (value?["value"] as? NSString)?.doubleValue {
-                        Lval = val
+                    if (self.employeeLocationId == LlocationId) {
+                        let item = Item(time: Ltime, shortDescription: Lshort, longDescription: Llong, value: Lval, category: Lcategory, comments: Lcomments, size: Lsize, locationId: LlocationId)
+                        self.locationItems.append(item)
+                        print(item)
                     }
-                    
-                    let item = Item(time: Ltime, shortDescription: Lshort, longDescription: Llong, value: Lval, category: Lcategory, comments: Lcomments, size: Lsize, locationId: LlocationId)
-                    
-                    //appending it to list
-                    self.items.append(item)
                 }
-            
+                // reloading the tableview
+                self.inventoryTableView.reloadData()
             }
         })
-        
-        filterItemsForLocation()
-        // reloading the tableview
-        
-    }
-
-    func filterItemsForLocation() {
-        var locationId: Int64 = 0
-        
-        let userID = (Auth.auth().currentUser?.uid)
-        let userRef: DatabaseReference = Database.database().reference().child("users")
-        userRef.child(userID!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            locationId = value?["location"] as? Int64 ?? 0
-        })
-        
-        for item in items {
-            if (item.locationId == locationId) {
-                self.locationItems.append(item)
-                print(item)
-            }
-        }
     }
     
     // MARK: - Table view data source
@@ -120,9 +101,8 @@ class InventoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return locationItems.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -132,7 +112,7 @@ class InventoryTableViewController: UITableViewController {
         }
         
         // Fetches the appropriate item cell for the data source layout.
-        let item = items[indexPath.row]
+        let item = locationItems[indexPath.row]
         
         cell.itemLabel.text = item.category! + ": " + item.shortDescription!
         
@@ -142,10 +122,10 @@ class InventoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Fetches the appropriate location for the data source layout.
-        let item = items[indexPath.row]
+        let item = locationItems[indexPath.row]
         
         //getting the text of that cell
-        let info: String = "Time: " + item.time! + "\nLongDescription: " + item.longDescription! + "\nComments: " + item.comments! + "\nValue: " + "\(item.value!)" + "\nSize: " + item.size!
+        let info: String = "Time: " + item.time! + "\nLong Description: " + item.longDescription! + "\nComments: " + item.comments! + "\nValue: " + "\(item.value!)" + "\nSize: " + item.size! + "\nLocation: " + "\(item.locationId!)"
 
         let tit: String = item.category! + ": " + item.shortDescription!
         

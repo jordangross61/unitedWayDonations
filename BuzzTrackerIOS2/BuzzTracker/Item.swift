@@ -13,9 +13,9 @@ class Item {
     var category: String?
     var comments: String?
     var size: String?
-    var locationId: Int64?
+    var locationId: Int32?
     
-    init(time: String, shortDescription: String, longDescription: String, value: Double, category: String, comments: String, size: String, locationId: Int64) {
+    init(time: String, shortDescription: String, longDescription: String, value: Double, category: String, comments: String, size: String, locationId: Int32) {
         
         self.ref = nil
         self.time = time

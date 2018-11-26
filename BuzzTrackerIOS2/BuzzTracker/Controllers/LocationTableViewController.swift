@@ -112,7 +112,7 @@ class LocationTableViewController: UITableViewController {
         }
         
         // Fetches the appropriate location cell for the data source layout.
-        var loc = locations[indexPath.row]
+        let loc = locations[indexPath.row]
         
         var labKey: Int64 = 0
         if let k = loc.key {

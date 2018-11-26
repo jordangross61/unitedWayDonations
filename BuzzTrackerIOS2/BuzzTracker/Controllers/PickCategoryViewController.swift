@@ -12,7 +12,7 @@ class PickCategoryViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBAction func picker_button(_ sender: Any) {
-        if (categoryPicked == "CLOTHING") {
+        if (categoryPicked == "Clothing") {
             self.performSegue(withIdentifier: "goToItemSize", sender: self)
         } else {
             self.performSegue(withIdentifier: "goToItemNoSize", sender: self)
@@ -31,7 +31,7 @@ class PickCategoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryPicker.selectRow(0, inComponent: 0, animated: true)
         
         // input picker data
-        pickerData = ["CLOTHING", "HAT", "KITCHEN", "ELECTRONICS", "HOUSEHOLD", "OTHER"]
+        pickerData = ["Clothing", "Hat", "Kitchen", "Electronics", "Household", "Other"]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
