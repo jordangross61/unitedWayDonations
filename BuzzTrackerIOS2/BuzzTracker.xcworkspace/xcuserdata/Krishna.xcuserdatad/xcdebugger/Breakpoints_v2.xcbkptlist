@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuzzTracker/Controllers/InventoryTableViewController.swift"
-            timestampString = "564962180.282436"
+            timestampString = "565508776.685501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuzzTracker/Controllers/InventoryTableViewController.swift"
-            timestampString = "564962180.284228"
+            timestampString = "565508776.685992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,13 +186,250 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuzzTracker/Controllers/InventoryTableViewController.swift"
-            timestampString = "564962180.284884"
+            timestampString = "565508776.6863101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/InventoryTableViewController.swift"
+            timestampString = "565508776.686657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.InventoryTableViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/InventoryTableViewController.swift"
+                  timestampString = "565501121.81218"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "747">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in BuzzTracker.InventoryTableViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/InventoryTableViewController.swift"
+                  timestampString = "565501121.814864"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "146">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/InventoryTableViewController.swift"
+            timestampString = "565508776.68696"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.687247"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "filterByLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.68786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "filterByLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.68838"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "filterSearchByText()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.688871"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "SearchResultsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.SearchResultsTableViewController.filteredItems.getter : Swift.Array&lt;BuzzTracker.Item&gt;"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+                  timestampString = "565505030.288853"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "114">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.SearchResultsTableViewController.filteredItems.setter : Swift.Array&lt;BuzzTracker.Item&gt;"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+                  timestampString = "565505030.292503"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.SearchResultsTableViewController.init(style: __C.UITableViewStyle) -&gt; BuzzTracker.SearchResultsTableViewController"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+                  timestampString = "565505030.298112"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "705">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.SearchResultsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BuzzTracker.SearchResultsTableViewController"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+                  timestampString = "565505030.3042361"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "734">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BuzzTracker.SearchResultsTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BuzzTracker.SearchResultsTableViewController&gt;"
+                  moduleName = "BuzzTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Krishna/Desktop/cs2340/unitedWayDonations/BuzzTrackerIOS2/BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+                  timestampString = "565505030.30893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "705">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.68936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuzzTracker/Controllers/SearchResultsTableViewController.swift"
+            timestampString = "565508776.689814"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "SearchResultsTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

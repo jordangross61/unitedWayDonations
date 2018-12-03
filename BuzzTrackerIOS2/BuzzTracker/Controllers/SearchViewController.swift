@@ -12,7 +12,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
 
     @IBOutlet weak var categoryPicker: UIPickerView!
-    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var searchField: UITextField!
     
     @IBAction func searchButton(_ sender: Any) {
@@ -20,7 +20,9 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     var categoryPickerData: [String] = [String]()
+    var locationPickerData: [String] = [String]()
     var categoryPicked: String = ""
+    var locationPicked: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,25 +32,39 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.categoryPicker.dataSource = self
         self.categoryPicker.selectRow(0, inComponent: 0, animated: true)
         
+        // Connect data:
+        self.locationPicker.delegate = self
+        self.locationPicker.dataSource = self
+        self.locationPicker.selectRow(0, inComponent: 0, animated: true)
+        
         // input picker data
         categoryPickerData = ["All Categories", "Clothing", "Hat", "Kitchen", "Electronics", "Household", "Other"]
+        locationPickerData = ["All Locations", "1", "2", "3", "4", "5", "6"]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSearchResults"{
             let vc = segue.destination as! SearchResultsTableViewController
             vc.searchCategory = categoryPicked
-            vc.searchLocation = self.locationField.text ?? ""
+            vc.searchLocation = locationPicked
             vc.searchField = self.searchField.text ?? ""
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryPickerData.count
+        if (pickerView.tag == 0){
+            return categoryPickerData.count
+        } else {
+            return locationPickerData.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categoryPickerData[row]
+        if (pickerView.tag == 0){
+            return categoryPickerData[row]
+        } else {
+            return locationPickerData[row]
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,6 +72,15 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoryPicked = categoryPickerData[row]
+        if (pickerView.tag == 0){
+            categoryPicked = categoryPickerData[row]
+        } else {
+            if (locationPickerData[row] == "All Locations") {
+                locationPicked = 0
+            } else {
+                locationPicked = row
+            }
+        }
     }
+    
 }

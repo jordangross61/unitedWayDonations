@@ -30,7 +30,7 @@ class InventoryTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        userRef.child(userID!).observeSingleEvent(of: .value, with: {
+        userRef.child(userID!).observe(.value, with: {
             (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -38,57 +38,51 @@ class InventoryTableViewController: UITableViewController {
         })
         
         ref.child("items").observe(DataEventType.value, with: { (Lsnapshot) in
-            
-            //if the reference have some values
-            if Lsnapshot.childrenCount > 0 {
+            //iterating through all the values
+            for locs in Lsnapshot.children.allObjects as! [DataSnapshot] {
                 
-                //iterating through all the values
-                for locs in Lsnapshot.children.allObjects as! [DataSnapshot] {
-                    
-                    let value = locs.value as? NSDictionary
-                    var Lcomments: String = ""
-                    var Lcategory: String = ""
-                    var Llong: String = ""
-                    var Lshort: String = ""
-                    var Lsize: String = ""
-                    var Ltime: String = ""
-                    var Lval: Double = 0.0
-                    var LlocationId: Int32 = 0
-                    
-                    if let comments = value?["comments"] {
-                        Lcomments = (comments as! String)
-                    }
-                    if let category = value?["category"] {
-                        Lcategory = (category as! String)
-                    }
-                    if let long = value?["longDescription"] {
-                        Llong = (long as! String)
-                    }
-                    if let short = value?["shortDescription"] {
-                        Lshort = (short as! String)
-                    }
-                    if let size = value?["size"] {
-                        Lsize = (size as! String)
-                    }
-                    if let time = value?["time"] {
-                        Ltime = (time as! String)
-                    }
-                    if let locId = value?["locationId"] {
-                        LlocationId = locId as! Int32
-                    }
-                    if let val = (value?["value"]) {
-                        Lval = val as! Double
-                    }
-                    
-                    if (self.employeeLocationId == LlocationId) {
-                        let item = Item(time: Ltime, shortDescription: Lshort, longDescription: Llong, value: Lval, category: Lcategory, comments: Lcomments, size: Lsize, locationId: LlocationId)
-                        self.locationItems.append(item)
-                        print(item)
-                    }
+                let value = locs.value as? NSDictionary
+                var Lcomments: String = ""
+                var Lcategory: String = ""
+                var Llong: String = ""
+                var Lshort: String = ""
+                var Lsize: String = ""
+                var Ltime: String = ""
+                var Lval: Double = 0.0
+                var LlocationId: Int32 = 0
+                
+                if let comments = value?["comments"] {
+                    Lcomments = (comments as! String)
                 }
-                // reloading the tableview
-                self.inventoryTableView.reloadData()
+                if let category = value?["category"] {
+                    Lcategory = (category as! String)
+                }
+                if let long = value?["longDescription"] {
+                    Llong = (long as! String)
+                }
+                if let short = value?["shortDescription"] {
+                    Lshort = (short as! String)
+                }
+                if let size = value?["size"] {
+                    Lsize = (size as! String)
+                }
+                if let time = value?["time"] {
+                    Ltime = (time as! String)
+                }
+                if let locId = value?["locationId"] {
+                    LlocationId = locId as! Int32
+                }
+                if let val = (value?["value"]) {
+                    Lval = val as! Double
+                }
+                
+                if (self.employeeLocationId == LlocationId) {
+                    let item = Item(time: Ltime, shortDescription: Lshort, longDescription: Llong, value: Lval, category: Lcategory, comments: Lcomments, size: Lsize, locationId: LlocationId)
+                    self.locationItems.append(item)
+                    print(item)
+                }
             }
+            self.inventoryTableView.reloadData()
         })
     }
     
@@ -115,7 +109,7 @@ class InventoryTableViewController: UITableViewController {
         let item = locationItems[indexPath.row]
         
         cell.itemLabel.text = item.category! + ": " + item.shortDescription!
-        
+
         return cell
     }
 

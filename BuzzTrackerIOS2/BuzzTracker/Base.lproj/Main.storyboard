@@ -699,22 +699,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="IKL-1H-XSX">
-                                <rect key="frame" x="27.5" y="164" width="320" height="339"/>
+                                <rect key="frame" x="27.5" y="71" width="320" height="525"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-vv-O1G">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                                     </pickerView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location Id. Leave Blank if All Locations." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LE4-0W-dsy">
-                                        <rect key="frame" x="25" y="227" width="270" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="270" id="qcH-yc-dgm"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnq-fO-B9B">
+                                        <rect key="frame" x="0.0" y="227" width="320" height="216"/>
+                                    </pickerView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Criteria" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-1o-4wn">
-                                        <rect key="frame" x="25" y="268" width="270" height="30"/>
+                                        <rect key="frame" x="25" y="454" width="270" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="270" id="O9a-aF-1wt"/>
                                         </constraints>
@@ -723,7 +717,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXk-3j-RDb">
-                                        <rect key="frame" x="136" y="309" width="48" height="30"/>
+                                        <rect key="frame" x="136" y="495" width="48" height="30"/>
                                         <state key="normal" title="Search"/>
                                         <connections>
                                             <action selector="searchButton:" destination="uzi-Aa-Wj3" eventType="touchUpInside" id="iMK-tb-rna"/>
@@ -741,7 +735,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryPicker" destination="oPg-vv-O1G" id="Ff4-DO-eYy"/>
-                        <outlet property="locationField" destination="LE4-0W-dsy" id="e94-Yn-QNF"/>
+                        <outlet property="locationPicker" destination="lnq-fO-B9B" id="glm-xN-CM2"/>
                         <outlet property="searchField" destination="vBF-1o-4wn" id="hxk-LR-aFX"/>
                         <segue destination="jwP-Zb-4D5" kind="show" identifier="goToSearchResults" id="gW2-XH-mrh"/>
                     </connections>

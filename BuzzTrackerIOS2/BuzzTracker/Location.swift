@@ -2,7 +2,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
-class Location {
+struct Location {
     
     let ref: DatabaseReference?
     let key: Int64?
