@@ -12,7 +12,8 @@ import FirebaseDatabase
 
 class MapViewController: UIViewController {
 
-    @IBOutlet weak var locationMap: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
+    
 
     var locations: [Location] = []
 
@@ -38,6 +39,7 @@ class MapViewController: UIViewController {
                     var Lname: String = ""
                     var Llatitude: Double = 0.0
                     var Llongitude: Double = 0.0
+                    var Lphone: String = ""
                     
                     if let key = value?["key"] {
                         Lkey = (key as! Int64)
@@ -51,11 +53,14 @@ class MapViewController: UIViewController {
                     if let longitude = value?["longitude"] {
                         Llongitude = (longitude as! Double)
                     }
+                    if let phone = value?["phone"] {
+                        Lphone = (phone as! String)
+                    }
                     
                     let annotation = MKPointAnnotation()
+                    annotation.subtitle = Lname + "\n" + Lphone
                     annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Llatitude), longitude: CLLocationDegrees(Llongitude))
-                    annotation.title = Lname
-                    self.locationMap.addAnnotation(annotation)
+                    self.mapView.addAnnotation(annotation)
                 }
             }
             print(self.locations)
