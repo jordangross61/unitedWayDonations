@@ -11,6 +11,7 @@ import UIKit
 class SearchResultsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -639,10 +639,10 @@
             </objects>
             <point key="canvasLocation" x="6487.1999999999998" y="143.47826086956522"/>
         </scene>
-        <!--Location Table View Controller-->
+        <!--Locations-->
         <scene sceneID="Yyl-HP-jqR">
             <objects>
-                <tableViewController id="r8F-qR-Qpu" customClass="LocationTableViewController" customModule="BuzzTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Locations" id="r8F-qR-Qpu" customClass="LocationTableViewController" customModule="BuzzTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e1C-Va-Lah">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -744,10 +744,10 @@
             </objects>
             <point key="canvasLocation" x="7428" y="919.79010494752629"/>
         </scene>
-        <!--Search Results Table View Controller-->
+        <!--Search Results-->
         <scene sceneID="74q-eD-fb1">
             <objects>
-                <tableViewController id="jwP-Zb-4D5" customClass="SearchResultsTableViewController" customModule="BuzzTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Search Results" id="jwP-Zb-4D5" customClass="SearchResultsTableViewController" customModule="BuzzTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gug-Ie-Dgb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -760,8 +760,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW3-7C-mnT">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW3-7C-mnT">
                                             <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-3p-eFA">
+                                            <rect key="frame" x="16" y="12" width="343" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -770,7 +777,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="itemLabel" destination="EW3-7C-mnT" id="la4-3J-WHU"/>
+                                    <outlet property="errorLabel" destination="EW3-7C-mnT" id="Kq7-Xr-aRa"/>
+                                    <outlet property="itemLabel" destination="wbc-3p-eFA" id="Bha-WH-QJF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -809,7 +817,7 @@
                         <viewLayoutGuide key="safeArea" id="BV6-a4-2yK"/>
                     </view>
                     <connections>
-                        <outlet property="locationMap" destination="e4G-fO-c2l" id="Ewu-ab-fhC"/>
+                        <outlet property="mapView" destination="e4G-fO-c2l" id="qho-hf-KJy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoU-KE-DVr" userLabel="First Responder" sceneMemberID="firstResponder"/>

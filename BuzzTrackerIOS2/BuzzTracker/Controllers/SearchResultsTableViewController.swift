@@ -41,15 +41,28 @@ class SearchResultsTableViewController: UITableViewController {
 
         if (searchCategory == "All Categories" && searchLocation == 0) {
             print("search all categories and all locations")
-            allCategoriesAndLocations()
+            self.allCategoriesAndLocations() {
+                self.filterSearchByText()
+                print("filter search by text in all categories and all locations")
+            }
         } else if (searchCategory == "All Categories" && searchLocation != 0) {
             print("search only location")
-            filterByLocation()
+            self.filterByLocation() {
+                self.filterSearchByText()
+                print("filter search by text in all categories at \(self.searchLocation)")
+            }
         } else if (searchCategory != "All Categories" && searchLocation == 0) {
             print("search by category")
-            filterByCategory()
+            self.filterByCategory() {
+                self.filterSearchByText()
+                print("filter search by text in all locations at \(self.searchCategory)")
+            }
         } else if (searchCategory != "All Categories" && searchLocation != 0) {
-            print("do nothing")
+            self.filterByCategory {
+                self.filterSearchByLocation()
+                self.filterSearchByText()
+                print("filter search by text in \(self.searchCategory) and \(self.searchLocation)")
+            }
         } else {
             print("error")
         }
@@ -65,11 +78,6 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-//        if (searchField != "" && filteredItems.count > 0) {
-//            var filteredItems: [Item] = []
-//            filterSearchByText()
-//        }
-        print(filteredItems.count)
         return filteredItems.count
     }
     
@@ -106,7 +114,7 @@ class SearchResultsTableViewController: UITableViewController {
         
     }
     
-    func filterByLocation() {
+    func filterByLocation(finished: @escaping () -> Void) {
         
         let locationRef = Database.database().reference().child("items")
         let locationQuery = locationRef.queryOrdered(byChild: "locationId").queryEqual(toValue: searchLocation)
@@ -156,10 +164,12 @@ class SearchResultsTableViewController: UITableViewController {
 
             }
             self.searchTableView.reloadData()
+            finished()
         })
+        
     }
     
-    func filterByCategory() {
+    func filterByCategory(finished: @escaping () -> Void) {
         let categoryRef = Database.database().reference().child("items")
         let categoryQuery = categoryRef.queryOrdered(byChild: "category").queryEqual(toValue: searchCategory)
         
@@ -207,10 +217,11 @@ class SearchResultsTableViewController: UITableViewController {
                 print(item)
             }
             self.searchTableView.reloadData()
+            finished()
         })
     }
     
-    func allCategoriesAndLocations() {
+    func allCategoriesAndLocations(finished: @escaping () -> Void) {
         
         ref.child("items").observe(DataEventType.value, with: { (Lsnapshot) in
             
@@ -261,18 +272,43 @@ class SearchResultsTableViewController: UITableViewController {
                     print(item)
 
                 }
-                // reloading the tableview
-                self.searchTableView.reloadData()
             }
+            // reloading the tableview
+            self.searchTableView.reloadData()
+            finished()
         })
     }
-    
+
     func filterSearchByText() {
-        print("hit")
+        print("hit inside filter search by text")
+        if (searchField != "") {
+            print("search field has text")
+            filteredItems = []
+        
+            for item in items {
+                if item.shortDescription!.lowercased().range(of:searchField) != nil {
+                    filteredItems.append(item)
+                }
+            }
+            self.searchTableView.reloadData()
+        }
+        
+        if (filteredItems.count == 0) {
+            self.title = "No Search Results"
+        }
+    }
+    
+    func filterSearchByLocation() {
+        print("hit inside filter search by location")
+        
+        filteredItems = []
+        
         for item in items {
-            if item.shortDescription!.lowercased().range(of:searchField) != nil {
+            if item.locationId! == searchLocation {
                 filteredItems.append(item)
             }
         }
+        
+        self.searchTableView.reloadData()
     }
 }

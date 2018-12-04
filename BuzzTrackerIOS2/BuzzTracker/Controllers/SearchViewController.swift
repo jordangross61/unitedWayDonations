@@ -42,6 +42,14 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         locationPickerData = ["All Locations", "1", "2", "3", "4", "5", "6"]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.categoryPicker.selectRow(0, inComponent: 0, animated: true)
+        self.locationPicker.selectRow(0, inComponent: 0, animated: true)
+        self.searchField.text = ""
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSearchResults"{
             let vc = segue.destination as! SearchResultsTableViewController
